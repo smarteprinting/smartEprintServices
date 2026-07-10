@@ -39,14 +39,14 @@ export default function RefundCancellationPolicy() {
               </span>
 
               <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-                Refund &
+                Refund &amp;
                 <span className="block bg-gradient-to-r from-[#60A5FA] to-[#93C5FD] bg-clip-text text-transparent">
                   Cancellation Policy
                 </span>
               </h1>
 
               <p className="mt-8 max-w-2xl text-lg leading-relaxed text-blue-100/90 md:text-xl">
-                Last Updated: July 2026
+                Date: July 02, 2026
               </p>
             </div>
           </div>
@@ -60,104 +60,153 @@ export default function RefundCancellationPolicy() {
 
       <div className="relative left-1/2 w-screen -ml-[50vw] bg-white">
         <div className="mx-auto max-w-4xl px-6 py-20 lg:py-28">
-          <div className="prose prose-lg text-gray-600">
+          <div className="prose prose-lg text-gray-600 max-w-none">
+            {/* Quick Highlights Cards */}
+            <div className="grid gap-6 md:grid-cols-3 mb-12">
+              <div className="group rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#024AD8]/8">
+                <h3 className="text-xl font-extrabold text-[#024AD8] mb-2">No Fee to Cancel</h3>
+                <p className="text-gray-600">Free 24+ hours before appointment</p>
+              </div>
+              <div className="group rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#024AD8]/8">
+                <h3 className="text-xl font-extrabold text-[#024AD8] mb-2">Parts Warranty: 90 Days</h3>
+                <p className="text-gray-600">Parts covered for 90 days after service.</p>
+              </div>
+              <div className="group rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#024AD8]/8">
+                <h3 className="text-xl font-extrabold text-[#024AD8] mb-2">30 Day Returns</h3>
+                <p className="text-gray-600">30 days to return unopened supplies</p>
+              </div>
+            </div>
+
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Appointment Cancellation</h2>
+              <h2 className="text-2xl font-extrabold text-gray-900 mb-4">1. Policy for Cancelling a Service</h2>
               <p className="leading-relaxed mb-4">
-                <strong>Full Refund:</strong> Cancellations made 48 hours or more before your scheduled appointment will receive a full refund of any deposits or payments made.
+                We know that the needs of businesses change over time. Our stance on cancellations is meant to be fair to both our customers and the technicians who plan their days around appointments.
               </p>
+              
+              <div className="overflow-x-auto my-6">
+                <table className="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-2xl">
+                  <thead>
+                    <tr className="bg-gray-50">
+                      <th className="px-6 py-3 text-left text-sm font-bold text-gray-700">Cancellation Time</th>
+                      <th className="px-6 py-3 text-left text-sm font-bold text-gray-700">Fee</th>
+                      <th className="px-6 py-3 text-left text-sm font-bold text-gray-700">Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr className="hover:bg-gray-50 transition-colors">
+                      <td className="px-6 py-4 text-sm font-medium text-gray-800">24 or more hours before the meeting</td>
+                      <td className="px-6 py-4 text-sm font-semibold text-[#024AD8]">No Cost</td>
+                      <td className="px-6 py-4 text-sm text-gray-600">You can return in full for free.</td>
+                    </tr>
+                    <tr className="hover:bg-gray-50 transition-colors">
+                      <td className="px-6 py-4 text-sm font-medium text-gray-800">Cancellation for emergency</td>
+                      <td className="px-6 py-4 text-sm font-semibold text-[#024AD8]">Case-by-case</td>
+                      <td className="px-6 py-4 text-sm text-gray-600">Our team will assist you immediately.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <p className="leading-relaxed">
+                Please email <a href="mailto:info@smarteprintservices.com" className="text-[#024AD8] font-semibold">info@smarteprintservices.com</a> as soon as possible to stop or change the time.
+              </p>
+            </section>
+
+            <section className="mb-12">
+              <h2 className="text-2xl font-extrabold text-gray-900 mb-4">2. Policy for Refunds for Services Rendered</h2>
               <p className="leading-relaxed mb-4">
-                <strong>50% Refund:</strong> Cancellations made 24-47 hours before your scheduled appointment will receive a 50% refund of the appointment fee.
+                Our goal is for you to be completely happy. Please let us know within 7 business days of the service date if you are not happy with the work that was done.
               </p>
-              <p className="leading-relaxed">
-                <strong>No Refund:</strong> Cancellations made less than 24 hours before your scheduled appointment will not receive a refund. This cancellation fee helps us manage our scheduling and technician availability.
-              </p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Service Satisfaction Guarantee</h2>
-              <p className="leading-relaxed">
-                If you are not satisfied with the service provided, you must notify us within 48 hours of service completion. We will attempt to resolve any issues to your satisfaction. If we cannot resolve the issue, we will issue a refund for the service charge (labor only, not parts).
-              </p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">3. No-Show Policy</h2>
-              <p className="leading-relaxed">
-                If you are not present at your scheduled appointment time and do not contact us to reschedule, you will be charged the full appointment fee. We consider this a no-show if you fail to cancel at least 24 hours before your scheduled time.
-              </p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">4. Parts and Materials</h2>
-              <p className="leading-relaxed">
-                Refunds for parts and materials are not provided unless the part is defective or fails within 30 days of installation. In such cases, we will replace the part at no charge. If you wish to return materials purchased through us within 30 days of purchase, a 15% restocking fee may apply.
-              </p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Payment Methods and Refunds</h2>
-              <p className="leading-relaxed">
-                Refunds will be issued to the original payment method used for the appointment or purchase. For credit card payments, refunds may take 3-5 business days to appear in your account, depending on your bank.
-              </p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Rescheduling</h2>
-              <p className="leading-relaxed">
-                If you need to reschedule your appointment, please contact us at least 24 hours before your scheduled time. We will do our best to accommodate your new preferred time. Rescheduling does not incur any additional fees.
-              </p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Emergency Service Cancellations</h2>
-              <p className="leading-relaxed">
-                Emergency services have different cancellation terms. If you request emergency service and then cancel, a service call fee will apply even if we are unable to provide the service. This fee compensates for our technician's time and travel.
-              </p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Warranty on Services</h2>
-              <p className="leading-relaxed">
-                We warrant that all work performed by our technicians will be done in a professional and workmanlike manner. If there are issues with the work performed, please contact us within 30 days and we will address the problem at no additional cost.
-              </p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Non-Refundable Items</h2>
-              <p className="leading-relaxed mb-4">
-                The following items are generally non-refundable:
-              </p>
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Diagnostic fees (unless we determine the issue is not fixable and you choose not to proceed)</li>
-                <li>Travel charges</li>
-                <li>Time spent on site before determining that service is needed</li>
-                <li>Software licenses or digital products</li>
+              <ul className="list-disc pl-6 space-y-3">
+                <li>
+                  <strong>Problems with the work:</strong> If the problem that was serviced comes up again within 30 days, we will come back to diagnose and fix it again at no extra cost for work (parts not included).
+                </li>
+                <li>
+                  <strong>Not Enough Work Done:</strong> If our technician can’t do the job the customer asked for and it’s not their fault, they will give them a full refund or credit.
+                </li>
+                <li>
+                  <strong>Fees for diagnostics:</strong> Diagnostic fees usually can’t be returned, but they can be used as a credit toward the cost of the fix if you decide to go ahead with service.
+                </li>
+                <li>
+                  <strong>Services Paid for:</strong> We don’t usually give refunds for services that have been done and accepted unless there is a clear error on our part.
+                </li>
               </ul>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">10. Dispute Resolution</h2>
-              <p className="leading-relaxed">
-                In case of a dispute regarding refunds or cancellations, please contact us at <a href="mailto:info@smarteprintservices.com" className="text-[#024AD8] font-semibold">info@smarteprintservices.com</a> or call <a href="tel:+18887154577" className="text-[#024AD8] font-semibold">+1 (888) 715-4577</a>. We will work with you to resolve any concerns within 10 business days.
+              <h2 className="text-2xl font-extrabold text-gray-900 mb-4">3. Policy for Refunds on Goods and Supplies</h2>
+              <p className="leading-relaxed mb-4">
+                For toner cartridges, ink, paper, drums, and repair kits, as well as other printer supplies and consumables:
               </p>
+              <ul className="list-disc pl-6 space-y-3">
+                <li>
+                  <strong>Unopened / Unused Items:</strong> Returns allowed within 30 days of purchase with original packaging and receipt – full refund provided
+                </li>
+                <li>
+                  <strong>Opened or installed items:</strong> Non-refundable unless defective upon receipt.
+                </li>
+                <li>
+                  <strong>Products With Flaws:</strong> Within 90 days of purchase, we will replace or refund broken items at our discretion.
+                </li>
+                <li>
+                  <strong>Special Order Items:</strong> You can’t get your money back for items that were carefully ordered for your equipment unless they are broken.
+                </li>
+                <li>
+                  Customers are responsible for paying for the shipping costs to send back a qualified item unless the return is our fault or the item is broken.
+                </li>
+              </ul>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Changes to This Policy</h2>
-              <p className="leading-relaxed">
-                We reserve the right to modify this Refund & Cancellation Policy at any time. Changes will be effective immediately upon posting to our website. Your continued use of our services constitutes your acceptance of the modified policy.
+              <h2 className="text-2xl font-extrabold text-gray-900 mb-4">4. Managed Print/Service Contracts</h2>
+              <p className="leading-relaxed mb-4">
+                For customers who have signed up for managed print agreements or regular service contracts:
               </p>
+              <ul className="list-disc pl-6 space-y-3">
+                <li>
+                  Your Service Agreement spells out the terms of the contract and how to end it.
+                </li>
+                <li>
+                  Most contracts need to be broken with 30 days’ written notice.
+                </li>
+                <li>
+                  If you end your deal early, you may have to pay fees.
+                </li>
+                <li>
+                  A pro-rated refund may be given for prepaid contract amounts for service times that were not used.
+                </li>
+              </ul>
             </section>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">12. Contact Us</h2>
+              <h2 className="text-2xl font-extrabold text-gray-900 mb-4">5. How to Get a Refund or Report a Problem</h2>
+              <p className="leading-relaxed mb-4">
+                To get a return or let us know about a problem with the service, please:
+              </p>
+              <ul className="list-disc pl-6 space-y-3">
+                <li>
+                  You have 7 business days from the date of service or product receipt to get in touch with us.
+                </li>
+                <li>
+                  Give your name, the date of service, the invoice number, and a brief statement of the problem.
+                </li>
+                <li>
+                  Within two business days, our team will get back to you.
+                </li>
+                <li>
+                  Within 5–10 business days, approved refunds are sent back to the original method of payment.
+                </li>
+              </ul>
+            </section>
+
+            <section className="mb-12">
+              <h2 className="text-2xl font-extrabold text-gray-900 mb-4">Contact Us</h2>
               <p className="leading-relaxed">
-                If you have questions about this Refund & Cancellation Policy, please contact us at:
+                If you have questions about this Refund &amp; Cancellation Policy, please contact us at:
               </p>
               <p className="mt-4">
                 <strong>SmartEprint Services</strong><br />
-                878 JEFFERSON ST<br />
+                878 Jefferson St<br />
                 Burlington, IA 52601<br />
                 Email: <a href="mailto:info@smarteprintservices.com" className="text-[#024AD8] font-semibold">info@smarteprintservices.com</a><br />
                 Phone: <a href="tel:+18887154577" className="text-[#024AD8] font-semibold">+1 (888) 715-4577</a>

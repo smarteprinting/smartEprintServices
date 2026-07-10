@@ -48,17 +48,20 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/95 shadow-sm backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-3" aria-label="SmartEprint Services Home">
-          <div className="flex h-10 w-18 sm:h-14  items-center justify-center p-1">
+          <div className="flex h-12 w-auto items-center justify-center p-1">
             <Image 
               src="/logo.png" 
-              alt="SmartEprint Logo" 
-              width={70} 
+              width={100}
+              alt="SmartEprint Logo"
               height={56} 
               priority
               className="h-full w-auto"
             />
           </div>
-         
+          {/* <div className="hidden sm:flex flex-col">
+            <h2 className="text-lg font-extrabold text-slate-800">SmartEprint</h2>
+            <p className="text-xs uppercase tracking-wider text-slate-500">Services</p>
+          </div> */}
         </Link>
 
         {/* Desktop Navigation */}

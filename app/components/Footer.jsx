@@ -25,6 +25,8 @@ const policyLinks = [
   { href: '/faqs', label: 'FAQs' },
   { href: '/privacy-policy', label: 'Privacy Policy' },
   { href: '/terms-and-conditions', label: 'Terms & Conditions' },
+  { href: '/refund-cancellation-policy', label: 'Refund & Cancellation' },
+  { href: '/disclaimer', label: 'Disclaimer' },
   { href: '/cookie-policy', label: 'Cookie Policy' },
 ];
 
@@ -183,7 +185,7 @@ export default function Footer() {
             © {currentYear} SmartEprint Services. All rights reserved.
           </p>
           
-          <div className="flex flex-wrap items-center justify-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
             <Link 
               href="/privacy-policy"
               className="text-xs text-slate-400 hover:text-brand-400 transition"
@@ -195,6 +197,18 @@ export default function Footer() {
               className="text-xs text-slate-400 hover:text-brand-400 transition"
             >
               Terms of Service
+            </Link>
+            <Link 
+              href="/refund-cancellation-policy"
+              className="text-xs text-slate-400 hover:text-brand-400 transition"
+            >
+              Refund & Cancellation
+            </Link>
+            <Link 
+              href="/disclaimer"
+              className="text-xs text-slate-400 hover:text-brand-400 transition"
+            >
+              Disclaimer
             </Link>
             <Link 
               href="/cookie-policy"
