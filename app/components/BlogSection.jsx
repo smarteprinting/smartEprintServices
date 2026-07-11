@@ -6,31 +6,31 @@ import { ArrowRight, Calendar } from 'lucide-react';
 
 const blogPosts = [
   {
-    id: 1,
+    id: 'on-site-technology-consultation',
     title: 'What to Expect During an On-Site Technology Service Consultation',
     excerpt: 'Technology and appliances have become integral to our daily routines, supporting work, communication, entertainment, and household responsibilities. Understanding what happens during a professional on-site consultation helps you prepare and get the most value from our service.',
     image: '/k-hub1.png',
     date: 'July 2026',
     category: 'Service Guide',
-    link: '/blogs'
+    link: '/blogs/on-site-technology-consultation'
   },
   {
-    id: 2,
+    id: 'keep-technology-running-smoothly',
     title: 'Simple Ways to Keep Home and Office Technology Running Smoothly',
     excerpt: 'Technology supports nearly every part of modern life. From computers used for work and education to printers, Wi-Fi networks, smart home devices, and office equipment, keeping these systems running smoothly is essential. Learn practical maintenance tips.',
     image: '/k-hub2.png',
     date: 'July 2026',
     category: 'Maintenance',
-    link: '/blogs'
+    link: '/blogs/keep-technology-running-smoothly'
   },
   {
-    id: 3,
+    id: 'improving-home-wifi-stability',
     title: 'A Practical Guide to Improving Home Wi-Fi and Network Stability',
     excerpt: 'A reliable network has become just as important as electricity in many homes and workplaces. Computers, printers, televisions, smart home devices, and security systems all depend on stable connectivity. Discover practical solutions to enhance your network.',
     image: '/k-hub3.png',
     date: 'July 2026',
     category: 'Networking',
-    link: '/blogs'
+    link: '/blogs/improving-home-wifi-stability'
   }
 ];
 

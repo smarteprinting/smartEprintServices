@@ -94,91 +94,91 @@ export default function BookingPage() {
             <div className="absolute top-1/2 right-1/4 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
           </div>
 
-          <div className="relative z-10 mx-auto flex min-h-[75vh] max-w-7xl flex-col justify-center px-6 py-24 lg:py-32">
-            <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-7xl flex-col justify-center px-6 py-16 lg:py-20">
+            <div className="grid items-center gap-10 lg:grid-cols-2">
               {/* LEFT: CONTENT */}
               <div>
-                <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold tracking-wide text-white backdrop-blur-sm">
+                <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold tracking-wide text-white backdrop-blur-sm">
                   <span className="h-2 w-2 rounded-full bg-[#3B82F6] shadow-[0_0_8px_#3B82F6]" />
                   On-site Printer Repair and Setup
                 </span>
 
-                <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                <h1 className="mt-5 text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
                   Fast, reliable printer solutions
                   <span className="block bg-gradient-to-r from-[#60A5FA] to-[#93C5FD] bg-clip-text text-transparent">
                     at your doorstep
                   </span>
                 </h1>
 
-                <p className="mt-8 max-w-xl text-lg leading-relaxed text-blue-100/90 md:text-xl">
+                <p className="mt-6 max-w-xl text-base leading-relaxed text-blue-100/90 md:text-lg">
                   Fast, reliable printer solutions at your doorstep for home and business users.
                 </p>
 
                 {/* Trust Badges */}
-                <div className="mt-10 flex flex-wrap gap-4">
+                <div className="mt-7 flex flex-wrap gap-3">
                   {["100% professional service", "No hidden charges", "Doorstep service"].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
-                      <CheckCircle2 className="h-4 w-4 text-[#60A5FA]" />
+                    <div key={i} className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-[#60A5FA]" />
                       {item}
                     </div>
                   ))}
                 </div>
 
                 {/* Call Us CTA */}
-                <div className="mt-10">
+                <div className="mt-7">
                   <a
                     href="tel:+18887154577"
-                    className="group inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-lg font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                    className="group inline-flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
                   >
-                    <Phone size={20} />
+                    <Phone size={18} />
                     Call Us: +1 (888) 715-4577
-                    <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                 </div>
               </div>
 
               {/* RIGHT: FORM */}
               <div>
-                <div className="relative overflow-hidden rounded-[32px] border border-gray-100 bg-white p-8 shadow-xl sm:p-10">
-                  <span className="inline-flex rounded-full bg-[#024AD8]/10 px-4 py-2 text-sm font-bold uppercase tracking-widest text-[#024AD8]">
+                <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-xl sm:p-7">
+                  <span className="inline-flex rounded-full bg-[#024AD8]/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-[#024AD8]">
                     Request a Consultation
                   </span>
-                  <h2 className="mt-4 text-2xl font-extrabold text-gray-900 sm:text-3xl">Let's Get Started</h2>
-                  <p className="mt-2 text-gray-600">
+                  <h2 className="mt-3 text-xl font-extrabold text-gray-900 sm:text-2xl">Let's Get Started</h2>
+                  <p className="mt-2 text-sm text-gray-600">
                     Tell us about your requirements, and we'll contact you to discuss suitable on-site assistance.
                   </p>
 
-                  <form className="mt-8 space-y-5">
+                  <form className="mt-6 space-y-4">
                     <div>
-                      <label className="mb-2 block text-sm font-semibold text-gray-700">Full Name *</label>
+                      <label className="mb-2 block text-xs font-semibold text-gray-700">Full Name *</label>
                       <input
                         type="text"
                         placeholder="Enter your full name"
-                        className="w-full rounded-xl border border-gray-200 px-5 py-4 outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
+                        className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
                       />
                     </div>
 
                     <div>
-                      <label className="mb-2 block text-sm font-semibold text-gray-700">Phone Number *</label>
+                      <label className="mb-2 block text-xs font-semibold text-gray-700">Phone Number *</label>
                       <input
                         type="tel"
                         placeholder="Enter your phone number"
-                        className="w-full rounded-xl border border-gray-200 px-5 py-4 outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
+                        className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
                       />
                     </div>
 
                     <div>
-                      <label className="mb-2 block text-sm font-semibold text-gray-700">Email Address *</label>
+                      <label className="mb-2 block text-xs font-semibold text-gray-700">Email Address *</label>
                       <input
                         type="email"
                         placeholder="Enter your email address"
-                        className="w-full rounded-xl border border-gray-200 px-5 py-4 outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
+                        className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
                       />
                     </div>
 
                     <div>
-                      <label className="mb-2 block text-sm font-semibold text-gray-700">Service Type *</label>
-                      <select className="w-full rounded-xl border border-gray-200 px-5 py-4 outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10 bg-white">
+                      <label className="mb-2 block text-xs font-semibold text-gray-700">Service Type *</label>
+                      <select className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10 bg-white">
                         <option>Select Service</option>
                         {serviceOptions.map((item) => (
                           <option key={item}>{item}</option>
@@ -187,20 +187,20 @@ export default function BookingPage() {
                     </div>
 
                     <div>
-                      <label className="mb-2 block text-sm font-semibold text-gray-700">Describe Your Requirements</label>
+                      <label className="mb-2 block text-xs font-semibold text-gray-700">Describe Your Requirements</label>
                       <textarea
-                        rows={4}
+                        rows={3}
                         placeholder="Tell us about your equipment or the assistance you need..."
-                        className="w-full rounded-xl border border-gray-200 px-5 py-4 outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
+                        className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="group flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#024AD8] to-[#0B63F6] px-8 py-5 text-lg font-bold text-white shadow-lg shadow-[#024AD8]/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#024AD8]/30"
+                      className="group flex w-full items-center justify-center gap-3 rounded-lg bg-gradient-to-r from-[#024AD8] to-[#0B63F6] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#024AD8]/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#024AD8]/30"
                     >
                       Request Consultation
-                      <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />
+                      <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                     </button>
                   </form>
                 </div>
@@ -216,8 +216,8 @@ export default function BookingPage() {
       {/* ========== OUR PROCESS ========== */}
 
       <div className="relative left-1/2 w-screen -ml-[50vw] bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:py-28">
-          <div className="mx-auto max-w-3xl text-center mb-16">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
+          <div className="mx-auto max-w-3xl text-center mb-12">
             <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-2 text-sm font-bold uppercase tracking-widest text-[#024AD8]">
               Our Process
             </span>
@@ -268,7 +268,7 @@ export default function BookingPage() {
       {/* ========== CONTACT INFO ========== */}
 
       <div className="relative left-1/2 w-screen -ml-[50vw] bg-gradient-to-b from-[#F8FAFF] to-white">
-        <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 lg:py-28">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 lg:py-20">
           <div className="grid gap-6 md:grid-cols-3">
             {/* Call Us */}
             <div className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#024AD8]/8">
@@ -323,7 +323,7 @@ export default function BookingPage() {
             <div className="absolute -bottom-10 -right-10 h-60 w-60 rounded-full bg-white/5 blur-3xl" />
           </div>
 
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-20 text-center text-white lg:flex-row lg:text-left">
+          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-16 text-center text-white lg:flex-row lg:text-left">
             <div>
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
                 Ready to get professional
