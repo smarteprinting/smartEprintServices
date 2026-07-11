@@ -7,11 +7,11 @@ import {
   CheckCircle2,
   Calendar,
   MessageCircle,
-  Clock,
   Wrench,
   DollarSign,
   ThumbsUp,
 } from "lucide-react";
+import BookAppointmentForm from "../components/BookAppointmentForm";
 
 export const metadata = {
   title: "Book an Appointment | SmartEprint Services",
@@ -19,51 +19,40 @@ export const metadata = {
     "Schedule a consultation with SmartEprint Services for professional on-site printer repair and setup for home and business users.",
 };
 
-const serviceOptions = [
-  "Printer Setup & Installation",
-  "Printer Troubleshooting & Repair",
-  "Computer Support",
-  "Network & Wi-Fi Setup",
-  "Smart Home Device Assistance",
-  "Home Appliance Help",
-  "Business Printing Solutions",
-  "General Consultation",
-];
-
 const processSteps = [
   {
     number: "01",
-    title: "Submit Your Consultation Request",
+    title: "Submit your Consultation Request",
     description: "Fill out the form with your requirements, and we'll review your request.",
     icon: CheckCircle2,
   },
   {
     number: "02",
-    title: "Discuss Your Service Needs",
+    title: "Discuss your Service Needs",
     description: "Our team contacts you to understand your issue and recommend the right service.",
     icon: MessageCircle,
   },
   {
     number: "03",
-    title: "Schedule an On-Site Visit",
+    title: "Schedule an On-site Visit",
     description: "Choose a convenient date and time for our technician to visit your location.",
     icon: Calendar,
   },
   {
     number: "04",
-    title: "On-Site Equipment Assessment",
+    title: "On-site Equipment Assessment",
     description: "The technician inspects your equipment and explains the available service options.",
     icon: Wrench,
   },
   {
     number: "05",
-    title: "Cost-Effective Solutions",
+    title: "Cost-effective Solutions",
     description: "Receive a clear service estimate with practical solutions based on your needs.",
     icon: DollarSign,
   },
   {
     number: "06",
-    title: "Service Completion & Follow-Up",
+    title: "Service Completion & Follow-up",
     description: "After the service, we confirm everything is working and answer any remaining questions.",
     icon: ThumbsUp,
   },
@@ -139,71 +128,7 @@ export default function BookingPage() {
 
               {/* RIGHT: FORM */}
               <div>
-                <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 shadow-xl sm:p-7">
-                  <span className="inline-flex rounded-full bg-[#024AD8]/10 px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-[#024AD8]">
-                    Request a Consultation
-                  </span>
-                  <h2 className="mt-3 text-xl font-extrabold text-gray-900 sm:text-2xl">Let's Get Started</h2>
-                  <p className="mt-2 text-sm text-gray-600">
-                    Tell us about your requirements, and we'll contact you to discuss suitable on-site assistance.
-                  </p>
-
-                  <form className="mt-6 space-y-4">
-                    <div>
-                      <label className="mb-2 block text-xs font-semibold text-gray-700">Full Name *</label>
-                      <input
-                        type="text"
-                        placeholder="Enter your full name"
-                        className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="mb-2 block text-xs font-semibold text-gray-700">Phone Number *</label>
-                      <input
-                        type="tel"
-                        placeholder="Enter your phone number"
-                        className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="mb-2 block text-xs font-semibold text-gray-700">Email Address *</label>
-                      <input
-                        type="email"
-                        placeholder="Enter your email address"
-                        className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="mb-2 block text-xs font-semibold text-gray-700">Service Type *</label>
-                      <select className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10 bg-white">
-                        <option>Select Service</option>
-                        {serviceOptions.map((item) => (
-                          <option key={item}>{item}</option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="mb-2 block text-xs font-semibold text-gray-700">Describe Your Requirements</label>
-                      <textarea
-                        rows={3}
-                        placeholder="Tell us about your equipment or the assistance you need..."
-                        className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="group flex w-full items-center justify-center gap-3 rounded-lg bg-gradient-to-r from-[#024AD8] to-[#0B63F6] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#024AD8]/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#024AD8]/30"
-                    >
-                      Request Consultation
-                      <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-                    </button>
-                  </form>
-                </div>
+                <BookAppointmentForm />
               </div>
             </div>
           </div>
@@ -247,7 +172,7 @@ export default function BookingPage() {
                     <div className="h-px flex-1 bg-gradient-to-r from-[#024AD8]/20 to-transparent" />
                   </div>
 
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#024AD8]/5">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#024AD8]/10">
                     <StepIcon className="h-6 w-6 text-[#024AD8]" />
                   </div>
 
@@ -255,7 +180,7 @@ export default function BookingPage() {
                     {step.title}
                   </h3>
 
-                  <p className="mt-3 text-gray-500 leading-relaxed">
+                  <p className="mt-3 text-gray-600 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -336,7 +261,7 @@ export default function BookingPage() {
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <Link
                 href="/contact-us"
-                className="group inline-flex items-center gap-3 rounded-2xl bg-white px-8 py-5 text-lg font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                className="group inline-flex items-center gap-3 rounded-full bg-white px-8 py-5 text-lg font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
               >
                 Contact Us
                 <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />

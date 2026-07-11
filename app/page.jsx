@@ -78,13 +78,20 @@ export default function HomePage() {
 
               <div className="rounded-[28px] border border-white/20 bg-white/10 p-6 shadow-[0_20px_60px_rgba(1,16,33,0.28)] backdrop-blur-xl sm:p-8">
                 <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-200">
-                      Why clients choose us
-                    </p>
-                    <h2 className="mt-2 text-2xl font-semibold text-white sm:text-3xl">
-                      Fast, thoughtful, and professional service.
-                    </h2>
+                  <div className="flex items-start gap-3">
+                    <img
+                      src="/svg-icon.png"
+                      alt="Service icon"
+                      className="h-12 w-12 rounded-2xl border border-white/20 bg-white/10 p-2 object-contain shadow-sm backdrop-blur-md"
+                    />
+                    <div>
+                      <p className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-200">
+                        Why clients choose us
+                      </p>
+                      <h2 className="mt-2 text-2xl font-semibold text-white sm:text-3xl">
+                        Fast, thoughtful, and professional service.
+                      </h2>
+                    </div>
                   </div>
                   <div className="rounded-2xl bg-white/15 p-3 text-center">
                     <span className="text-3xl font-black text-white">24/7</span>

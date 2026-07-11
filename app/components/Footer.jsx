@@ -41,21 +41,26 @@ export default function Footer() {
           
           {/* Brand Section */}
           <div className="lg:col-span-1 md:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-3 mb-6">
-              {/* <div className="flex h-14 w-14 items-center justify-center p-1">
-                <Image 
-                  src="/logo.png" 
-                  alt="SmartEprint Logo" 
-                  width={56} 
-                  height={56} 
-                  className="h-full w-auto"
-                />
-              </div> */}
-              <div>
-                <h3 className="text-base font-extrabold text-white">SmartEprint</h3>
-                <p className="text-xs uppercase tracking-wider text-slate-400">Services</p>
-              </div>
-            </Link>
+             {/* <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">< */}
+             <Link href="/" className="flex items-center gap-3" aria-label="SmartEprint Services Home">
+          <div className="flex h-12 w-auto items-center justify-center p-1">
+            <Image 
+              src="/footer-logo.png" 
+              width={100}
+              alt="SmartEprint Logo"
+              height={56} 
+              priority
+              className="h-full w-auto"
+            />
+          </div>
+          {/* <div className="hidden sm:flex flex-col">
+            <h2 className="text-lg font-extrabold text-slate-800">SmartEprint</h2>
+            <p className="text-xs uppercase tracking-wider text-slate-500">Services</p>
+          </div> */}
+        </Link>
+
+
+            
             
             <p className="text-sm text-slate-400 mb-6 leading-relaxed">
               Dependable on-site technology and appliance support with fast response and expert care for homes and businesses.

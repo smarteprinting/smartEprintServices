@@ -6,6 +6,7 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
+import ContactForm from "../components/ContactForm";
 
 export const metadata = {
   title: "Contact Us | SmartEprint Services",
@@ -121,49 +122,7 @@ export default function ContactPage() {
 
             {/* RIGHT: Quick Form */}
             <div>
-              <div className="relative overflow-hidden rounded-[32px] border border-gray-100 bg-white p-8 shadow-xl sm:p-10">
-                <span className="inline-flex rounded-full bg-[#024AD8]/10 px-4 py-2 text-sm font-bold uppercase tracking-widest text-[#024AD8]">
-                  Send a Message
-                </span>
-                <h2 className="mt-4 text-2xl font-extrabold text-gray-900 sm:text-3xl">Quick Contact Form</h2>
-                <p className="mt-2 text-gray-600">
-                  Fill out the form below and we'll get back to you soon.
-                </p>
-
-                <form className="mt-8 space-y-5">
-                  <div>
-                    <label className="mb-2 block text-sm font-semibold text-gray-700">Full Name</label>
-                    <input
-                      type="text"
-                      placeholder="Your name"
-                      className="w-full rounded-xl border border-gray-200 px-5 py-4 outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
-                    />
-                  </div>
-                  <div>
-                    <label className="mb-2 block text-sm font-semibold text-gray-700">Email Address</label>
-                    <input
-                      type="email"
-                      placeholder="your@email.com"
-                      className="w-full rounded-xl border border-gray-200 px-5 py-4 outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
-                    />
-                  </div>
-                  <div>
-                    <label className="mb-2 block text-sm font-semibold text-gray-700">Message</label>
-                    <textarea
-                      rows={4}
-                      placeholder="How can we help you?"
-                      className="w-full rounded-xl border border-gray-200 px-5 py-4 outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-2 focus:ring-[#024AD8]/10"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="group flex w-full items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#024AD8] to-[#0B63F6] px-8 py-5 text-lg font-bold text-white shadow-lg shadow-[#024AD8]/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#024AD8]/30"
-                  >
-                    Send Message
-                    <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />
-                  </button>
-                </form>
-              </div>
+              <ContactForm />
             </div>
           </div>
         </div>

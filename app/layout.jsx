@@ -12,6 +12,9 @@ export const metadata = {
   alternates: {
     canonical: 'https://jselectronics.com',
   },
+  icons: {
+    icon: '/svg-icon.png',
+  },
 };
 
 export const viewport = {
