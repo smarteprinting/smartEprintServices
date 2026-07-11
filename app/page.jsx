@@ -104,11 +104,11 @@ export default function HomePage() {
 
                 <div className="mt-6 rounded-2xl border border-cyan-300/30 bg-slate-950/20 p-4">
                   <p className="text-sm text-slate-200">Need immediate support?</p>
-                  <a href="tel:+18887154577" className="mt-2 block text-lg font-semibold text-white">
-                    +1 (888) 715-4577
+                  <a href="tel:+16518154630" className="mt-2 block text-lg font-semibold text-white">
+                    +1 (651) 815-4630
                   </a>
-                  <a href="mailto:info@smarteprintservices.com" className="mt-1 block text-sm text-slate-100/80">
-                    info@smarteprintservices.com
+                  <a href="mailto:support@smarteprintservices.com" className="mt-1 block text-sm text-slate-100/80">
+                    support@smarteprintservices.com
                   </a>
                 </div>
               </div>

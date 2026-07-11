@@ -127,11 +127,11 @@ export default function BookingPage() {
                 {/* Call Us CTA */}
                 <div className="mt-7">
                   <a
-                    href="tel:+18887154577"
+                    href="tel:+16518154630"
                     className="group inline-flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
                   >
                     <Phone size={18} />
-                    Call Us: +1 (888) 715-4577
+                    Call Us: +1 (651) 815-4630
                     <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                 </div>
@@ -278,10 +278,10 @@ export default function BookingPage() {
               <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Call Us</h3>
               <p className="mt-3 text-gray-600">Have questions? Give us a call anytime.</p>
               <a
-                href="tel:+18887154577"
+                href="tel:+16518154630"
                 className="mt-4 inline-block text-lg font-bold text-[#024AD8]"
               >
-                +1 (888) 715-4577
+                +1 (651) 815-4630
               </a>
             </div>
 
@@ -293,10 +293,10 @@ export default function BookingPage() {
               <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Email Us</h3>
               <p className="mt-3 text-gray-600">Send us an email and we'll get back to you.</p>
               <a
-                href="mailto:info@smarteprintservices.com"
+                href="mailto:support@smarteprintservices.com"
                 className="mt-4 inline-block text-lg font-bold text-[#024AD8]"
               >
-                info@smarteprintservices.com
+                support@smarteprintservices.com
               </a>
             </div>
 
@@ -307,7 +307,7 @@ export default function BookingPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Service Availability</h3>
               <p className="mt-3 text-gray-600">We serve residential and business locations.</p>
-              <p className="mt-4 text-lg font-bold text-[#024AD8]">Burlington, IA & Surrounding Areas</p>
+              <p className="mt-4 text-lg font-bold text-[#024AD8]">Blaine, MN & Surrounding Areas</p>
             </div>
           </div>
         </div>

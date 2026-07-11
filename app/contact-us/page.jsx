@@ -87,7 +87,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Call Us</h3>
-                    <a href="tel:+18887154577" className="mt-2 inline-block text-[#024AD8] text-xl font-bold">+1 (888) 715-4577</a>
+                    <a href="tel:+16518154630" className="mt-2 inline-block text-[#024AD8] text-xl font-bold">+1 (651) 815-4630</a>
                   </div>
                 </div>
 
@@ -98,7 +98,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Email Us</h3>
-                    <a href="mailto:info@smarteprintservices.com" className="mt-2 inline-block text-[#024AD8] text-xl font-bold">info@smarteprintservices.com</a>
+                    <a href="mailto:support@smarteprintservices.com" className="mt-2 inline-block text-[#024AD8] text-xl font-bold">support@smarteprintservices.com</a>
                   </div>
                 </div>
 
@@ -110,8 +110,8 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Location</h3>
                     <p className="mt-2 text-gray-600 text-lg">
-                      878 JEFFERSON ST<br />
-                      Burlington, IA 52601<br />
+                      11397 Quincy St NE<br />
+                      Blaine, Minnesota, 55434<br />
                       United States
                     </p>
                   </div>

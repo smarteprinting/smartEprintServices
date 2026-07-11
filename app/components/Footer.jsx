@@ -143,23 +143,23 @@ export default function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">Contact Us</h4>
             <div className="space-y-4">
               <a 
-                href="tel:+18887154577"
+                href="tel:+16518154630"
                 className="flex items-start gap-3 text-sm text-slate-400 hover:text-brand-400 transition"
               >
                 <div className="flex items-center justify-center h-6 w-6 rounded bg-[#024AD8] flex-shrink-0 mt-0.5">
                   <Phone size={16} className="text-white" />
                 </div>
-                <span>+1 (888) 715-4577</span>
+                <span>+1 (651) 815-4630</span>
               </a>
               
               <a 
-                href="mailto:info@smarteprintservices.com"
+                href="mailto:support@smarteprintservices.com"
                 className="flex items-start gap-3 text-sm text-slate-400 hover:text-brand-400 transition"
               >
                 <div className="flex items-center justify-center h-6 w-6 rounded bg-[#024AD8] flex-shrink-0 mt-0.5">
                   <Mail size={16} className="text-white" />
                 </div>
-                <span>info@smarteprintservices.com</span>
+                <span>support@smarteprintservices.com</span>
               </a>
 
               <div className="flex items-start gap-3 text-sm text-slate-400">
@@ -167,8 +167,8 @@ export default function Footer() {
                   <MapPin size={16} className="text-white" />
                 </div>
                 <div>
-                  <p>878 Jefferson St</p>
-                  <p>Burlington, IA 52601</p>
+                  <p>11397 Quincy St NE</p>
+                  <p>Blaine, Minnesota, 55434</p>
                   <p>United States</p>
                 </div>
               </div>

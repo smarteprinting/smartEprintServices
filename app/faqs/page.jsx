@@ -13,11 +13,11 @@ export default function FAQs() {
   const faqs = [
     {
       question: "What areas do you serve?",
-      answer: "We serve the Burlington, IA area and surrounding regions. Contact us to confirm service availability in your location.",
+      answer: "We serve the Blaine, MN area and surrounding regions. Contact us to confirm service availability in your location.",
     },
     {
       question: "How do I book an appointment?",
-      answer: "You can book an appointment by visiting our Book an Appointment page or calling us at +1 (888) 715-4577.",
+      answer: "You can book an appointment by visiting our Book an Appointment page or calling us at +1 (651) 815-4630.",
     },
     {
       question: "What payment methods do you accept?",
@@ -25,7 +25,7 @@ export default function FAQs() {
     },
     {
       question: "Do you provide emergency services?",
-      answer: "Yes, we offer emergency services for critical issues. Please call us at +1 (888) 715-4577 to inquire about availability.",
+      answer: "Yes, we offer emergency services for critical issues. Please call us at +1 (651) 815-4630 to inquire about availability.",
     },
     {
       question: "What is your service guarantee?",

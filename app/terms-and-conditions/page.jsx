@@ -147,7 +147,7 @@ export default function TermsAndConditions() {
             <section className="mb-12">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Governing Law</h2>
               <p className="leading-relaxed">
-                These terms and conditions are governed by and construed in accordance with the laws of the State of Iowa, United States, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.
+                These terms and conditions are governed by and construed in accordance with the laws of the State of Minnesota, United States, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.
               </p>
             </section>
 
@@ -158,10 +158,10 @@ export default function TermsAndConditions() {
               </p>
               <p className="mt-4">
                 <strong>SmartEprint Services</strong><br />
-                878 JEFFERSON ST<br />
-                Burlington, IA 52601<br />
-                Email: <a href="mailto:info@smarteprintservices.com" className="text-[#024AD8] font-semibold">info@smarteprintservices.com</a><br />
-                Phone: <a href="tel:+18887154577" className="text-[#024AD8] font-semibold">+1 (888) 715-4577</a>
+                11397 Quincy St NE<br />
+                Blaine, Minnesota, 55434<br />
+                Email: <a href="mailto:support@smarteprintservices.com" className="text-[#024AD8] font-semibold">support@smarteprintservices.com</a><br />
+                Phone: <a href="tel:+16518154630" className="text-[#024AD8] font-semibold">+1 (651) 815-4630</a>
               </p>
             </section>
           </div>

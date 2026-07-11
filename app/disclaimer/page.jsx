@@ -134,10 +134,10 @@ export default function Disclaimer() {
               </p>
               <p className="mt-4">
                 <strong>SmartEprint Services</strong><br />
-                878 JEFFERSON ST<br />
-                Burlington, IA 52601<br />
-                Email: <a href="mailto:info@smarteprintservices.com" className="text-[#024AD8] font-semibold">info@smarteprintservices.com</a><br />
-                Phone: <a href="tel:+18887154577" className="text-[#024AD8] font-semibold">+1 (888) 715-4577</a>
+                11397 Quincy St NE<br />
+                Blaine, Minnesota, 55434<br />
+                Email: <a href="mailto:support@smarteprintservices.com" className="text-[#024AD8] font-semibold">support@smarteprintservices.com</a><br />
+                Phone: <a href="tel:+16518154630" className="text-[#024AD8] font-semibold">+1 (651) 815-4630</a>
               </p>
             </section>
           </div>
