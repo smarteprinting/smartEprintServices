@@ -13,7 +13,7 @@ import {
 export const metadata = {
   title: "About Us | SmartEprint Services",
   description:
-    "Learn about SmartEprint Services — professional on-site technology and appliance assistance for homes and businesses. Consultation-first approach with flexible scheduling.",
+    "Learn about SmartEprint Services — on-site technology and appliance assistance for homes and businesses. Consultation-first approach with flexible scheduling.",
 };
 
 const features = [
@@ -34,7 +34,7 @@ const features = [
   {
     title: "On-Site Technology Support",
     description:
-      "Professional help with computers, printers, networking, smart devices, and office technology at your location.",
+      "Help with computers, printers, networking, smart devices, and office technology at your location.",
     icon: Laptop,
     gradient: "linear-gradient(135deg, #0B63F6, #3B82F6)",
   },
@@ -133,11 +133,11 @@ export default function AboutPage() {
               </span>
 
               <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-                Professional On-Site
+                On-Site
                 <span className="block bg-gradient-to-r from-[#60A5FA] to-[#93C5FD] bg-clip-text text-transparent">
                   Technology & Appliance
                 </span>
-                Support You Can Trust
+                Support and Assistance
               </h1>
 
               <p className="mt-8 max-w-2xl text-lg leading-relaxed text-blue-100/90 md:text-xl">
@@ -150,7 +150,7 @@ export default function AboutPage() {
               {/* Stats row */}
               <div className="mt-10 flex flex-wrap gap-8 border-t border-white/10 pt-10">
                 {[
-                  { value: "On-Site", label: "Professional Visits" },
+                  { value: "On-Site", label: "On-Site Service" },
                   { value: "24/7", label: "Consultation Support" },
                   { value: "100%", label: "Customer Focused" },
                 ].map((stat) => (
@@ -204,8 +204,7 @@ export default function AboutPage() {
               <p className="mt-5 text-lg leading-8 text-gray-600">
                 Whether you need support for computers, printers, networking,
                 smart home devices, or household appliances, our goal is to
-                deliver straightforward assistance with professionalism,
-                efficiency, and clear communication from beginning to end.
+                deliver straightforward assistance, clear communication, and reliable scheduling from beginning to end.
               </p>
 
               {/* Highlights pills */}
@@ -349,7 +348,7 @@ export default function AboutPage() {
               </span>
 
               <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-                A Simple & Professional
+                A Simple & Reliable
                 <span className="text-[#024AD8]"> Service Experience</span>
               </h2>
 
@@ -369,8 +368,8 @@ export default function AboutPage() {
                   icon: CalendarCheck,
                 },
                 {
-                  title: "Professional Assistance",
-                  text: "Our technician provides practical on-site support focused on efficient service and clear communication.",
+                  title: "On-Site Service",
+                  text: "A technician visits your location to check your equipment and explain the service options.",
                   icon: Wrench,
                 },
               ].map((step, index) => {
@@ -432,8 +431,8 @@ export default function AboutPage() {
             <div>
 
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-                Need Professional
-                <span className="block text-blue-200">On-Site Assistance?</span>
+                Need On-Site
+                <span className="block text-blue-200">Assistance?</span>
               </h2>
 
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-blue-100/80">

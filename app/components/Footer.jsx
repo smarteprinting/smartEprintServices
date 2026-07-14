@@ -63,7 +63,7 @@ export default function Footer() {
             
             
             <p className="text-sm text-slate-400 mb-6 leading-relaxed">
-              Dependable on-site technology and appliance support with fast response and expert care for homes and businesses.
+              Dependable on-site technology and appliance support for homes and businesses.
             </p>
 
             {/* Social Links */}

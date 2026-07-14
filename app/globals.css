@@ -375,9 +375,9 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .site-main {
+  /* .site-main {
     padding-top: 104px;
-  }
+  } */
 
   .hero-showcase {
     padding: 24px;

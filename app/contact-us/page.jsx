@@ -10,7 +10,7 @@ import ContactForm from "../components/ContactForm";
 
 export const metadata = {
   title: "Contact Us | SmartEprint Services",
-  description: "Get in touch with SmartEprint Services for professional on-site technology and appliance assistance.",
+  description: "Get in touch with SmartEprint Services for on-site technology and appliance assistance.",
 };
 
 export default function ContactPage() {
@@ -53,7 +53,7 @@ export default function ContactPage() {
               </h1>
 
               <p className="mt-8 max-w-2xl text-lg leading-relaxed text-blue-100/90 md:text-xl">
-                Reach out for expert on-site help, scheduling, or service questions. SmartEprint Services is here to help with consultation-based support for home and business technology, appliances, and connected devices.
+                Reach out for on-site help, scheduling, or service questions. SmartEprint Services is here to help with consultation-based support for home and business technology, appliances, and connected devices.
               </p>
             </div>
           </div>

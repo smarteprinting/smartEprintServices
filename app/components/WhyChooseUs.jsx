@@ -6,8 +6,8 @@ export default function WhyChooseUs() {
   const benefits = [
     {
       icon: Zap,
-      title: 'Expert Technicians',
-      description: 'Certified professionals trained across computers, printers, smart home systems, networks, and appliances with years of hands-on experience.'
+      title: 'On-Site Help',
+      description: 'Technicians trained across computers, printers, smart home systems, networks, and appliances.'
     },
     {
       icon: Clock,
@@ -22,14 +22,14 @@ export default function WhyChooseUs() {
     {
       icon: Lightbulb,
       title: 'Smart Home Ready',
-      description: 'From network setup to integrated smart systems, we handle the latest technology with expertise and care.'
+      description: 'From network setup to smart systems, we handle your technology with care.'
     }
   ];
 
   const features = [
     { title: 'Rapid Assessment', desc: 'Quick diagnosis to get your systems back online fast' },
     { title: 'Flexible Scheduling', desc: 'Appointments that work with your busy schedule' },
-    { title: 'Hands-On Expertise', desc: 'Multi-service certified professionals' },
+    { title: 'On-Site Assistance', desc: 'Technicians trained in multiple services' },
     { title: 'Quality Guaranteed', desc: 'Transparent pricing with no surprise fees' }
   ];
 
@@ -67,13 +67,13 @@ export default function WhyChooseUs() {
           </div>
 
           <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-            Professional Support
+            On-Site Support
             <br />
             <span className="bg-gradient-to-r from-brand-600 via-brand-500 to-blue-600 bg-clip-text text-transparent">Delivered to Your Door</span>
           </h2>
 
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Every service starts with understanding your equipment and needs. Our certified technicians arrive prepared to diagnose, repair, and support your technology and appliances with expert care—on site, every time.
+            Every service starts with understanding your equipment and needs. A technician arrives prepared to help support your technology and appliances on site.
           </p>
         </div>
 
@@ -157,11 +157,11 @@ export default function WhyChooseUs() {
           <div className="relative z-10 p-8 lg:p-16 text-white">
             <div className="max-w-3xl">
               <h3 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                Ready for Expert Support?
+                Ready to get on-site support?
               </h3>
               
               <p className="text-lg lg:text-xl text-white/95 mb-10 leading-relaxed font-medium">
-                Schedule your on-site service today and experience professional care for your technology and appliances. Our team is ready to help.
+                Schedule your on-site service today. Our team is ready to help.
               </p>
               
               <a

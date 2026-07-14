@@ -404,7 +404,7 @@ export default function ServicesPage() {
             <div>
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
                 Ready to Get
-                <span className="block text-blue-200">Professional Help?</span>
+                <span className="block text-blue-200">On-Site Help?</span>
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-blue-100/80">
                 Contact JS Electronics today to schedule a consultation. We&apos;ll

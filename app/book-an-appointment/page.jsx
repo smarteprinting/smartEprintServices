@@ -16,7 +16,7 @@ import BookAppointmentForm from "../components/BookAppointmentForm";
 export const metadata = {
   title: "Book an Appointment | SmartEprint Services",
   description:
-    "Schedule a consultation with SmartEprint Services for professional on-site printer repair and setup for home and business users.",
+    "Schedule a consultation with SmartEprint Services for on-site printer repair and setup for home and business users.",
 };
 
 const processSteps = [
@@ -105,7 +105,7 @@ export default function BookingPage() {
 
                 {/* Trust Badges */}
                 <div className="mt-7 flex flex-wrap gap-3">
-                  {["100% professional service", "No hidden charges", "Doorstep service"].map((item, i) => (
+                  {["Consultation-based service", "No hidden charges", "Doorstep service"].map((item, i) => (
                     <div key={i} className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
                       <CheckCircle2 className="h-3.5 w-3.5 text-[#60A5FA]" />
                       {item}
@@ -251,8 +251,8 @@ export default function BookingPage() {
           <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-16 text-center text-white lg:flex-row lg:text-left">
             <div>
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-                Ready to get professional
-                <span className="block text-blue-200">on-site assistance?</span>
+                Ready to get on-site
+                <span className="block text-blue-200">assistance?</span>
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-blue-100/80">
                 Contact SmartEprint Services today to schedule a consultation and let us help with your technology or appliance needs.

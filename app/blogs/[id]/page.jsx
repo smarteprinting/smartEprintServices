@@ -130,8 +130,8 @@ const blogPosts = [
       <h3>4. Plan for Cable Management</h3>
       <p>Cable clutter can detract from the clean look of a mounted TV. Consider using cable raceways, in-wall cable management solutions, or cord covers to keep cables organized and hidden.</p>
       
-      <h3>5. Consider Professional Installation</h3>
-      <p>If you're not comfortable with mounting a TV yourself, or if you have a large or heavy TV, consider hiring a professional to ensure it's installed safely and correctly.</p>
+      <h3>5. Consider On-Site Assistance</h3>
+      <p>If you're not comfortable with mounting a TV yourself, or if you have a large or heavy TV, consider hiring assistance to ensure it's installed safely and correctly.</p>
     `
   },
   {
@@ -314,7 +314,7 @@ export default function BlogPost({ params }) {
           <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center justify-between gap-8 px-6 py-16 text-center text-white lg:flex-row lg:text-left">
             <div>
               <h2 className="text-2xl font-extrabold sm:text-3xl lg:text-4xl">
-                Ready to get professional on-site assistance?
+                Ready to get on-site assistance?
               </h2>
               <p className="mt-4 max-w-2xl text-lg leading-relaxed text-blue-100/80">
                 Contact SmartEprint Services today to schedule a consultation.

@@ -27,7 +27,7 @@ export default function ConsultationSection() {
     {
       icon: Wrench,
       title: "On-Site Technology Support",
-      description: "Professional help with computers, printers, networking, smart devices, and office technology at your location."
+      description: "Help with computers, printers, networking, smart devices, and office technology at your location."
     },
     {
       icon: Users,
@@ -75,7 +75,7 @@ export default function ConsultationSection() {
               </p>
 
               <p className="text-base lg:text-lg text-white/90 leading-relaxed">
-                Whether you need support for computers, printers, networking, smart home devices, or household appliances, our goal is to deliver straightforward assistance with professionalism, efficiency, and clear communication from beginning to end.
+                Whether you need support for computers, printers, networking, smart home devices, or household appliances, our goal is to deliver straightforward assistance with clear communication from beginning to end.
               </p>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function ConsultationSection() {
               Our Services & Support
             </h3>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Comprehensive assistance tailored to your technology and appliance needs
+              Assistance for your technology and appliance needs
             </p>
           </div>
 
@@ -142,11 +142,11 @@ export default function ConsultationSection() {
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-            Ready to Get Professional Support?
+            Ready to Get On-Site Support?
           </h3>
           
           <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
-            Schedule your on-site consultation today and experience dependable assistance for all your technology and appliance needs.
+            Schedule your on-site consultation today. We are here to help with your technology and appliance needs.
           </p>
 
           <Link

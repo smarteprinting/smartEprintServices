@@ -140,7 +140,7 @@ export default function BlogsPage() {
 
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-blue-100/90 md:text-xl">
                 Helpful articles covering technology tips, appliance care,
-                smart home setup, and professional maintenance advice from
+                smart home setup, and maintenance advice from
                 SmartEprint Services.
               </p>
 
@@ -254,7 +254,7 @@ export default function BlogsPage() {
                 More from <span className="text-[#024AD8]">SmartEprint</span>
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-gray-500">
-                Browse our latest articles for practical tips and expert
+                Browse our latest articles for practical tips and
                 insights on technology and appliance care.
               </p>
             </div>
@@ -339,8 +339,8 @@ export default function BlogsPage() {
 
             <div>
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-                Need Professional
-                <span className="block text-blue-200">On-Site Assistance?</span>
+                Need On-Site
+                <span className="block text-blue-200">Assistance?</span>
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-blue-100/80">
                 Contact SmartEprint Services today to schedule a consultation

@@ -5,12 +5,12 @@ import SiteLayout from './components/SiteLayout';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'JS Electronics | On-Site Tech and Appliance Support',
+  title: 'SmartEprint Services | On-Site Printer Support',
   description:
-    'JS Electronics offers consultation-based on-site technology, appliance, and smart home support for homes and businesses.',
-  keywords: ['tech support', 'appliance repair', 'smart home support', 'on-site services'],
+    'SmartEprint Services offers consultation-based on-site printer, computer and smart home support for homes and businesses.',
+  keywords: ['printer support', 'smart home support', 'on-site services'],
   alternates: {
-    canonical: 'https://jselectronics.com',
+    canonical: 'https://smarteprintservices.com',
   },
   icons: {
     icon: '/svg-icon.png',

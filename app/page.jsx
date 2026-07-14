@@ -12,7 +12,7 @@ const services = [
   },
   {
     title: 'Smart Home Assistance',
-    description: 'Professional setup and support for connected devices, smart systems, and modern home technology.',
+    description: 'Setup and support for connected devices, smart systems, and home technology.',
   },
   {
     title: 'TV Mounting',
@@ -22,14 +22,14 @@ const services = [
 
 const quickFacts = [
   'On-site visits for homes and businesses',
-  'Practical support for tech and appliance needs',
-  'Fast, dependable service with clear communication',
+  'Support for printers, computers, smart devices, and appliances',
+  'On-site service with clear communication',
 ];
 
 const heroHighlights = [
-  'Skilled on-site help for computers, printers, smart devices, and more',
-  'Clear guidance and dependable service from consultation to completion',
-  'Flexible scheduling designed around residential and business needs',
+  'On-site help for computers, printers, and smart devices',
+  'Consultation before scheduling any on-site visit',
+  'Appointments scheduled based on your availability',
 ];
 
 export default function HomePage() {
@@ -52,10 +52,10 @@ export default function HomePage() {
                   SmartEprint Services
                 </p>
                 <h1 className="text-4xl font-black leading-[1.05] sm:text-5xl lg:text-6xl">
-                  Premium on-site support for tech, printers, and everyday appliances.
+                  On-site support for printers, computers, and home appliances.
                 </h1>
                 <p className="mt-5 max-w-xl text-lg text-slate-100/90 sm:text-xl">
-                  From setup and repairs to smart-home assistance, we bring dependable, professional help directly to your home or business.
+                  We help with setup, troubleshooting, and maintenance, bringing tech and appliance support right to your door.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
@@ -89,7 +89,7 @@ export default function HomePage() {
                         Why clients choose us
                       </p>
                       <h2 className="mt-2 text-2xl font-semibold text-white sm:text-3xl">
-                        Fast, thoughtful, and professional service.
+                        Simple and reliable on-site service.
                       </h2>
                     </div>
                   </div>
@@ -127,10 +127,10 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-6 py-10 sm:px-8 lg:px-10">
         <div className="mb-10 text-center">
           <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl lg:text-5xl">
-            Complete Printing Solutions for Your Business
+            Printing Support for Your Business
           </h2>
           <p className="mt-4 text-lg text-slate-600">
-            From setup and maintenance to fleet management, we deliver reliable printing solutions tailored to your needs.
+            We help with printer setup, troubleshooting, and network connections for your business.
           </p>
         </div>
 
@@ -146,7 +146,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 group-hover:text-brand-700 transition-colors">Printer Support & Maintenance</h3>
               <p className="mt-3 text-sm text-slate-600">
-                Professional installation, troubleshooting, and ongoing maintenance for all printer types and models.
+                Printer setup, troubleshooting, and maintenance.
               </p>
               <a href="/book-an-appointment" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700 group/link">
                 Book Now
@@ -168,7 +168,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 group-hover:text-brand-700 transition-colors">Multifunction Device Setup</h3>
               <p className="mt-3 text-sm text-slate-600">
-                Expert configuration and integration of multifunction printers for scanning, copying, and faxing capabilities.
+                Configuration of multifunction printers for scanning, copying, and faxing.
               </p>
               <a href="/book-an-appointment" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700 group/link">
                 Book Now
@@ -190,7 +190,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 group-hover:text-brand-700 transition-colors">Network Printing Solutions</h3>
               <p className="mt-3 text-sm text-slate-600">
-                Reliable setup and troubleshooting for wireless printing, cloud integration, and network connectivity.
+                Setup and troubleshooting for wireless printing, cloud, and network connections.
               </p>
               <a href="/book-an-appointment" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700 group/link">
                 Book Now
@@ -212,7 +212,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 group-hover:text-brand-700 transition-colors">Document Management Services</h3>
               <p className="mt-3 text-sm text-slate-600">
-                Streamline your workflow with intelligent document management, workflow optimization, and digital solutions.
+                Help with digital documents, workflows, and simple office setup.
               </p>
               <a href="/book-an-appointment" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700 group/link">
                 Book Now
@@ -234,7 +234,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 group-hover:text-brand-700 transition-colors">Print Fleet Management</h3>
               <p className="mt-3 text-sm text-slate-600">
-                Enterprise-level management for large printer deployments with monitoring, maintenance, and cost optimization.
+                Management and monitoring for multiple printers and office setups.
               </p>
               <a href="/book-an-appointment" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700 group/link">
                 Book Now
@@ -256,7 +256,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 group-hover:text-brand-700 transition-colors">Supplies & Toner Management</h3>
               <p className="mt-3 text-sm text-slate-600">
-                Convenient delivery and management of printer supplies, toner cartridges, and consumables with delivery tracking.
+                Help with printer supplies, toner cartridges, and basic maintenance.
               </p>
               <a href="/book-an-appointment" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-700 group/link">
                 Book Now
@@ -345,7 +345,7 @@ export default function HomePage() {
         </h3>
 
         <p className="mt-3 text-slate-600 leading-7">
-          Professional on-site support for printers, computers, networking,
+          On-site support for printers, computers, networking,
           smart devices, and a wide range of technology and appliance products.
         </p>
       </div>
@@ -382,9 +382,8 @@ export default function HomePage() {
       </h2>
 
       <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-600">
-        Our streamlined consultation process helps ensure every visit is planned
-        according to your equipment, location, and specific service
-        requirements.
+        Our consultation process helps ensure every visit is planned
+        according to your equipment, location, and service requirements.
       </p>
 
     </div>
@@ -406,7 +405,7 @@ export default function HomePage() {
         {
           number: "03",
           title: "On-Site Visit",
-          desc: "A qualified technician visits your location to inspect the equipment, explain findings, and recommend the most suitable service."
+          desc: "A technician visits your location to inspect the equipment, explain findings, and outline available service options."
         },
         {
           number: "04",
@@ -464,10 +463,7 @@ export default function HomePage() {
         </h2>
 
         <p className="mt-6 text-lg leading-8 text-slate-600">
-          Every consultation begins with understanding your equipment,
-          environment, and service requirements. We coordinate dependable
-          on-site technology and appliance assistance designed around your
-          specific needs—not a one-size-fits-all solution.
+          Every request begins with a consultation to understand your equipment and issues. We arrange on-site help based on your situation, location, and needs.
         </p>
 
         <div className="mt-10 space-y-5">
@@ -496,12 +492,11 @@ export default function HomePage() {
 
             <div>
               <h4 className="text-lg font-bold text-slate-900">
-                Experienced On-Site Assistance
+                On-Site Assistance
               </h4>
 
               <p className="mt-1 text-slate-600">
-                Professional technicians arrive prepared to assess your
-                equipment and recommend the most suitable service options.
+                Technicians visit your location to check your equipment and explain the best service options.
               </p>
             </div>
           </div>
@@ -600,13 +595,7 @@ export default function HomePage() {
 
         {/* Floating Stats */}
 
-        <div className="absolute -left-10 top-10 hidden rounded-3xl bg-white p-6 shadow-2xl lg:block">
-          <p className="text-4xl font-black text-[#024AD8]">100%</p>
-          <p className="mt-2 text-sm font-medium text-slate-600">
-            Consultation Based
-          </p>
-        </div>
-
+       
         <div className="absolute -right-8 bottom-10 hidden rounded-3xl bg-[#024AD8] px-8 py-6 text-white shadow-2xl lg:block">
           <p className="text-4xl font-black">24/7</p>
           <p className="mt-2 text-sm text-blue-100">

@@ -8,7 +8,7 @@ const blogPosts = [
   {
     id: 'on-site-technology-consultation',
     title: 'What to Expect During an On-Site Technology Service Consultation',
-    excerpt: 'Technology and appliances have become integral to our daily routines, supporting work, communication, entertainment, and household responsibilities. Understanding what happens during a professional on-site consultation helps you prepare and get the most value from our service.',
+    excerpt: 'Technology and appliances have become integral to our daily routines, supporting work, communication, entertainment, and household responsibilities. Understanding what happens during an on-site consultation helps you prepare.',
     image: '/k-hub1.png',
     date: 'July 2026',
     category: 'Service Guide',
@@ -56,7 +56,7 @@ export default function BlogSection() {
           </h2>
 
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Expert tips, guides, and insights to help you maintain and optimize your technology and appliances.
+            Tips, guides, and insights to help you maintain your technology and appliances.
           </p>
         </div>
 
@@ -126,11 +126,11 @@ export default function BlogSection() {
           <div className="relative z-10 p-8 lg:p-12 text-white">
             <div className="max-w-2xl">
               <h3 className="text-2xl lg:text-3xl font-bold mb-3">
-                Stay Informed with Expert Insights
+                Stay Informed with Simple Tech Tips
               </h3>
               
               <p className="text-base lg:text-lg text-white/90 mb-6">
-                Subscribe to receive occasional updates featuring maintenance tips, technology guides, and expert advice to keep your systems running smoothly.
+                Subscribe to receive occasional updates featuring maintenance tips and technology guides.
               </p>
               
               <Link
