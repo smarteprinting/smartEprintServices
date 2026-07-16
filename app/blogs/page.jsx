@@ -108,7 +108,7 @@ export default function BlogsPage() {
         <div
           className="relative overflow-hidden"
           style={{
-            backgroundImage: "url('/bg-hero.png')",
+            backgroundImage: "url('/bg-hero.webp')",
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
@@ -123,22 +123,22 @@ export default function BlogsPage() {
             <div className="absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-[#3B82F6]/10 blur-3xl" />
           </div>
 
-          <div className="relative z-10 mx-auto flex min-h-[55vh] max-w-7xl flex-col justify-center px-6 py-20 lg:py-28">
+          <div className="relative z-10 mx-auto flex min-h-[45vh] max-w-7xl flex-col justify-center px-6 py-16 lg:py-20">
             <div className="max-w-3xl">
 
-              <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold tracking-wide text-white backdrop-blur-sm">
+              <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-semibold tracking-[0.2em] uppercase text-white backdrop-blur-sm">
                 <span className="h-2 w-2 rounded-full bg-[#3B82F6] shadow-[0_0_8px_#3B82F6]" />
                 SmartEprint Blog
               </span>
 
-              <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
+              <h1 className="mt-4 text-3xl font-black leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
                 Insights &
                 <span className="block bg-gradient-to-r from-[#60A5FA] to-[#93C5FD] bg-clip-text text-transparent">
                   Practical Guidance
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-blue-100/90 md:text-xl">
+              <p className="mt-5 max-w-2xl text-[15.5px] sm:text-[17px] leading-relaxed text-blue-100/90 font-medium">
                 Helpful articles covering technology tips, appliance care,
                 smart home setup, and maintenance advice from
                 SmartEprint Services.
@@ -155,11 +155,11 @@ export default function BlogsPage() {
       {/* ========== FEATURED POST ========== */}
 
       <div className="relative left-1/2 w-screen -ml-[50vw] bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:py-16">
 
-          <div className="mb-12">
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-2 text-sm font-bold uppercase tracking-widest text-[#024AD8]">
-              <BookOpen className="h-4 w-4" />
+          <div className="mb-8">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#024AD8]">
+              <BookOpen className="h-3.5 w-3.5" />
               Featured Article
             </span>
           </div>
@@ -203,16 +203,16 @@ export default function BlogsPage() {
                   </span>
                 </div>
 
-                <h2 className="text-2xl font-extrabold leading-snug text-gray-900 transition-colors duration-300 group-hover:text-[#024AD8] sm:text-3xl lg:text-4xl">
+                <h2 className="text-xl font-black leading-snug text-gray-900 transition-colors duration-300 group-hover:text-[#024AD8] sm:text-2xl lg:text-3xl">
                   {featuredPost.title}
                 </h2>
 
-                <p className="mt-5 text-[1.05rem] leading-relaxed text-gray-500 line-clamp-4">
+                <p className="mt-4 text-[15px] leading-relaxed font-medium text-gray-500 line-clamp-4">
                   {featuredPost.excerpt}
                 </p>
 
                 <div className="mt-8">
-                  <span className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#024AD8] to-[#0B63F6] px-6 py-3 font-bold text-white shadow-md shadow-[#024AD8]/20 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#024AD8]/30">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#024AD8] to-[#0B63F6] px-6 py-3.5 text-[14px] font-bold text-white shadow-md shadow-[#024AD8]/20 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#024AD8]/30">
                     Read Full Article
                     <ArrowRight
                       size={16}
@@ -244,16 +244,16 @@ export default function BlogsPage() {
             }}
           />
 
-          <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 lg:py-24">
+          <div className="relative z-10 mx-auto max-w-7xl px-6 py-12 lg:py-16">
 
-            <div className="mb-14 text-center">
-              <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-2 text-sm font-bold uppercase tracking-widest text-[#024AD8]">
+            <div className="mb-10 text-center">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#024AD8]">
                 Latest Articles
               </span>
-              <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              <h2 className="mt-4 text-3xl font-black tracking-tight text-gray-900 sm:text-4xl">
                 More from <span className="text-[#024AD8]">SmartEprint</span>
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-gray-500">
+              <p className="mx-auto mt-4 max-w-2xl text-[15px] font-medium leading-relaxed text-gray-500">
                 Browse our latest articles for practical tips and
                 insights on technology and appliance care.
               </p>
@@ -299,11 +299,11 @@ export default function BlogsPage() {
                       </span>
                     </div>
 
-                    <h3 className="text-lg font-bold leading-snug text-gray-900 transition-colors duration-300 group-hover:text-[#024AD8] line-clamp-3">
+                    <h3 className="text-[16px] font-extrabold leading-snug text-gray-900 transition-colors duration-300 group-hover:text-[#024AD8] line-clamp-3">
                       {post.title}
                     </h3>
 
-                    <p className="mt-3 flex-1 text-[0.93rem] leading-relaxed text-gray-500 line-clamp-3">
+                    <p className="mt-3 flex-1 text-[13.5px] font-medium leading-relaxed text-gray-500 line-clamp-3">
                       {post.excerpt}
                     </p>
 
@@ -335,14 +335,14 @@ export default function BlogsPage() {
             <div className="absolute -bottom-10 -right-10 h-60 w-60 rounded-full bg-white/5 blur-3xl" />
           </div>
 
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-20 text-center text-white lg:flex-row lg:text-left">
+          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-16 text-center text-white lg:flex-row lg:text-left">
 
             <div>
-              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+              <h2 className="text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
                 Need On-Site
                 <span className="block text-blue-200">Assistance?</span>
               </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-blue-100/80">
+              <p className="mt-4 max-w-2xl text-[15px] font-medium leading-relaxed text-blue-100/90">
                 Contact SmartEprint Services today to schedule a consultation
                 and let us help with your technology or appliance service needs.
               </p>
@@ -350,11 +350,11 @@ export default function BlogsPage() {
 
             <Link
               href="/book-an-appointment"
-              className="group inline-flex shrink-0 items-center gap-3 rounded-2xl bg-white px-8 py-5 text-lg font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              className="group inline-flex shrink-0 items-center gap-2.5 rounded-full bg-white px-8 py-4 text-[14px] font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
             >
               Book an Appointment
               <ArrowRight
-                size={20}
+                size={16}
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
             </Link>

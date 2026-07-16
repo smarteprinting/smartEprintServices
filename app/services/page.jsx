@@ -185,7 +185,7 @@ export default function ServicesPage() {
         <div
           className="relative overflow-hidden"
           style={{
-            backgroundImage: "url('/bg-hero.png')",
+            backgroundImage: "url('/bg-hero.webp')",
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
@@ -201,23 +201,23 @@ export default function ServicesPage() {
             <div className="absolute bottom-1/3 right-1/3 h-32 w-32 rounded-full bg-white/5 blur-2xl" />
           </div>
 
-          <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-center px-6 py-24 lg:py-32">
+          <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-7xl flex-col justify-center px-6 py-16 lg:py-20">
 
             <div className="max-w-4xl">
 
-              <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold tracking-wide text-white backdrop-blur-sm">
+              <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-white backdrop-blur-sm">
                 <span className="h-2 w-2 rounded-full bg-[#3B82F6] shadow-[0_0_8px_#3B82F6]" />
                 On-Site Services
               </span>
 
-              <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              <h1 className="mt-4 text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
                 Consultation-Based
                 <span className="block bg-gradient-to-r from-[#60A5FA] to-[#93C5FD] bg-clip-text text-transparent">
                   On-Site Assistance
                 </span>
               </h1>
 
-              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-blue-100/90 md:text-xl">
+              <p className="mt-6 max-w-2xl text-[15.5px] sm:text-[17px] leading-relaxed text-blue-100/90 font-medium">
                 From computers and printers to smart devices, JS Electronics
                 provides consultation-based on-site assistance for homes and
                 businesses. Every service begins with understanding your needs.
@@ -235,16 +235,16 @@ export default function ServicesPage() {
       {/* ========== QUICK-NAV SERVICE GRID ========== */}
 
       <div className="relative left-1/2 w-screen -ml-[50vw] bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:py-16">
 
-          <div className="mx-auto mb-14 max-w-3xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-2 text-sm font-bold uppercase tracking-widest text-[#024AD8]">
+          <div className="mx-auto mb-10 max-w-3xl text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#024AD8]">
               Our Services
             </span>
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-gray-900 sm:text-4xl">
               What We <span className="text-[#024AD8]">Offer</span>
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-gray-500">
+            <p className="mt-4 text-[15px] font-medium leading-relaxed text-gray-500">
               Tap any service below to learn more about what&apos;s included.
             </p>
           </div>
@@ -265,10 +265,10 @@ export default function ServicesPage() {
                     <Icon className="h-7 w-7 text-white" />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">
+                    <h3 className="text-[15px] font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">
                       {svc.title}
                     </h3>
-                    <span className="flex items-center gap-1 text-sm text-[#024AD8] opacity-0 transition-all duration-300 group-hover:opacity-100">
+                    <span className="flex items-center gap-1 text-[13px] font-medium text-[#024AD8] opacity-0 transition-all duration-300 group-hover:opacity-100 mt-0.5">
                       Learn more <ChevronRight className="h-3.5 w-3.5" />
                     </span>
                   </div>
@@ -293,50 +293,50 @@ export default function ServicesPage() {
             className="relative left-1/2 w-screen -ml-[50vw] scroll-mt-24"
           >
             <div className={isEven ? "bg-white" : "bg-[#F8FAFF]"}>
-              <div className="mx-auto max-w-7xl px-6 py-20 lg:py-24">
+              <div className="mx-auto max-w-7xl px-6 py-12 lg:py-16">
 
-                <div className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-20 ${!isEven ? "lg:[direction:rtl]" : ""}`}>
+                <div className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-16 ${!isEven ? "lg:[direction:rtl]" : ""}`}>
 
                   {/* Content Side */}
                   <div className={!isEven ? "lg:[direction:ltr]" : ""}>
 
                     {/* Service number + icon header */}
-                    <div className="mb-6 flex items-center gap-4">
+                    <div className="mb-5 flex items-center gap-4">
                       <div
-                        className="flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg transition-transform duration-500 hover:scale-105"
+                        className="flex h-14 w-14 items-center justify-center rounded-2xl shadow-lg transition-transform duration-500 hover:scale-105"
                         style={{
                           background: service.gradient,
                           boxShadow: "0 12px 30px rgba(2, 74, 216, 0.2)",
                         }}
                       >
-                        <Icon className="h-8 w-8 text-white" />
+                        <Icon className="h-7 w-7 text-white" />
                       </div>
                       <div>
-                        <span className="text-sm font-bold uppercase tracking-widest text-[#024AD8]/60">
+                        <span className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#024AD8]/60">
                           Service {String(index + 1).padStart(2, "0")}
                         </span>
-                        <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        <h2 className="text-2xl font-black tracking-tight text-gray-900 sm:text-3xl mt-0.5">
                           {service.title}
                         </h2>
                       </div>
                     </div>
 
-                    <p className="mt-4 text-lg leading-8 text-gray-600">
+                    <p className="mt-4 text-[15px] font-medium leading-relaxed text-gray-600">
                       {service.tagline}
                     </p>
 
-                    <p className="mt-4 text-[0.95rem] leading-7 text-gray-500 italic">
+                    <p className="mt-3 text-[13.5px] font-medium leading-relaxed text-gray-500 italic">
                       {service.note}
                     </p>
 
                     <div className="mt-8">
                       <Link
                         href="/book-an-appointment"
-                        className="group inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-[#024AD8] to-[#0B63F6] px-7 py-4 font-bold text-white shadow-lg shadow-[#024AD8]/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#024AD8]/30"
+                        className="group inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#024AD8] to-[#0B63F6] px-6 py-3.5 text-[14px] font-bold text-white shadow-lg shadow-[#024AD8]/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#024AD8]/30"
                       >
                         Request a Consultation
                         <ArrowRight
-                          size={18}
+                          size={16}
                           className="transition-transform duration-300 group-hover:translate-x-1"
                         />
                       </Link>
@@ -359,15 +359,15 @@ export default function ServicesPage() {
                         {String(index + 1).padStart(2, "0")}
                       </span>
 
-                      <h3 className="mb-6 text-lg font-bold text-gray-900">
+                      <h3 className="mb-5 text-[16px] font-extrabold text-gray-900">
                         Service May Include
                       </h3>
 
-                      <ul className="relative z-10 space-y-4">
+                      <ul className="relative z-10 space-y-3.5">
                         {service.items.map((item) => (
                           <li key={item} className="flex items-start gap-3">
-                            <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#024AD8]" />
-                            <span className="text-[1.02rem] leading-relaxed text-gray-600">
+                            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#024AD8]" />
+                            <span className="text-[14px] font-medium leading-relaxed text-gray-600">
                               {item}
                             </span>
                           </li>
@@ -399,14 +399,14 @@ export default function ServicesPage() {
             <div className="absolute -bottom-10 -right-10 h-60 w-60 rounded-full bg-white/5 blur-3xl" />
           </div>
 
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-20 text-center text-white lg:flex-row lg:text-left">
+          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-16 text-center text-white lg:flex-row lg:text-left">
 
             <div>
-              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+              <h2 className="text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
                 Ready to Get
                 <span className="block text-blue-200">On-Site Help?</span>
               </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-blue-100/80">
+              <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-blue-100/90 font-medium">
                 Contact JS Electronics today to schedule a consultation. We&apos;ll
                 discuss your needs and arrange convenient on-site assistance.
               </p>
@@ -414,11 +414,11 @@ export default function ServicesPage() {
 
             <Link
               href="/book-an-appointment"
-              className="group inline-flex shrink-0 items-center gap-3 rounded-2xl bg-white px-8 py-5 text-lg font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              className="group inline-flex shrink-0 items-center gap-2.5 rounded-full bg-white px-8 py-4 text-[14px] font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
             >
               Book an Appointment
               <ArrowRight
-                size={20}
+                size={16}
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
             </Link>

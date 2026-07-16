@@ -45,7 +45,7 @@ export default function FAQs() {
         <div
           className="relative overflow-hidden"
           style={{
-            backgroundImage: "url('/bg-hero.png')",
+            backgroundImage: "url('/bg-hero.webp')",
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",

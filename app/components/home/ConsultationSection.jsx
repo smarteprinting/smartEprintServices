@@ -54,7 +54,7 @@ export default function ConsultationSection() {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-r from-[#024AD8]/95 via-[#024AD8]/90 to-blue-600/85 z-10"></div>
           <Image
-            src="/bg-hero.png"
+            src="/bg-hero.webp"
             alt="Technology and Appliance Support"
             fill
             className="object-cover"

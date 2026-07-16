@@ -123,16 +123,16 @@ export default function AboutPage() {
             <div className="absolute top-1/2 right-1/4 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
           </div>
 
-          <div className="relative z-10 mx-auto flex min-h-[75vh] max-w-7xl flex-col justify-center px-6 py-24 lg:py-32">
+          <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-7xl flex-col justify-center px-6 py-16 lg:py-20">
 
             <div className="max-w-4xl">
 
-              <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold tracking-wide text-white backdrop-blur-sm">
+              <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-white backdrop-blur-sm">
                 <span className="h-2 w-2 rounded-full bg-[#3B82F6] shadow-[0_0_8px_#3B82F6]" />
                 About SmartEprint Services
               </span>
 
-              <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              <h1 className="mt-4 text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
                 On-Site
                 <span className="block bg-gradient-to-r from-[#60A5FA] to-[#93C5FD] bg-clip-text text-transparent">
                   Technology & Appliance
@@ -140,7 +140,7 @@ export default function AboutPage() {
                 Support and Assistance
               </h1>
 
-              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-blue-100/90 md:text-xl">
+              <p className="mt-6 max-w-2xl text-[15.5px] sm:text-[17px] leading-relaxed text-blue-100/90 font-medium">
                 SmartEprint Services provides dependable consultation-based
                 technology and appliance assistance for residential and business
                 customers. Practical solutions, transparent communication, and
@@ -148,17 +148,17 @@ export default function AboutPage() {
               </p>
 
               {/* Stats row */}
-              <div className="mt-10 flex flex-wrap gap-8 border-t border-white/10 pt-10">
+              <div className="mt-10 flex flex-wrap gap-8 border-t border-white/10 pt-8">
                 {[
                   { value: "On-Site", label: "On-Site Service" },
                   { value: "24/7", label: "Consultation Support" },
                   { value: "100%", label: "Customer Focused" },
                 ].map((stat) => (
                   <div key={stat.label} className="min-w-[120px]">
-                    <div className="text-3xl font-extrabold text-white md:text-4xl">
+                    <div className="text-2xl font-extrabold text-white md:text-3xl">
                       {stat.value}
                     </div>
-                    <div className="mt-1 text-sm font-medium text-blue-200/70">
+                    <div className="mt-1 text-[13px] font-medium text-blue-200/70">
                       {stat.label}
                     </div>
                   </div>
@@ -177,23 +177,23 @@ export default function AboutPage() {
       {/* ========== TECHNOLOGY & APPLIANCE ASSISTANCE SECTION ========== */}
 
       <div className="relative left-1/2 w-screen -ml-[50vw] bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:py-28">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:py-16">
 
-          <div className="grid items-start gap-16 lg:grid-cols-[1fr_1fr] lg:gap-20">
+          <div className="grid items-start gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
 
             {/* Left column — content */}
             <div className="lg:sticky lg:top-32">
 
-              <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-2 text-sm font-bold uppercase tracking-widest text-[#024AD8]">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#024AD8]">
                 What We Do
               </span>
 
-              <h2 className="mt-6 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-4xl lg:text-[2.75rem]">
+              <h2 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-4xl lg:text-4xl">
                 Technology & Appliance
                 <span className="block text-[#024AD8]">Assistance</span>
               </h2>
 
-              <p className="mt-6 text-lg leading-8 text-gray-600">
+              <p className="mt-5 text-[15px] leading-relaxed text-slate-500 font-medium">
                 SmartEprint Services helps homeowners and businesses arrange
                 dependable on-site assistance for a broad range of technology and
                 appliance needs. Every request starts with a consultation so we
@@ -201,7 +201,7 @@ export default function AboutPage() {
                 schedule service based on your location and requirements.
               </p>
 
-              <p className="mt-5 text-lg leading-8 text-gray-600">
+              <p className="mt-4 text-[15px] leading-relaxed text-slate-500 font-medium">
                 Whether you need support for computers, printers, networking,
                 smart home devices, or household appliances, our goal is to
                 deliver straightforward assistance, clear communication, and reliable scheduling from beginning to end.
@@ -245,11 +245,11 @@ export default function AboutPage() {
                       <Icon className="h-7 w-7 text-white" />
                     </div>
 
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">
+                    <h3 className="text-[16px] font-extrabold text-slate-900 group-hover:text-[#024AD8] transition-colors duration-300">
                       {item.title}
                     </h3>
 
-                    <p className="mt-3 text-[0.95rem] leading-relaxed text-gray-500">
+                    <p className="mt-2.5 text-[13.5px] leading-relaxed text-slate-500 font-medium">
                       {item.description}
                     </p>
 
@@ -268,7 +268,7 @@ export default function AboutPage() {
       {/* ========== WHY CHOOSE US ========== */}
 
       <div className="relative left-1/2 w-screen -ml-[50vw]">
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#F8FAFF] via-[#EEF4FF] to-[#F0F7FF] py-20 lg:py-28">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#F8FAFF] via-[#EEF4FF] to-[#F0F7FF] py-12 lg:py-16">
 
           {/* Subtle background pattern */}
           <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, #024AD8 0.5px, transparent 0)", backgroundSize: "40px 40px" }} />
@@ -277,16 +277,16 @@ export default function AboutPage() {
 
             <div className="mx-auto max-w-3xl text-center">
 
-              <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-2 text-sm font-bold uppercase tracking-widest text-[#024AD8]">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#024AD8]">
                 Why Choose Us
               </span>
 
-              <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+              <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl lg:text-4xl">
                 Dependable Service Built
                 <span className="text-[#024AD8]"> Around Your Needs</span>
               </h2>
 
-              <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-gray-600">
+              <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-slate-500 font-medium">
                 Every service request is handled with a consultation-first
                 approach, allowing us to understand your requirements before
                 arranging the most suitable on-site assistance.
@@ -314,11 +314,11 @@ export default function AboutPage() {
                         <Icon className="h-8 w-8 text-white" />
                       </div>
 
-                      <h3 className="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-[#024AD8]">
+                      <h3 className="text-[16px] font-extrabold text-slate-900 transition-colors duration-300 group-hover:text-[#024AD8]">
                         {item.title}
                       </h3>
 
-                      <p className="mt-4 leading-relaxed text-gray-500">
+                      <p className="mt-3 leading-relaxed text-slate-500 text-[13.5px] font-medium">
                         {item.description}
                       </p>
                     </div>
@@ -337,17 +337,17 @@ export default function AboutPage() {
       {/* ========== OUR PROCESS ========== */}
 
       <div className="relative left-1/2 w-screen -ml-[50vw] bg-white">
-        <section className="py-20 lg:py-28">
+        <section className="py-12 lg:py-16">
 
           <div className="mx-auto max-w-7xl px-6">
 
             <div className="mx-auto max-w-3xl text-center">
 
-              <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-2 text-sm font-bold uppercase tracking-widest text-[#024AD8]">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#024AD8]">
                 Our Process
               </span>
 
-              <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+              <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl lg:text-4xl">
                 A Simple & Reliable
                 <span className="text-[#024AD8]"> Service Experience</span>
               </h2>
@@ -396,11 +396,11 @@ export default function AboutPage() {
                       <StepIcon className="h-6 w-6 text-[#024AD8]" />
                     </div>
 
-                    <h3 className="text-2xl font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">
+                    <h3 className="text-[17px] font-extrabold text-slate-900 group-hover:text-[#024AD8] transition-colors duration-300 tracking-tight">
                       {step.title}
                     </h3>
 
-                    <p className="mt-4 leading-7 text-gray-500">
+                    <p className="mt-3 leading-relaxed text-slate-500 text-[13.5px] font-medium">
                       {step.text}
                     </p>
 
@@ -426,26 +426,26 @@ export default function AboutPage() {
             <div className="absolute -bottom-10 -right-10 h-60 w-60 rounded-full bg-white/5 blur-3xl" />
           </div>
 
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-20 text-center text-white lg:flex-row lg:text-left">
+          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-16 text-center text-white lg:flex-row lg:text-left">
 
             <div>
 
-              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+              <h2 className="text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
                 Need On-Site
                 <span className="block text-blue-200">Assistance?</span>
               </h2>
 
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-blue-100/80">
+              <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-blue-100/90 font-medium">
                 Contact SmartEprint Services today to schedule a consultation and
                 let us help with your technology or appliance service needs.
               </p>
 
             </div>
 
-            <button className="group inline-flex shrink-0 items-center gap-3 rounded-2xl bg-white px-8 py-5 text-lg font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+            <button className="group inline-flex shrink-0 items-center gap-2.5 rounded-full bg-white px-8 py-4 text-[14px] font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
               Get Started
               <ArrowRight
-                size={20}
+                size={16}
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
             </button>

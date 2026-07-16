@@ -67,7 +67,7 @@ export default function BookingPage() {
         <div
           className="relative overflow-hidden"
           style={{
-            backgroundImage: "url('/bg-hero.png')",
+            backgroundImage: "url('/bg-hero.webp')",
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
@@ -83,43 +83,43 @@ export default function BookingPage() {
             <div className="absolute top-1/2 right-1/4 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
           </div>
 
-          <div className="relative z-10 mx-auto flex min-h-[60vh] max-w-7xl flex-col justify-center px-6 py-16 lg:py-20">
+          <div className="relative z-10 mx-auto flex min-h-[50vh] max-w-7xl flex-col justify-center px-6 py-12 lg:py-16">
             <div className="grid items-center gap-10 lg:grid-cols-2">
               {/* LEFT: CONTENT */}
               <div>
-                <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold tracking-wide text-white backdrop-blur-sm">
+                <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-semibold tracking-[0.2em] uppercase text-white backdrop-blur-sm">
                   <span className="h-2 w-2 rounded-full bg-[#3B82F6] shadow-[0_0_8px_#3B82F6]" />
                   On-site Printer Repair and Setup
                 </span>
 
-                <h1 className="mt-5 text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+                <h1 className="mt-4 text-3xl font-black leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
                   Fast, reliable printer solutions
                   <span className="block bg-gradient-to-r from-[#60A5FA] to-[#93C5FD] bg-clip-text text-transparent">
                     at your doorstep
                   </span>
                 </h1>
 
-                <p className="mt-6 max-w-xl text-base leading-relaxed text-blue-100/90 md:text-lg">
+                <p className="mt-5 max-w-xl text-[15.5px] sm:text-[17px] font-medium leading-relaxed text-blue-100/90">
                   Fast, reliable printer solutions at your doorstep for home and business users.
                 </p>
 
                 {/* Trust Badges */}
-                <div className="mt-7 flex flex-wrap gap-3">
+                <div className="mt-6 flex flex-wrap gap-2.5">
                   {["Consultation-based service", "No hidden charges", "Doorstep service"].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
-                      <CheckCircle2 className="h-3.5 w-3.5 text-[#60A5FA]" />
+                    <div key={i} className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[11px] font-bold tracking-wide uppercase text-white backdrop-blur-sm">
+                      <CheckCircle2 className="h-3 w-3 text-[#60A5FA]" />
                       {item}
                     </div>
                   ))}
                 </div>
 
                 {/* Call Us CTA */}
-                <div className="mt-7">
+                <div className="mt-8">
                   <a
                     href="tel:+16518154630"
-                    className="group inline-flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-base font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                    className="group inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3.5 text-[14px] font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
                   >
-                    <Phone size={18} />
+                    <Phone size={16} />
                     Call Us: +1 (651) 815-4630
                     <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
@@ -141,12 +141,12 @@ export default function BookingPage() {
       {/* ========== OUR PROCESS ========== */}
 
       <div className="relative left-1/2 w-screen -ml-[50vw] bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
-          <div className="mx-auto max-w-3xl text-center mb-12">
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-2 text-sm font-bold uppercase tracking-widest text-[#024AD8]">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:py-16">
+          <div className="mx-auto max-w-3xl text-center mb-10">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#024AD8]">
               Our Process
             </span>
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-gray-900 sm:text-4xl">
               How It Works
             </h2>
           </div>
@@ -176,11 +176,11 @@ export default function BookingPage() {
                     <StepIcon className="h-6 w-6 text-[#024AD8]" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">
+                  <h3 className="text-[16px] font-extrabold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">
                     {step.title}
                   </h3>
 
-                  <p className="mt-3 text-gray-600 leading-relaxed">
+                  <p className="mt-2.5 text-[13.5px] font-medium text-gray-500 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -193,18 +193,18 @@ export default function BookingPage() {
       {/* ========== CONTACT INFO ========== */}
 
       <div className="relative left-1/2 w-screen -ml-[50vw] bg-gradient-to-b from-[#F8FAFF] to-white">
-        <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 lg:py-20">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-12 lg:py-16">
           <div className="grid gap-6 md:grid-cols-3">
             {/* Call Us */}
             <div className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#024AD8]/8">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#024AD8] to-[#0B63F6] shadow-lg shadow-[#024AD8]/20 transition-transform duration-500 group-hover:scale-110">
-                <Phone className="h-8 w-8 text-white" />
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#024AD8] to-[#0B63F6] shadow-lg shadow-[#024AD8]/20 transition-transform duration-500 group-hover:scale-110">
+                <Phone className="h-6 w-6 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Call Us</h3>
-              <p className="mt-3 text-gray-600">Have questions? Give us a call anytime.</p>
+              <h3 className="text-[16px] font-extrabold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Call Us</h3>
+              <p className="mt-2.5 text-[13.5px] font-medium text-gray-500">Have questions? Give us a call anytime.</p>
               <a
                 href="tel:+16518154630"
-                className="mt-4 inline-block text-lg font-bold text-[#024AD8]"
+                className="mt-4 inline-block text-[14px] font-bold text-[#024AD8]"
               >
                 +1 (651) 815-4630
               </a>
@@ -212,14 +212,14 @@ export default function BookingPage() {
 
             {/* Email Us */}
             <div className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#024AD8]/8">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#024AD8] to-[#0B63F6] shadow-lg shadow-[#024AD8]/20 transition-transform duration-500 group-hover:scale-110">
-                <Mail className="h-8 w-8 text-white" />
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#024AD8] to-[#0B63F6] shadow-lg shadow-[#024AD8]/20 transition-transform duration-500 group-hover:scale-110">
+                <Mail className="h-6 w-6 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Email Us</h3>
-              <p className="mt-3 text-gray-600">Send us an email and we'll get back to you.</p>
+              <h3 className="text-[16px] font-extrabold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Email Us</h3>
+              <p className="mt-2.5 text-[13.5px] font-medium text-gray-500">Send us an email and we'll get back to you.</p>
               <a
                 href="mailto:support@smarteprintservices.com"
-                className="mt-4 inline-block text-lg font-bold text-[#024AD8]"
+                className="mt-4 inline-block text-[14px] font-bold text-[#024AD8]"
               >
                 support@smarteprintservices.com
               </a>
@@ -227,12 +227,12 @@ export default function BookingPage() {
 
             {/* Location */}
             <div className="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#024AD8]/8">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#024AD8] to-[#0B63F6] shadow-lg shadow-[#024AD8]/20 transition-transform duration-500 group-hover:scale-110">
-                <MapPin className="h-8 w-8 text-white" />
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#024AD8] to-[#0B63F6] shadow-lg shadow-[#024AD8]/20 transition-transform duration-500 group-hover:scale-110">
+                <MapPin className="h-6 w-6 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Service Availability</h3>
-              <p className="mt-3 text-gray-600">We serve residential and business locations.</p>
-              <p className="mt-4 text-lg font-bold text-[#024AD8]">Blaine, MN & Surrounding Areas</p>
+              <h3 className="text-[16px] font-extrabold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Service Availability</h3>
+              <p className="mt-2.5 text-[13.5px] font-medium text-gray-500">We serve residential and business locations.</p>
+              <p className="mt-4 text-[14px] font-bold text-[#024AD8]">Blaine, MN & Surrounding Areas</p>
             </div>
           </div>
         </div>
@@ -250,21 +250,21 @@ export default function BookingPage() {
 
           <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-16 text-center text-white lg:flex-row lg:text-left">
             <div>
-              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+              <h2 className="text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
                 Ready to get on-site
                 <span className="block text-blue-200">assistance?</span>
               </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-blue-100/80">
+              <p className="mt-4 max-w-2xl text-[15px] font-medium leading-relaxed text-blue-100/80">
                 Contact SmartEprint Services today to schedule a consultation and let us help with your technology or appliance needs.
               </p>
             </div>
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <Link
                 href="/contact-us"
-                className="group inline-flex items-center gap-3 rounded-full bg-white px-8 py-5 text-lg font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-white px-8 py-4 text-[14px] font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
               >
                 Contact Us
-                <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
           </div>

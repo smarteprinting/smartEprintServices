@@ -29,7 +29,7 @@ body {
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   background: linear-gradient(135deg, #f8fbff 0%, var(--bg) 100%);
   color: var(--text);
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 a {
@@ -55,7 +55,7 @@ img {
 .site-footer {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 18px 20px;
+  /* padding: 18px 20px; */
 }
 
 .header-inner {
@@ -68,9 +68,9 @@ img {
 .site-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-weight: 800;
-  font-size: 1.02rem;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 1rem;
   color: white;
 }
 
@@ -162,12 +162,12 @@ img {
 }
 
 .hero-copy h1 {
-  color: white;
+  color: #024AD8;
   max-width: 700px;
 }
 
 .hero-text {
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(2, 74, 216, 0.86);
   font-size: 1.04rem;
   max-width: 620px;
 }
@@ -177,7 +177,7 @@ img {
 .hero-showcase .hero-highlight-card h2,
 .hero-showcase .contact-card p,
 .hero-showcase .contact-card a {
-  color: white;
+  color: #024AD8;
 }
 
 .hero-showcase .bullet-list li::before {

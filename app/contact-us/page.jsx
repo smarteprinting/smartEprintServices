@@ -22,7 +22,7 @@ export default function ContactPage() {
         <div
           className="relative overflow-hidden"
           style={{
-            backgroundImage: "url('/bg-hero.png')",
+            backgroundImage: "url('/bg-hero.webp')",
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
@@ -38,21 +38,21 @@ export default function ContactPage() {
             <div className="absolute top-1/2 right-1/4 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
           </div>
 
-          <div className="relative z-10 mx-auto flex min-h-[75vh] max-w-7xl flex-col justify-center px-6 py-24 lg:py-32">
+          <div className="relative z-10 mx-auto flex min-h-[50vh] max-w-7xl flex-col justify-center px-6 py-16 lg:py-20">
             <div className="max-w-4xl">
-              <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold tracking-wide text-white backdrop-blur-sm">
+              <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
                 <span className="h-2 w-2 rounded-full bg-[#3B82F6] shadow-[0_0_8px_#3B82F6]" />
                 Contact Us
               </span>
 
-              <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              <h1 className="mt-4 text-3xl font-black leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
                 Get in touch with
                 <span className="block bg-gradient-to-r from-[#60A5FA] to-[#93C5FD] bg-clip-text text-transparent">
                   SmartEprint Services
                 </span>
               </h1>
 
-              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-blue-100/90 md:text-xl">
+              <p className="mt-5 max-w-2xl text-[15.5px] sm:text-[17px] font-medium leading-relaxed text-blue-100/90">
                 Reach out for on-site help, scheduling, or service questions. SmartEprint Services is here to help with consultation-based support for home and business technology, appliances, and connected devices.
               </p>
             </div>
@@ -66,51 +66,51 @@ export default function ContactPage() {
       {/* ========== CONTACT INFO ========== */}
 
       <div className="relative left-1/2 w-screen -ml-[50vw] bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:py-28">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+        <div className="mx-auto max-w-7xl px-6 py-12 lg:py-16">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
             {/* LEFT: Contact Details */}
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-2 text-sm font-bold uppercase tracking-widest text-[#024AD8]">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#024AD8]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[#024AD8]">
                 Get In Touch
               </span>
-              <h2 className="mt-6 text-3xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-4xl lg:text-[2.75rem]">
+              <h2 className="mt-4 text-3xl font-black leading-tight tracking-tight text-gray-900 sm:text-4xl">
                 Contact Information
               </h2>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
+              <p className="mt-5 text-[15px] font-medium leading-relaxed text-gray-500">
                 Have questions or need assistance? We're here to help! Reach out to us using any of the methods below, and our team will get back to you as soon as possible.
               </p>
 
-              <div className="mt-10 space-y-6">
+              <div className="mt-8 space-y-5">
                 {/* Phone */}
-                <div className="group flex items-start gap-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#024AD8]/8">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#024AD8] to-[#0B63F6]">
-                    <Phone className="h-7 w-7 text-white" />
+                <div className="group flex items-start gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#024AD8]/8">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#024AD8] to-[#0B63F6]">
+                    <Phone className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Call Us</h3>
-                    <a href="tel:+16518154630" className="mt-2 inline-block text-[#024AD8] text-xl font-bold">+1 (651) 815-4630</a>
+                    <h3 className="text-[15px] font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Call Us</h3>
+                    <a href="tel:+16518154630" className="mt-1 inline-block text-[#024AD8] text-[14px] font-bold">+1 (651) 815-4630</a>
                   </div>
                 </div>
 
                 {/* Email */}
-                <div className="group flex items-start gap-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#024AD8]/8">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#024AD8] to-[#0B63F6]">
-                    <Mail className="h-7 w-7 text-white" />
+                <div className="group flex items-start gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#024AD8]/8">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#024AD8] to-[#0B63F6]">
+                    <Mail className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Email Us</h3>
-                    <a href="mailto:support@smarteprintservices.com" className="mt-2 inline-block text-[#024AD8] text-xl font-bold">support@smarteprintservices.com</a>
+                    <h3 className="text-[15px] font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Email Us</h3>
+                    <a href="mailto:support@smarteprintservices.com" className="mt-1 inline-block text-[#024AD8] text-[14px] font-bold">support@smarteprintservices.com</a>
                   </div>
                 </div>
 
                 {/* Location */}
-                <div className="group flex items-start gap-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#024AD8]/8">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#024AD8] to-[#0B63F6]">
-                    <MapPin className="h-7 w-7 text-white" />
+                <div className="group flex items-start gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#024AD8]/8">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#024AD8] to-[#0B63F6]">
+                    <MapPin className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Location</h3>
-                    <p className="mt-2 text-gray-600 text-lg">
+                    <h3 className="text-[15px] font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Location</h3>
+                    <p className="mt-1.5 text-[14px] font-medium leading-relaxed text-gray-500">
                       11397 Quincy St NE<br />
                       Blaine, Minnesota, 55434<br />
                       United States
@@ -138,23 +138,23 @@ export default function ContactPage() {
             <div className="absolute -bottom-10 -right-10 h-60 w-60 rounded-full bg-white/5 blur-3xl" />
           </div>
 
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-20 text-center text-white lg:flex-row lg:text-left">
+          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-16 text-center text-white lg:flex-row lg:text-left">
             <div>
-              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+              <h2 className="text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
                 Ready to book a
                 <span className="block text-blue-200">consultation?</span>
               </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-blue-100/80">
+              <p className="mt-4 max-w-2xl text-[15px] font-medium leading-relaxed text-blue-100/90">
                 Contact SmartEprint Services today to schedule a consultation and let us help with your technology or appliance needs.
               </p>
             </div>
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <Link
                 href="/book-an-appointment"
-                className="group inline-flex items-center gap-3 rounded-2xl bg-white px-8 py-5 text-lg font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-white px-8 py-4 text-[14px] font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
               >
                 Book an Appointment
-                <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
