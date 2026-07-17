@@ -300,7 +300,7 @@ export default function TermsAndConditions() {
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 pt-4 border-t border-gray-200">
                     <div>
                       <span className="font-semibold text-gray-900 mr-2">Phone:</span>
-                      <a href="tel:+18777652289" className="text-[#024AD8] hover:underline font-medium">1(877)765-2289</a>
+                      <a href="tel:+18777652289" className="text-[#024AD8] hover:underline font-medium">+1 (877)765-2289</a>
                     </div>
                     <div>
                       <span className="font-semibold text-gray-900 mr-2">Email:</span>

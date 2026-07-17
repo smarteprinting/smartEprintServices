@@ -114,15 +114,17 @@ export default function BookingPage() {
                 </div>
 
                 {/* Call Us CTA */}
-                <div className="mt-8">
+                <div className="mt-8 flex flex-row items-center gap-4 sm:gap-6 flex-wrap" >
                   <a
                     href="tel:+18777652289"
                     className="group inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3.5 text-[14px] font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
                   >
                     <Phone size={16} />
-                    Call Us: 1(877)765-2289
+                    Call Us: +1 (877)765-2289
                     <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
+                  
+                  <img src="/hp-partner.png" alt="HP Partner" width="220" height="100" className="h-16 lg:h-20 w-auto object-contain" />
                 </div>
               </div>
 
@@ -206,7 +208,7 @@ export default function BookingPage() {
                 href="tel:+18777652289"
                 className="mt-4 inline-block text-[14px] font-bold text-[#024AD8]"
               >
-                1(877)765-2289
+                +1 (877)765-2289
               </a>
             </div>
 

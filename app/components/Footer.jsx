@@ -38,7 +38,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 mb-12">
           
           {/* Brand Section */}
-          <div className="lg:col-span-1 md:col-span-2">
+          <div className="lg:col-span-1 md:col-span-2 flex flex-col items-center md:items-start text-center md:text-left">
              {/* <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">< */}
              <Link href="/" className="flex items-center gap-3" aria-label="SmartEprint Services Home">
           <div className="flex h-12 w-auto items-center justify-center p-1">
@@ -63,6 +63,15 @@ export default function Footer() {
             <p className="text-sm text-slate-400 mb-6 leading-relaxed">
               Dependable on-site technology and appliance support for homes and businesses.
             </p>
+
+            <div className="mb-6">
+              <Image 
+                src="/hp-partner.png" 
+                alt="HP Partner" 
+                width={200} 
+                height={100} 
+                className="h-16 w-auto object-contain opacity-90"/>
+            </div>
 
             {/* Social Links */}
             {/* <div className="flex gap-3 flex-wrap">
@@ -91,7 +100,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
@@ -108,7 +117,7 @@ export default function Footer() {
           </div>
 
           {/* Services */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">Services</h4>
             <ul className="space-y-3">
               {serviceLinks.map((link) => (
@@ -125,7 +134,7 @@ export default function Footer() {
           </div>
 
           {/* Policies */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">Policies</h4>
             <ul className="space-y-3">
               {policyLinks.map((link) => (
@@ -142,22 +151,22 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">Contact Us</h4>
             <div className="space-y-4">
               <a 
                 href="tel:+18777652289"
-                className="flex items-start gap-3 text-sm text-slate-400 hover:text-brand-400 transition"
+                className="flex items-start justify-center md:justify-start gap-3 text-sm text-slate-400 hover:text-brand-400 transition"
               >
                 <div className="flex items-center justify-center h-6 w-6 rounded bg-[#024AD8] flex-shrink-0 mt-0.5">
                   <Phone size={16} className="text-white" />
                 </div>
-                <span>1(877)765-2289</span>
+                <span>+1 (877)765-2289</span>
               </a>
               
               <a 
                 href="mailto:support@smarteprintservices.com"
-                className="flex items-start gap-3 text-sm text-slate-400 hover:text-brand-400 transition"
+                className="flex items-start justify-center md:justify-start gap-3 text-sm text-slate-400 hover:text-brand-400 transition"
               >
                 <div className="flex items-center justify-center h-6 w-6 rounded bg-[#024AD8] flex-shrink-0 mt-0.5">
                   <Mail size={16} className="text-white" />
@@ -165,7 +174,7 @@ export default function Footer() {
                 <span>support@smarteprintservices.com</span>
               </a>
 
-              <div className="flex items-start gap-3 text-sm text-slate-400">
+              <div className="flex items-start justify-center md:justify-start gap-3 text-sm text-slate-400">
                 <div className="flex items-center justify-center h-6 w-6 rounded bg-[#024AD8] flex-shrink-0 mt-0.5">
                   <MapPin size={16} className="text-white" />
                 </div>
