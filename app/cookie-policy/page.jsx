@@ -60,104 +60,188 @@ export default function CookiePolicy() {
 
       <div className="relative left-1/2 w-screen -ml-[50vw] bg-white">
         <div className="mx-auto max-w-4xl px-6 py-20 lg:py-28">
-          <div className="prose prose-lg text-gray-600">
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h2>
-              <p className="leading-relaxed">
-                This Cookie Policy explains how SmartEprint Services ("we," "us," "our") uses cookies and similar technologies on our website. By using our website, you consent to our use of cookies in accordance with this policy.
-              </p>
-            </section>
+          <div className="prose prose-lg text-gray-600 max-w-none">
+            <div className="mb-10 border-b border-gray-200 pb-8">
+              <p className="text-gray-500 mb-2 font-medium">Effective Date: July 18, 2026</p>
+              <p className="text-gray-500 font-medium">Last Updated: July 18, 2026</p>
+            </div>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">2. What Are Cookies?</h2>
-              <p className="leading-relaxed">
-                Cookies are small text files that are placed on your computer or mobile device by websites you visit. They are widely used to make websites work more efficiently and provide information to the website owners.
-              </p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">3. How We Use Cookies</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Cookie Policy</h2>
               <p className="leading-relaxed mb-4">
-                We use cookies for several purposes, including:
+                This Cookie Policy explains how Smart ePrint Services ("Smart ePrint Services," "we," "us," or "our") uses cookies and similar technologies when you visit smarteprintservices.com.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Smart ePrint Services is owned and operated by Innovation Dynamics Group LLC.
+              </p>
+              <p className="leading-relaxed">
+                By continuing to use our website, you agree to the use of cookies as described in this Cookie Policy.
+              </p>
+            </section>
+
+            <section className="mb-12 rounded-2xl bg-gray-50 p-8 border border-gray-100">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Table of Contents</h2>
+              <ol className="list-decimal pl-6 space-y-3 font-medium text-gray-700">
+                <li><a href="#what-are-cookies" className="hover:text-[#024AD8] transition-colors">What Are Cookies?</a></li>
+                <li><a href="#cookies-we-use" className="hover:text-[#024AD8] transition-colors">Cookies We Use</a></li>
+                <li><a href="#third-party-cookies" className="hover:text-[#024AD8] transition-colors">Third-Party Cookies</a></li>
+                <li><a href="#managing-preferences" className="hover:text-[#024AD8] transition-colors">Managing Your Cookie Preferences</a></li>
+                <li><a href="#changes" className="hover:text-[#024AD8] transition-colors">Changes to This Cookie Policy</a></li>
+                <li><a href="#contact" className="hover:text-[#024AD8] transition-colors">Contact Us</a></li>
+              </ol>
+            </section>
+
+            <section id="what-are-cookies" className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">1. What Are Cookies?</h2>
+              <p className="leading-relaxed mb-4">
+                Cookies are small text files that are stored on your computer, smartphone, or other device when you visit a website. They help websites function properly, remember your preferences, improve user experience, and provide website owners with information about how visitors use their websites.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Cookies do not contain viruses or malware and cannot access information stored elsewhere on your device.
+              </p>
+              <p className="leading-relaxed mb-4">
+                There are two common types of cookies:
               </p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>To provide essential functionality and to remember your preferences</li>
-                <li>To improve and optimize the performance of our website</li>
-                <li>To analyze how visitors use our website</li>
-                <li>To personalize content and advertisements</li>
-                <li>To enable social media features</li>
-              </ul>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">4. Types of Cookies We Use</h2>
-              <p className="leading-relaxed mb-4">
-                We use the following types of cookies on our website:
-              </p>
-              <ul className="list-disc pl-6 space-y-2">
                 <li>
-                  <strong>Necessary Cookies:</strong> These cookies are essential for the website to function properly and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in, or filling in forms.
+                  <strong className="text-gray-900">Session Cookies</strong> &ndash; Temporary cookies that are removed when you close your browser.
                 </li>
                 <li>
-                  <strong>Performance Cookies:</strong> These cookies help us improve our website's performance and user experience by collecting information about how visitors interact with the site. They may track metrics such as page load time, bounce rate, traffic sources, etc.
-                </li>
-                <li>
-                  <strong>Functional Cookies:</strong> These cookies enable enhanced functionality and personalization, such as remembering your preferences and choices (like language or region) or displaying personalized content based on your past visits.
-                </li>
-                <li>
-                  <strong>Analytics Cookies:</strong> These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us know which pages are the most and least popular and see how visitors move around the site.
-                </li>
-                <li>
-                  <strong>Third-Party Cookies:</strong> Our website may include third-party services (like social media buttons or analytics tools) that set their own cookies. We don't have control over these cookies, and their use is governed by the third-party's privacy policy.
+                  <strong className="text-gray-900">Persistent Cookies</strong> &ndash; Cookies that remain on your device until they expire or are deleted.
                 </li>
               </ul>
             </section>
 
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Managing Cookies</h2>
-              <p className="leading-relaxed mb-4">
-                You can control and/or delete cookies as you wish. For details, see <a href="https://www.aboutcookies.org" target="_blank" rel="noopener noreferrer" className="text-[#024AD8] font-semibold">aboutcookies.org</a>. You can delete all cookies that are already on your computer, and you can set most browsers to prevent them from being placed.
+            <section id="cookies-we-use" className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">2. Cookies We Use</h2>
+              <p className="leading-relaxed mb-6">
+                We use different types of cookies to improve your experience on our website.
               </p>
-              <p className="leading-relaxed">
-                However, if you block or delete cookies, some parts of our website may not work properly, or you may not be able to access certain features.
-              </p>
-            </section>
 
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Browser Settings</h2>
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Essential Cookies</h3>
+              <p className="leading-relaxed mb-2">
+                These cookies are necessary for the website to operate correctly. They enable core functions such as page navigation, website security, shopping cart functionality, and form submissions.
+              </p>
+              <p className="leading-relaxed mb-6 font-medium text-gray-800">
+                These cookies cannot be disabled through our website.
+              </p>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Analytics Cookies</h3>
               <p className="leading-relaxed mb-4">
-                Most web browsers allow you to control cookies through their settings. To find out more about cookies, including how to see what cookies have been set, visit <a href="https://www.aboutcookies.org" target="_blank" rel="noopener noreferrer" className="text-[#024AD8] font-semibold">www.aboutcookies.org</a> or <a href="https://www.allaboutcookies.org" target="_blank" rel="noopener noreferrer" className="text-[#024AD8] font-semibold">www.allaboutcookies.org</a>.
+                Analytics cookies help us understand how visitors interact with our website by collecting information such as:
               </p>
-              <p className="leading-relaxed">
-                Information about managing cookies for specific browsers is available at:
-              </p>
-              <ul className="list-disc pl-6 space-y-2 mt-2">
-                <li>Google Chrome: <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" className="text-[#024AD8] font-semibold">https://support.google.com/chrome/answer/95647</a></li>
-                <li>Firefox: <a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener noreferrer" className="text-[#024AD8] font-semibold">https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop</a></li>
-                <li>Safari: <a href="https://support.apple.com/guide/safari/sfri40598/mac" target="_blank" rel="noopener noreferrer" className="text-[#024AD8] font-semibold">https://support.apple.com/guide/safari/sfri40598/mac</a></li>
-                <li>Microsoft Edge: <a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40fc-a43c-a454-3b7678461d09" target="_blank" rel="noopener noreferrer" className="text-[#024AD8] font-semibold">https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40fc-a43c-a454-3b7678461d09</a></li>
+              <ul className="list-disc pl-6 space-y-2 mb-4">
+                <li>Pages visited</li>
+                <li>Time spent on the website</li>
+                <li>Navigation patterns</li>
+                <li>Website performance</li>
               </ul>
+              <p className="leading-relaxed mb-6 font-medium text-gray-800">
+                This information helps us improve our website and customer experience.
+              </p>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Advertising Cookies</h3>
+              <p className="leading-relaxed mb-2">
+                Advertising cookies help us measure the effectiveness of our marketing campaigns and may be used to display advertisements that are more relevant to your interests.
+              </p>
+              <p className="leading-relaxed mb-6 font-medium text-gray-800">
+                These cookies are only used where permitted and may require your consent.
+              </p>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Functional Cookies</h3>
+              <p className="leading-relaxed">
+                Functional cookies remember your preferences, such as language settings or previously entered information, to provide a more personalized browsing experience.
+              </p>
             </section>
 
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Changes to This Cookie Policy</h2>
+            <section id="third-party-cookies" className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">3. Third-Party Cookies</h2>
+              <p className="leading-relaxed mb-4">
+                Some cookies may be placed by trusted third-party services that help us operate and improve our website.
+              </p>
+              <p className="leading-relaxed mb-4">
+                These services may include:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 mb-6">
+                <li>Google Analytics</li>
+                <li>Google Ads</li>
+                <li>Payment service providers</li>
+                <li>Other website functionality and performance tools</li>
+              </ul>
               <p className="leading-relaxed">
-                We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our business practices. Any updates will be posted on this page, and the revised version will be effective immediately when it is posted.
+                These third parties operate under their own privacy and cookie policies. We encourage you to review their policies to understand how your information may be used.
               </p>
             </section>
 
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Contact Us</h2>
+            <section id="managing-preferences" className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">4. Managing Your Cookie Preferences</h2>
+              <p className="leading-relaxed mb-6">
+                You can control or manage cookies in several ways.
+              </p>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Cookie Consent</h3>
+              <p className="leading-relaxed mb-6">
+                When you first visit our website, you may be presented with a cookie notice that allows you to accept or manage your cookie preferences where required.
+              </p>
+
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Browser Settings</h3>
+              <p className="leading-relaxed mb-4">
+                Most web browsers allow you to:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 mb-6">
+                <li>View stored cookies</li>
+                <li>Block cookies</li>
+                <li>Delete existing cookies</li>
+                <li>Receive notifications before cookies are stored</li>
+              </ul>
               <p className="leading-relaxed">
-                If you have any questions about this Cookie Policy, please contact us at:
+                Please note that disabling certain cookies may affect the functionality and performance of some parts of our website.
               </p>
-              <p className="mt-4">
-                <strong>SmartEprint Services</strong><br />
-                11397 Quincy St NE<br />
-                Blaine, Minnesota, 55434<br />
-                Email: <a href="mailto:support@smarteprintservices.com" className="text-[#024AD8] font-semibold">support@smarteprintservices.com</a><br />
-                Phone: <a href="tel:+16518154630" className="text-[#024AD8] font-semibold">+1 (651) 815-4630</a>
+            </section>
+
+            <section id="changes" className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">5. Changes to This Cookie Policy</h2>
+              <p className="leading-relaxed mb-4">
+                We may update this Cookie Policy from time to time to reflect changes in our business practices, legal requirements, or the technologies we use.
               </p>
+              <p className="leading-relaxed">
+                Any updates will be posted on this page with a revised Last Updated date. We encourage you to review this Cookie Policy periodically.
+              </p>
+            </section>
+
+            <section id="contact" className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">6. Contact Us</h2>
+              <p className="leading-relaxed mb-6">
+                If you have any questions about this Cookie Policy or our use of cookies, please contact us:
+              </p>
+              
+              <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                <p className="font-bold text-xl text-gray-900 mb-1">Smart ePrint Services</p>
+                <p className="text-gray-600 mb-6">Owned & Operated by Innovation Dynamics Group LLC</p>
+                
+                <div className="space-y-4">
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1">Address:</p>
+                    <p className="text-gray-600">11397 Quincy St NE<br />Blaine, MN 55434<br />United States</p>
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 pt-4 border-t border-gray-200">
+                    <div>
+                      <span className="font-semibold text-gray-900 mr-2">Phone:</span>
+                      <a href="tel:+18777652289" className="text-[#024AD8] hover:underline font-medium">1(877)765-2289</a>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-gray-900 mr-2">Email:</span>
+                      <a href="mailto:support@smarteprintservices.com" className="text-[#024AD8] hover:underline font-medium">support@smarteprintservices.com</a>
+                    </div>
+                  </div>
+                  
+                  <div className="pt-2">
+                    <span className="font-semibold text-gray-900 mr-2">Website:</span>
+                    <a href="https://smarteprintservices.com" className="text-[#024AD8] hover:underline font-medium">smarteprintservices.com</a>
+                  </div>
+                </div>
+              </div>
             </section>
           </div>
         </div>

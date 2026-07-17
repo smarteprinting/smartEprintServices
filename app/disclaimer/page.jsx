@@ -60,85 +60,145 @@ export default function Disclaimer() {
 
       <div className="relative left-1/2 w-screen -ml-[50vw] bg-white">
         <div className="mx-auto max-w-4xl px-6 py-20 lg:py-28">
-          <div className="prose prose-lg text-gray-600">
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">1. General</h2>
-              <p className="leading-relaxed">
-                The information provided by SmartEprint Services ("we," "us," "our") on this website is for general informational purposes only. All information on this site is provided in good faith, however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.
-              </p>
-            </section>
+          <div className="prose prose-lg text-gray-600 max-w-none">
+            <div className="mb-10 border-b border-gray-200 pb-8">
+              <p className="text-gray-500 mb-2 font-medium">Effective Date: July 18, 2026</p>
+              <p className="text-gray-500 font-medium">Last Updated: July 18, 2026</p>
+            </div>
 
             <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Professional Advice Disclaimer</h2>
-              <p className="leading-relaxed">
-                The site cannot and does not contain professional advice. The information is provided for general informational and educational purposes only and is not a substitute for professional advice. Accordingly, before taking any actions based upon such information, we encourage you to consult with the appropriate professionals. We do not provide any kind of professional advice.
-              </p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">3. External Links Disclaimer</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Disclaimer</h2>
               <p className="leading-relaxed mb-4">
-                The site may contain links to external websites that are not provided or maintained by or in any way affiliated with us. Please note that we do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.
+                This Disclaimer governs your use of smarteprintservices.com and the information, products, and services provided by Smart ePrint Services ("Smart ePrint Services," "we," "us," or "our").
+              </p>
+              <p className="leading-relaxed mb-4">
+                Smart ePrint Services is owned and operated by Innovation Dynamics Group LLC.
               </p>
               <p className="leading-relaxed">
-                The inclusion of any links does not imply endorsement, approval, or agreement with the views expressed within them. The content of linked sites may change without notice. We are not responsible for the content or practices of any third-party sites or services.
+                By using our website, you acknowledge and agree to the terms of this Disclaimer.
               </p>
             </section>
 
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">4. Errors and Omissions Disclaimer</h2>
+            <section className="mb-12 rounded-2xl bg-gray-50 p-8 border border-gray-100">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Table of Contents</h2>
+              <ol className="list-decimal pl-6 space-y-3 font-medium text-gray-700">
+                <li><a href="#general-disclaimer" className="hover:text-[#024AD8] transition-colors">General Disclaimer</a></li>
+                <li><a href="#product-service-info" className="hover:text-[#024AD8] transition-colors">Product & Service Information</a></li>
+                <li><a href="#third-party-websites" className="hover:text-[#024AD8] transition-colors">Third-Party Websites</a></li>
+                <li><a href="#errors-omissions" className="hover:text-[#024AD8] transition-colors">Errors & Omissions</a></li>
+                <li><a href="#limitation-liability" className="hover:text-[#024AD8] transition-colors">Limitation of Liability</a></li>
+                <li><a href="#contact" className="hover:text-[#024AD8] transition-colors">Contact Us</a></li>
+              </ol>
+            </section>
+
+            <section id="general-disclaimer" className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">1. General Disclaimer</h2>
+              <p className="leading-relaxed mb-4">
+                The information available on smarteprintservices.com is provided for general informational purposes only. While we make reasonable efforts to keep the information accurate and up to date, we make no representations or warranties, express or implied, regarding the accuracy, completeness, reliability, suitability, or availability of any information, products, or services presented on this website.
+              </p>
               <p className="leading-relaxed">
-                While we have made every attempt to ensure that the information contained in this site has been obtained from reliable sources, we are not responsible for any errors or omissions or for the results obtained from the use of this information. All information in this site is provided "as is" with no guarantee of completeness, accuracy, timeliness, or of the results obtained from the use of this information.
+                Your use of the website and reliance on any information is entirely at your own risk.
               </p>
             </section>
 
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Fair Use Notice</h2>
+            <section id="product-service-info" className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">2. Product & Service Information</h2>
+              <p className="leading-relaxed mb-4">
+                Smart ePrint Services provides printer-related products, accessories, and customer assistance intended to help individuals and businesses with their printing needs.
+              </p>
+              <p className="leading-relaxed mb-4">
+                While we strive to provide accurate product descriptions and helpful information:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 mb-4">
+                <li>Product specifications, pricing, availability, and images may change without prior notice.</li>
+                <li>Product colors, packaging, and appearance may vary from those displayed on the website.</li>
+                <li>Compatibility between printers, accessories, consumables, and other products should always be verified before purchase.</li>
+                <li>General setup guidance or troubleshooting information provided through our website or customer support is intended for informational purposes and may not resolve every issue.</li>
+              </ul>
               <p className="leading-relaxed">
-                This site may contain copyrighted material the use of which has not always been specifically authorized by the copyright owner. We are making such material available in our efforts to advance understanding of services, technologies, etc. We believe this constitutes a "fair use" of any such copyrighted material as provided for in section 107 of the US Copyright Law.
+                Where applicable, manufacturer warranties are provided solely by the respective manufacturer and are subject to their own warranty terms and conditions.
               </p>
             </section>
 
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">6. No Liability Disclaimer</h2>
+            <section id="third-party-websites" className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">3. Third-Party Websites</h2>
+              <p className="leading-relaxed mb-4">
+                Our website may contain links to third-party websites for your convenience or additional information.
+              </p>
+              <p className="leading-relaxed mb-4">
+                These links do not imply any endorsement, sponsorship, or approval of the content, products, services, or policies of those websites.
+              </p>
+              <p className="leading-relaxed mb-4">
+                Smart ePrint Services has no control over third-party websites and is not responsible for their content, privacy practices, or the accuracy of any information they provide.
+              </p>
               <p className="leading-relaxed">
-                Under no circumstances shall we be liable for any direct, indirect, special, incidental, consequential, or punitive damages arising out of or in connection with your access to or use of, or inability to access or use, the site or any content on the site. This liability limitation applies whether or not the damages were foreseeable, and whether or not we were advised of the possibility of such damages.
+                We encourage you to review the privacy policies and terms of any third-party websites you visit.
               </p>
             </section>
 
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Services Disclaimer</h2>
+            <section id="errors-omissions" className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">4. Errors & Omissions</h2>
+              <p className="leading-relaxed mb-4">
+                Although we make every effort to ensure the information on our website is accurate, errors or omissions may occasionally occur.
+              </p>
+              <p className="leading-relaxed mb-4">
+                We reserve the right to correct errors, update information, modify pricing, change product availability, or revise website content at any time without prior notice.
+              </p>
               <p className="leading-relaxed">
-                While we strive to provide quality service, we cannot guarantee specific results from any service. All service descriptions, photographs, costs, benefits, and availability of services are subject to change without notice.
+                Nothing on this website should be interpreted as a guarantee of product availability or pricing until an order has been accepted.
               </p>
             </section>
 
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Personal Responsibility</h2>
+            <section id="limitation-liability" className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">5. Limitation of Liability</h2>
+              <p className="leading-relaxed mb-4">
+                To the fullest extent permitted by applicable law, Smart ePrint Services and Innovation Dynamics Group LLC shall not be liable for any direct, indirect, incidental, consequential, special, or punitive damages arising from:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 mb-4">
+                <li>Your use of or inability to use our website.</li>
+                <li>Reliance on information published on our website.</li>
+                <li>Product availability or pricing changes.</li>
+                <li>Delays caused by shipping carriers, manufacturers, or circumstances beyond our reasonable control.</li>
+                <li>Technical interruptions, website downtime, or temporary unavailability.</li>
+              </ul>
               <p className="leading-relaxed">
-                By using this website or our services, you acknowledge and agree that you accept personal responsibility for your actions, and the outcomes of any actions you take as a result of information provided on the website.
+                Nothing in this Disclaimer excludes liability where such exclusion is prohibited by applicable law.
               </p>
             </section>
 
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Updates</h2>
-              <p className="leading-relaxed">
-                We may update this disclaimer from time to time. Any changes will be posted on this page. The date of the last update will be indicated at the top of this page.
+            <section id="contact" className="mb-12">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">6. Contact Us</h2>
+              <p className="leading-relaxed mb-6">
+                If you have any questions regarding this Disclaimer, please contact us:
               </p>
-            </section>
-
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">10. Contact Us</h2>
-              <p className="leading-relaxed">
-                If you have questions about this Disclaimer, please contact us at:
-              </p>
-              <p className="mt-4">
-                <strong>SmartEprint Services</strong><br />
-                11397 Quincy St NE<br />
-                Blaine, Minnesota, 55434<br />
-                Email: <a href="mailto:support@smarteprintservices.com" className="text-[#024AD8] font-semibold">support@smarteprintservices.com</a><br />
-                Phone: <a href="tel:+16518154630" className="text-[#024AD8] font-semibold">+1 (651) 815-4630</a>
-              </p>
+              
+              <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                <p className="font-bold text-xl text-gray-900 mb-1">Smart ePrint Services</p>
+                <p className="text-gray-600 mb-6">Owned & Operated by Innovation Dynamics Group LLC</p>
+                
+                <div className="space-y-4">
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1">Address:</p>
+                    <p className="text-gray-600">11397 Quincy St NE<br />Blaine, MN 55434<br />United States</p>
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 pt-4 border-t border-gray-200">
+                    <div>
+                      <span className="font-semibold text-gray-900 mr-2">Phone:</span>
+                      <a href="tel:+18777652289" className="text-[#024AD8] hover:underline font-medium">1(877)765-2289</a>
+                    </div>
+                    <div>
+                      <span className="font-semibold text-gray-900 mr-2">Email:</span>
+                      <a href="mailto:support@smarteprintservices.com" className="text-[#024AD8] hover:underline font-medium">support@smarteprintservices.com</a>
+                    </div>
+                  </div>
+                  
+                  <div className="pt-2">
+                    <span className="font-semibold text-gray-900 mr-2">Website:</span>
+                    <a href="https://smarteprintservices.com" className="text-[#024AD8] hover:underline font-medium">smarteprintservices.com</a>
+                  </div>
+                </div>
+              </div>
             </section>
           </div>
         </div>

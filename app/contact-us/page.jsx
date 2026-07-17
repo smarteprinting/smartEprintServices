@@ -88,7 +88,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-[15px] font-bold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Call Us</h3>
-                    <a href="tel:+16518154630" className="mt-1 inline-block text-[#024AD8] text-[14px] font-bold">+1 (651) 815-4630</a>
+                    <a href="tel:+18777652289" className="mt-1 inline-block text-[#024AD8] text-[14px] font-bold">1(877)765-2289</a>
                   </div>
                 </div>
 

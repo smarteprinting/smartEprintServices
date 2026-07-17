@@ -176,7 +176,7 @@ export default function WhyChooseUs() {
               <div className="mt-10 flex flex-wrap gap-8 text-white/90 text-sm">
                 <div>
                   <p className="text-white/70 text-xs uppercase tracking-wider mb-1">Call Us</p>
-                  <a href="tel:+16518154630" className="font-semibold hover:text-white transition">+1 (651) 815-4630</a>
+                  <a href="tel:+18777652289" className="font-semibold hover:text-white transition">1(877)765-2289</a>
                 </div>
                 <div>
                   <p className="text-white/70 text-xs uppercase tracking-wider mb-1">Email</p>

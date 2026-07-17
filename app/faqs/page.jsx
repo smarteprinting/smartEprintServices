@@ -17,7 +17,7 @@ export default function FAQs() {
     },
     {
       question: "How do I book an appointment?",
-      answer: "You can book an appointment by visiting our Book an Appointment page or calling us at +1 (651) 815-4630.",
+      answer: "You can book an appointment by visiting our Book an Appointment page or calling us at 1(877)765-2289.",
     },
     {
       question: "What payment methods do you accept?",
@@ -25,7 +25,7 @@ export default function FAQs() {
     },
     {
       question: "Do you provide emergency services?",
-      answer: "Yes, we offer emergency services for critical issues. Please call us at +1 (651) 815-4630 to inquire about availability.",
+      answer: "Yes, we offer emergency services for critical issues. Please call us at 1(877)765-2289 to inquire about availability.",
     },
     {
       question: "What is your service guarantee?",

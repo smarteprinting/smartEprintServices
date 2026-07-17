@@ -7,10 +7,8 @@ import { Menu, X } from "lucide-react";
 
 const quickLinks = [
   { href: "/", label: "Home" },
-  { href: "/about-us", label: "About Us" },
-  { href: "/services", label: "Services" },
-  { href: "/blogs", label: "Blogs" },
-  { href: "/book-an-appointment", label: "Appointment" },
+  { href: "/services", label: "Our Services" },
+  { href: "/book-an-appointment", label: "Book an Appointment" },
   { href: "/contact-us", label: "Contact Us" },
 ];
 
@@ -65,20 +63,20 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-7 lg:flex">
-          {quickLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="group relative text-[15px] font-semibold text-slate-700 transition-colors duration-300 hover:text-brand-500"
-            >
-              {link.label}
-              <span className="absolute -bottom-2 left-0 h-0.5 w-0 rounded-full bg-brand-500 transition-all duration-300 group-hover:w-full" />
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden lg:flex items-center gap-8">
+          <nav className="flex items-center gap-7">
+            {quickLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="group relative text-[15px] font-semibold text-slate-700 transition-colors duration-300 hover:text-brand-500"
+              >
+                {link.label}
+                <span className="absolute -bottom-2 left-0 h-0.5 w-0 rounded-full bg-brand-500 transition-all duration-300 group-hover:w-full" />
+              </Link>
+            ))}
+          </nav>
 
-        <div className="hidden lg:block">
           <Link
             href="/book-an-appointment"
             className="rounded-full bg-gradient-to-r from-brand-500 to-brand-700 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl"

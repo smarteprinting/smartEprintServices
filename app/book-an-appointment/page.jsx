@@ -116,11 +116,11 @@ export default function BookingPage() {
                 {/* Call Us CTA */}
                 <div className="mt-8">
                   <a
-                    href="tel:+16518154630"
+                    href="tel:+18777652289"
                     className="group inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3.5 text-[14px] font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
                   >
                     <Phone size={16} />
-                    Call Us: +1 (651) 815-4630
+                    Call Us: 1(877)765-2289
                     <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                 </div>
@@ -203,10 +203,10 @@ export default function BookingPage() {
               <h3 className="text-[16px] font-extrabold text-gray-900 group-hover:text-[#024AD8] transition-colors duration-300">Call Us</h3>
               <p className="mt-2.5 text-[13.5px] font-medium text-gray-500">Have questions? Give us a call anytime.</p>
               <a
-                href="tel:+16518154630"
+                href="tel:+18777652289"
                 className="mt-4 inline-block text-[14px] font-bold text-[#024AD8]"
               >
-                +1 (651) 815-4630
+                1(877)765-2289
               </a>
             </div>
 

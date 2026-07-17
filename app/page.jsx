@@ -48,7 +48,7 @@ export default function HomePage() {
       <div className="relative left-1/2 w-screen -ml-[50vw]">
         
         {/* HERO SECTION */}
-        <section className="relative overflow-hidden min-h-[calc(100vh-80px)] flex flex-col justify-center py-12 lg:py-16">
+        <section className="relative overflow-hidden min-h-[calc(80vh-80px)] flex flex-col justify-center py-12 lg:py-16">
           <div 
             className="absolute inset-0 z-0"
             style={{
@@ -88,23 +88,6 @@ export default function HomePage() {
                 </a>
               </div>
 
-              <div className="mt-14 flex flex-col items-center justify-center">
-                <p className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">Call Us Directly</p>
-                <a href="tel:+16518154630" className="mt-2 text-3xl font-black tracking-tight text-[#024AD8] hover:text-blue-800 transition-colors drop-shadow-sm">
-                  +1 (651) 815-4630
-                </a>
-              </div>
-
-              <div className="mt-12 max-w-2xl mx-auto rounded-3xl border border-white/60 bg-white/40 p-6 backdrop-blur-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all hover:bg-white/60">
-                <div className="flex items-start gap-4">
-                  <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#024AD8]/10 text-[#024AD8]">
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  </div>
-                  <p className="text-[13.5px] leading-relaxed text-slate-600 text-left font-medium">
-                    Convenient printer service at your home or workplace in Blaine and surrounding areas. Appointment availability may vary by location, printer condition, and service requirements.
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </section>
@@ -359,9 +342,9 @@ export default function HomePage() {
               <a href="/book-an-appointment" className="inline-flex items-center rounded-full bg-white px-8 py-4 text-[14px] font-bold text-[#024AD8] hover:bg-slate-50 transition-all hover:scale-105 hover:shadow-lg hover:shadow-black/10">
                 Book an Appointment
               </a>
-              <a href="tel:+16518154630" className="inline-flex items-center rounded-full border border-white/30 bg-white/5 backdrop-blur-sm px-8 py-4 text-[14px] font-bold text-white hover:bg-white/20 hover:border-white/50 transition-all">
+              <a href="tel:+18777652289" className="inline-flex items-center rounded-full border border-white/30 bg-white/5 backdrop-blur-sm px-8 py-4 text-[14px] font-bold text-white hover:bg-white/20 hover:border-white/50 transition-all">
                 <svg className="mr-2.5 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                +1 (651) 815-4630
+                1(877)765-2289
               </a>
               <a href="mailto:support@smarteprintservices.com" className="inline-flex items-center rounded-full border border-white/30 bg-white/5 backdrop-blur-sm px-8 py-4 text-[14px] font-bold text-white hover:bg-white/20 hover:border-white/50 transition-all">
                 <svg className="mr-2.5 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>

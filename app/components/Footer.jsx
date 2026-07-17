@@ -6,9 +6,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 
 const quickLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about-us', label: 'About Us' },
-  { href: '/services', label: 'Services' },
-  { href: '/blogs', label: 'Blogs' },
+  { href: '/services', label: 'Our Services' },
   { href: '/contact-us', label: 'Contact Us' },
 ];
 
@@ -148,13 +146,13 @@ export default function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">Contact Us</h4>
             <div className="space-y-4">
               <a 
-                href="tel:+16518154630"
+                href="tel:+18777652289"
                 className="flex items-start gap-3 text-sm text-slate-400 hover:text-brand-400 transition"
               >
                 <div className="flex items-center justify-center h-6 w-6 rounded bg-[#024AD8] flex-shrink-0 mt-0.5">
                   <Phone size={16} className="text-white" />
                 </div>
-                <span>+1 (651) 815-4630</span>
+                <span>1(877)765-2289</span>
               </a>
               
               <a 
