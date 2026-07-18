@@ -19,7 +19,7 @@ export default function BookAppointmentForm() {
     fullName: "",
     phone: "",
     email: "",
-    serviceType: "Select Service",
+    serviceType: "",
     description: "",
   });
   const [status, setStatus] = useState("idle");
@@ -54,7 +54,7 @@ export default function BookAppointmentForm() {
           fullName: "",
           phone: "",
           email: "",
-          serviceType: "Select Service",
+          serviceType: "",
           description: "",
         });
       } else {
