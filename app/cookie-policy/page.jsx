@@ -250,7 +250,7 @@ export default function CookiePolicy() {
 
       {/* ========== CTA ========== */}
 
-      <StaticRangeCTA />
+      <StandardCTA />
     </section>
   );
 }
