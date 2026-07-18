@@ -5,29 +5,85 @@ export async function POST(req) {
   try {
     const { fullName, email, message } = await req.json();
 
-    // Configure nodemailer
+    // Validate required fields
+    if (!fullName?.trim() || !email?.trim() || !message?.trim()) {
+      return NextResponse.json(
+        { success: false, message: 'Please fill in all required fields.' },
+        { status: 400 }
+      );
+    }
+
+    const smtpUser = process.env.SMTP_USER;
+    const smtpPassword = process.env.SMTP_PASSWORD;
+    const smtpTo = process.env.SMTP_TO || 'smarteps@innovationdynamicsgroup.com';
+    const smtpFrom = process.env.SMTP_FROM || smtpUser;
+
+    if (!smtpUser || !smtpPassword) {
+      console.error('SMTP credentials missing.');
+      return NextResponse.json(
+        { success: false, message: 'Email service is not configured properly.' },
+        { status: 500 }
+      );
+    }
+
+    // Configure nodemailer with webmail-compatible settings
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: parseInt(process.env.SMTP_PORT || '587'),
+      host: process.env.SMTP_HOST || 'mail.innovationdynamicsgroup.com',
+      port: parseInt(process.env.SMTP_PORT || '587', 10),
       secure: process.env.SMTP_SECURE === 'true',
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
+        user: smtpUser,
+        pass: smtpPassword,
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
     });
 
     // Email content
     const mailOptions = {
-      from: process.env.SMTP_USER,
-      to: 'support@smarteprintservices.com',
+      from: `"Smart ePrint Services" <${smtpFrom}>`,
+      to: smtpTo,
+      replyTo: email,
       subject: `New Contact Form Submission from ${fullName}`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #024AD8;">New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${fullName}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Message:</strong></p>
-          <p style="background-color: #f4f4f4; padding: 15px; border-radius: 8px;">${message}</p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+          <div style="background: linear-gradient(135deg, #024AD8, #0B63F6); padding: 20px; border-radius: 12px 12px 0 0;">
+            <h2 style="color: #ffffff; margin: 0; font-size: 22px;">✉️ New Contact Form Submission</h2>
+          </div>
+          <div style="background-color: #ffffff; padding: 24px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 12px 12px;">
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
+                  <strong style="color: #374151;">Name:</strong>
+                </td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #111827;">
+                  ${fullName}
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
+                  <strong style="color: #374151;">Email:</strong>
+                </td>
+                <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #111827;">
+                  <a href="mailto:${email}" style="color: #024AD8;">${email}</a>
+                </td>
+              </tr>
+            </table>
+            <div style="margin-top: 16px;">
+              <strong style="color: #374151;">Message:</strong>
+              <p style="background-color: #f9fafb; padding: 15px; border-radius: 8px; color: #111827; margin-top: 8px; border: 1px solid #e5e7eb;">
+                ${message}
+              </p>
+            </div>
+            <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;" />
+            <p style="color: #9ca3af; font-size: 12px; text-align: center; margin: 0;">
+              This email was sent from the Smart ePrint Services website contact form.
+            </p>
+          </div>
         </div>
       `,
     };
@@ -35,9 +91,26 @@ export async function POST(req) {
     // Send email
     await transporter.sendMail(mailOptions);
 
-    return NextResponse.json({ success: true, message: 'Message sent successfully!' }, { status: 200 });
+    console.log('Contact form email sent successfully.');
+
+    return NextResponse.json(
+      { success: true, message: 'Message sent successfully!' },
+      { status: 200 }
+    );
   } catch (error) {
-    console.error('Error sending contact form email:', error);
-    return NextResponse.json({ success: false, message: 'Failed to send message. Please try again later.' }, { status: 500 });
+    console.error('Error sending contact form email:', error.message);
+    console.error('Error code:', error.code);
+
+    let userMessage = 'Failed to send message. Please try again later.';
+    if (error.code === 'EAUTH') {
+      userMessage = 'Email authentication failed. Please contact support.';
+    } else if (error.code === 'ESOCKET' || error.code === 'ECONNECTION') {
+      userMessage = 'Could not connect to the mail server. Please try again later.';
+    }
+
+    return NextResponse.json(
+      { success: false, message: userMessage },
+      { status: 500 }
+    );
   }
 }
