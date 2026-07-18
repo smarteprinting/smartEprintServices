@@ -1,6 +1,7 @@
 "use client";
 
 import { Zap, Clock, Shield, Lightbulb, ArrowRight, CheckCircle } from 'lucide-react';
+import StandardCTA from './StandardCTA';
 
 export default function WhyChooseUs() {
   const benefits = [
@@ -27,10 +28,10 @@ export default function WhyChooseUs() {
   ];
 
   const features = [
-    { title: 'Rapid Assessment', desc: 'Quick diagnosis to get your systems back online fast' },
+    { title: 'Rapid Assessment', desc: 'Quick diagnosis to help get your systems back online' },
     { title: 'Flexible Scheduling', desc: 'Appointments that work with your busy schedule' },
     { title: 'On-Site Assistance', desc: 'Technicians trained in multiple services' },
-    { title: 'Quality Guaranteed', desc: 'Transparent pricing with no surprise fees' }
+    { title: 'Clear Communication', desc: 'Transparent pricing and straightforward next steps' }
   ];
 
   const stats = [
@@ -145,47 +146,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* CTA Section */}
-        <div className="relative rounded-3xl overflow-hidden mb-16 lg:mb-24 shadow-xl">
-          {/* Vibrant Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-500 via-brand-600 to-brand-700"></div>
-          
-          {/* Animated Background Elements */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-white/20 rounded-full blur-3xl -mr-40 -mt-40"></div>
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-400/20 rounded-full blur-3xl -ml-40 -mb-40"></div>
-          
-          {/* Content */}
-          <div className="relative z-10 p-8 lg:p-16 text-white">
-            <div className="max-w-3xl">
-              <h3 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                Ready to get on-site support?
-              </h3>
-              
-              <p className="text-lg lg:text-xl text-white/95 mb-10 leading-relaxed font-medium">
-                Schedule your on-site service today. Our team is ready to help.
-              </p>
-              
-              <a
-                href="/book-an-appointment"
-                className="inline-flex items-center gap-3 bg-white text-black hover:bg-blue-50 font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:gap-4 group shadow-xl hover:shadow-2xl transform hover:scale-105"
-              >
-                Book Service Now
-                <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
-              </a>
-              
-              {/* Contact Info */}
-              <div className="mt-10 flex flex-wrap gap-8 text-white/90 text-sm">
-                <div>
-                  <p className="text-white/70 text-xs uppercase tracking-wider mb-1">Call Us</p>
-                  <a href="tel:+18777652289" className="font-semibold hover:text-white transition">+1 (877)765-2289</a>
-                </div>
-                <div>
-                  <p className="text-white/70 text-xs uppercase tracking-wider mb-1">Email</p>
-                  <a href="mailto:support@smarteprintservices.com" className="font-semibold hover:text-white transition">support@smarteprintservices.com</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+       <StandardCTA />
 
         {/* Services Grid */}
         <div>

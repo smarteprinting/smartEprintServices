@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Calendar } from 'lucide-react';
+import StandardCTA from './StandardCTA';
 
 const blogPosts = [
   {
@@ -117,32 +118,7 @@ export default function BlogSection() {
         </div>
 
         {/* CTA Section */}
-        <div className="relative mt-16 rounded-2xl overflow-hidden">
-          {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-500 via-brand-600 to-brand-700"></div>
-          <div className="absolute top-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl -mr-36 -mt-36"></div>
-
-          {/* Content */}
-          <div className="relative z-10 p-8 lg:p-12 text-white">
-            <div className="max-w-2xl">
-              <h3 className="text-2xl lg:text-3xl font-bold mb-3">
-                Stay Informed with Simple Tech Tips
-              </h3>
-              
-              <p className="text-base lg:text-lg text-white/90 mb-6">
-                Subscribe to receive occasional updates featuring maintenance tips and technology guides.
-              </p>
-              
-              <Link
-                href="/blogs"
-                className="inline-flex items-center text-black gap-3 bg-white text-brand-600 hover:bg-blue-50 font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:gap-4 group"
-              >
-                Explore All Articles
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </div>
-        </div>
+        <StandardCTA />
       </div>
     </section>
   );

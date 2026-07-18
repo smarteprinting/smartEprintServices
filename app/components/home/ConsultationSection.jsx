@@ -11,6 +11,7 @@ import {
   Home,
   Wifi,
 } from "lucide-react";
+import StandardCTA from "../StandardCTA";
 
 export default function ConsultationSection() {
   const features = [
@@ -134,30 +135,7 @@ export default function ConsultationSection() {
       </div>
 
       {/* CTA Section */}
-      <div className="relative w-full py-16 lg:py-20 bg-gradient-to-r from-[#024AD8] to-blue-600">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -mr-48 -mt-48"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -ml-48 -mb-48"></div>
-        </div>
-
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-            Ready to Get On-Site Support?
-          </h3>
-          
-          <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
-            Schedule your on-site consultation today. We are here to help with your technology and appliance needs.
-          </p>
-
-          <Link
-            href="/book-an-appointment"
-            className="inline-flex items-center gap-3 bg-white text-[#024AD8] hover:bg-blue-50 font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-xl transform hover:scale-105"
-          >
-            <CheckCircle className="h-6 w-6" />
-            Book Your Consultation
-          </Link>
-        </div>
-      </div>
+     <StandardCTA />
     </section>
   );
 }

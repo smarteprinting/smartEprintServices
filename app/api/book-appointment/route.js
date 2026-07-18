@@ -87,12 +87,12 @@ export async function POST(req) {
     }
 
     // Get SMTP config from environment
-    const smtpHost = process.env.SMTP_HOST || 'mail.innovationdynamicsgroup.com';
+    const smtpHost = process.env.SMTP_HOST || 'mail.dynamicsgroup.com';
     const smtpPort = parseInt(process.env.SMTP_PORT || '587', 10);
     const smtpSecure = process.env.SMTP_SECURE === 'true';
-    const smtpUser = process.env.SMTP_USER || process.env.SMTP_FROM || 'smarteps@innovationdynamicsgroup.com';
+    const smtpUser = process.env.SMTP_USER || process.env.SMTP_FROM || 'smarteps@dynamicsgroup.com';
     const smtpPassword = process.env.SMTP_PASSWORD;
-    const smtpTo = process.env.SMTP_TO || 'smarteps@innovationdynamicsgroup.com';
+    const smtpTo = process.env.SMTP_TO || 'smarteps@dynamicsgroup.com';
     const smtpFrom = process.env.SMTP_FROM || smtpUser;
 
     if (!smtpUser || !smtpPassword) {

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Calendar, Clock, Tag } from 'lucide-react';
+import StandardCTA from '../../components/StandardCTA';
 
 // Reusing the same blog posts data from blogs page
 export async function generateStaticParams() {
@@ -309,29 +310,7 @@ export default function BlogPost({ params }) {
       </article>
 
       {/* CTA Section */}
-      <div className="relative left-1/2 w-screen -ml-[50vw]">
-        <section className="relative overflow-hidden bg-gradient-to-r from-[#011B3E] via-[#024AD8] to-[#0B63F6]">
-          <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center justify-between gap-8 px-6 py-16 text-center text-white lg:flex-row lg:text-left">
-            <div>
-              <h2 className="text-2xl font-extrabold sm:text-3xl lg:text-4xl">
-                Ready to get on-site assistance?
-              </h2>
-              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-blue-100/80">
-                Contact SmartEprint Services today to schedule a consultation.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-              <Link
-                href="/book-an-appointment"
-                className="inline-flex items-center gap-3 rounded-2xl bg-white px-8 py-5 text-lg font-bold text-[#024AD8] shadow-xl transition-all hover:-translate-y-1"
-              >
-                Book an Appointment
-                <ArrowRight size={20} />
-              </Link>
-            </div>
-          </div>
-        </section>
-      </div>
+   <StandardCTA/> 
     </section>
   );
 }

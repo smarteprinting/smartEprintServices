@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import StandardCTA from "../components/StandardCTA";
 
 export const metadata = {
   title: "Privacy Policy | SmartEprint Services",
@@ -292,7 +293,7 @@ export default function PrivacyPolicy() {
                 <div className="space-y-4">
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">Address:</p>
-                    <p className="text-gray-600">11397 Quincy St NE<br />Blaine, MN 55434<br />United States</p>
+                    <p className="text-gray-600">11397 Quincy St NE<br />Blaine, Minnesota, 55434<br />United States</p>
                   </div>
                   
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 pt-4 border-t border-gray-200">
@@ -319,36 +320,7 @@ export default function PrivacyPolicy() {
 
       {/* ========== CTA ========== */}
 
-      <div className="relative left-1/2 w-screen -ml-[50vw]">
-        <section className="relative overflow-hidden bg-gradient-to-r from-[#011B3E] via-[#024AD8] to-[#0B63F6]">
-          {/* Decorative */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
-            <div className="absolute -bottom-10 -right-10 h-60 w-60 rounded-full bg-white/5 blur-3xl" />
-          </div>
-
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-20 text-center text-white lg:flex-row lg:text-left">
-            <div>
-              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-                Have questions
-                <span className="block text-blue-200">about our policies?</span>
-              </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-blue-100/80">
-                Contact us for clarification or more information about our policies and practices.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-              <Link
-                href="/contact-us"
-                className="group inline-flex items-center gap-3 rounded-2xl bg-white px-8 py-5 text-lg font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
-              >
-                Contact Us
-                <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
-        </section>
-      </div>
+   <StandardCTA />
     </section>
   );
 }

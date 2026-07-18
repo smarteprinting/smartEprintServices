@@ -9,6 +9,7 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
+import StandardCTA from "../components/StandardCTA";
 
 export const metadata = {
   title: "About Us | SmartEprint Services",
@@ -151,8 +152,8 @@ export default function AboutPage() {
               <div className="mt-10 flex flex-wrap gap-8 border-t border-white/10 pt-8">
                 {[
                   { value: "On-Site", label: "On-Site Service" },
-                  { value: "24/7", label: "Consultation Support" },
-                  { value: "100%", label: "Customer Focused" },
+                  { value: "Flexible", label: "Consultation Support" },
+                  { value: "Client", label: "Focused" },
                 ].map((stat) => (
                   <div key={stat.label} className="min-w-[120px]">
                     <div className="text-2xl font-extrabold text-white md:text-3xl">
@@ -417,43 +418,7 @@ export default function AboutPage() {
 
       {/* ========== CTA ========== */}
 
-      <div className="relative left-1/2 w-screen -ml-[50vw]">
-        <section className="relative overflow-hidden bg-gradient-to-r from-[#011B3E] via-[#024AD8] to-[#0B63F6]">
-
-          {/* Decorative elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
-            <div className="absolute -bottom-10 -right-10 h-60 w-60 rounded-full bg-white/5 blur-3xl" />
-          </div>
-
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-16 text-center text-white lg:flex-row lg:text-left">
-
-            <div>
-
-              <h2 className="text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
-                Need On-Site
-                <span className="block text-blue-200">Assistance?</span>
-              </h2>
-
-              <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-blue-100/90 font-medium">
-                Contact SmartEprint Services today to schedule a consultation and
-                let us help with your technology or appliance service needs.
-              </p>
-
-            </div>
-
-            <button className="group inline-flex shrink-0 items-center gap-2.5 rounded-full bg-white px-8 py-4 text-[14px] font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-              Get Started
-              <ArrowRight
-                size={16}
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              />
-            </button>
-
-          </div>
-
-        </section>
-      </div>
+   <StandardCTA />
 
     </section>
   );

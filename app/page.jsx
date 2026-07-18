@@ -76,12 +76,12 @@ export default function HomePage() {
               </p>
               
               <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5">
-                <a className="group relative flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-full bg-[#024AD8] px-9 py-4 text-[14px] font-bold text-white shadow-xl shadow-[#024AD8]/25 transition-all hover:scale-[1.02] hover:bg-blue-800 hover:shadow-2xl hover:shadow-[#024AD8]/40" href="/book-an-appointment">
-                  <span>Book an Appointment</span>
+                <a className="group relative flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-full bg-[#024AD8] px-9 py-4 text-[14px] font-bold text-white shadow-2xl shadow-[#024AD8]/30 ring-2 ring-white/20 transition-all hover:scale-[1.02] hover:bg-blue-800 hover:shadow-3xl hover:shadow-[#024AD8]/40" href="/book-an-appointment">
+                  <span>Book Your Service Now</span>
                   <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
-                <a className="group flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-slate-200 bg-white/60 px-9 py-4 text-[14px] font-bold text-slate-700 backdrop-blur-md transition-all hover:border-[#024AD8]/30 hover:bg-white hover:text-[#024AD8] shadow-sm hover:shadow-md" href="/services">
-                  View Our Services
+                <a className="group flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-slate-200 bg-white/70 px-9 py-4 text-[14px] font-bold text-slate-700 backdrop-blur-md transition-all hover:border-[#024AD8]/30 hover:bg-white hover:text-[#024AD8] shadow-sm hover:shadow-md" href="/services">
+                  Explore Our Services
                 </a>
               </div>
 
@@ -249,10 +249,10 @@ export default function HomePage() {
             </h2>
           </div>
           <div className="lg:col-span-7 space-y-5 text-[15px] text-slate-500 leading-relaxed font-medium">
-            <p className="text-lg text-slate-700 font-semibold leading-relaxed">Printer problems can interrupt work, delay important documents, and create unnecessary frustration. Smart ePrint Services helps home users, professionals, and businesses resolve common printer issues without requiring them to transport bulky equipment to a service location.</p>
+            <p className="text-lg text-slate-700 font-semibold leading-relaxed">Printer problems can interrupt work, delay important documents, and create unnecessary frustration. Smart ePrint Services helps home users, professionals, and businesses address common printer issues without requiring them to transport bulky equipment to a service location.</p>
             <div className="h-px w-20 bg-slate-200 my-6"></div>
             <p>Our services may include printer setup, basic troubleshooting, wireless configuration, print-quality checks, paper-feed inspection, driver guidance, scanning setup, preventive maintenance, and other printer-related assistance.</p>
-            <p>Every service request is different. The exact solution depends on the printer model, age, condition, availability of compatible parts, and the nature of the problem. Our goal is to provide a clear assessment and practical recommendation based on the condition of the equipment.</p>
+            <p>Every service request is different. The exact solution depends on the printer model, age, condition, the availability of compatible parts, and the nature of the problem. Our goal is to provide a clear assessment and practical recommendation based on the condition of the equipment.</p>
           </div>
         </div>
       </section>
@@ -332,22 +332,15 @@ export default function HomePage() {
           <div className="absolute bottom-0 left-0 -ml-20 -mb-20 h-72 w-72 rounded-full bg-white/10 blur-3xl transition-transform duration-1000 group-hover:scale-110"></div>
           
           <div className="relative z-10">
-            <h2 className="text-3xl font-black text-white sm:text-4xl tracking-tight drop-shadow-sm">Need Help With a Printer?</h2>
+            <h2 className="text-3xl font-black text-white sm:text-4xl tracking-tight drop-shadow-sm">Need Fast Printer Help?</h2>
             <p className="mx-auto mt-5 max-w-2xl text-[15px] text-blue-100/90 leading-relaxed font-medium">
-              Tell us what is happening, provide your printer model, and choose a convenient appointment time. Our team will review your request and contact you to confirm the next steps.
+              Tell us what is happening, share your printer model, and choose a convenient appointment time. Our team will review your request and contact you with the next steps quickly.
             </p>
             <div className="mt-12 flex flex-wrap items-center justify-center gap-5">
-              <a href="/book-an-appointment" className="inline-flex items-center rounded-full bg-white px-8 py-4 text-[14px] font-bold text-[#024AD8] hover:bg-slate-50 transition-all hover:scale-105 hover:shadow-lg hover:shadow-black/10">
-                Book an Appointment
+              <a href="/book-an-appointment" className="inline-flex items-center rounded-full bg-white px-8 py-4 text-[14px] font-bold text-[#024AD8] transition-all hover:scale-105 hover:bg-slate-50 hover:shadow-lg hover:shadow-black/10">
+                Schedule My Service
               </a>
-              <a href="tel:+18777652289" className="inline-flex items-center rounded-full border border-white/30 bg-white/5 backdrop-blur-sm px-8 py-4 text-[14px] font-bold text-white hover:bg-white/20 hover:border-white/50 transition-all">
-                <svg className="mr-2.5 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                +1 (877)765-2289
-              </a>
-              <a href="mailto:support@smarteprintservices.com" className="inline-flex items-center rounded-full border border-white/30 bg-white/5 backdrop-blur-sm px-8 py-4 text-[14px] font-bold text-white hover:bg-white/20 hover:border-white/50 transition-all">
-                <svg className="mr-2.5 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                Email Us
-              </a>
+             
             </div>
           </div>
         </div>

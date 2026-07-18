@@ -12,6 +12,7 @@ import {
   ThumbsUp,
 } from "lucide-react";
 import BookAppointmentForm from "../components/BookAppointmentForm";
+import StandardCTA from "../components/StandardCTA";
 
 export const metadata = {
   title: "Book an Appointment | SmartEprint Services",
@@ -242,36 +243,7 @@ export default function BookingPage() {
 
       {/* ========== CTA ========== */}
 
-      <div className="relative left-1/2 w-screen -ml-[50vw]">
-        <section className="relative overflow-hidden bg-gradient-to-r from-[#011B3E] via-[#024AD8] to-[#0B63F6]">
-          {/* Decorative */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
-            <div className="absolute -bottom-10 -right-10 h-60 w-60 rounded-full bg-white/5 blur-3xl" />
-          </div>
-
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-16 text-center text-white lg:flex-row lg:text-left">
-            <div>
-              <h2 className="text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
-                Ready to get on-site
-                <span className="block text-blue-200">assistance?</span>
-              </h2>
-              <p className="mt-4 max-w-2xl text-[15px] font-medium leading-relaxed text-blue-100/80">
-                Contact SmartEprint Services today to schedule a consultation and let us help with your technology or appliance needs.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-              <Link
-                href="/contact-us"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-white px-8 py-4 text-[14px] font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
-              >
-                Contact Us
-                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
-        </section>
-      </div>
+<StandardCTA/>
     </section>
   );
 }

@@ -14,6 +14,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import Link from "next/link";
+import StandardCTA from "../components/StandardCTA";
 
 export const metadata = {
   title: "Printer Services | SmartEprint Services",
@@ -518,44 +519,7 @@ export default function ServicesPage() {
 
       {/* ========== BOTTOM CTA ========== */}
 
-      <div className="relative left-1/2 w-screen -ml-[50vw]">
-        <section className="relative overflow-hidden bg-gradient-to-r from-[#011B3E] via-[#024AD8] to-[#0B63F6]">
-
-          {/* Decorative */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
-            <div className="absolute -bottom-10 -right-10 h-60 w-60 rounded-full bg-white/5 blur-3xl" />
-          </div>
-
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-16 text-center text-white lg:flex-row lg:text-left">
-
-            <div>
-              <h2 className="text-2xl font-black tracking-tight sm:text-3xl lg:text-4xl">
-                Ready to Get
-                <span className="block text-blue-200">On-Site Help?</span>
-              </h2>
-              <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-blue-100/90 font-medium">
-                Contact Smart ePrint Services today to schedule a consultation. We&apos;ll
-                discuss your needs and arrange convenient on-site assistance.
-              </p>
-            </div>
-
-            <Link
-              href="/book-an-appointment"
-              className="group inline-flex shrink-0 items-center gap-2.5 rounded-full bg-white px-8 py-4 text-[14px] font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
-            >
-              Book an Appointment
-              <ArrowRight
-                size={16}
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              />
-            </Link>
-
-          </div>
-
-        </section>
-      </div>
-
+      <StandardCTA  />
     </section>
   );
 }
