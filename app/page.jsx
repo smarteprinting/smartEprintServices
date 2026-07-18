@@ -62,10 +62,7 @@ export default function HomePage() {
           
           <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 w-full flex flex-col items-center">
             <div className="mx-auto max-w-4xl text-center">
-              
-              <div className="mb-6 inline-flex items-center justify-center rounded-full border border-[#024AD8]/20 bg-[#024AD8]/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#024AD8] backdrop-blur-md">
-                Professional Printer Support
-              </div>
+            
 
               <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-[4.5rem] lg:leading-[1.1] pb-2 drop-shadow-sm">
                 On-Site Printer Service <br className="hidden sm:block" />

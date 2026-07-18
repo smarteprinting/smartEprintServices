@@ -61,7 +61,7 @@ export default function Footer() {
             
             
             <p className="text-sm text-slate-400 mb-6 leading-relaxed">
-              Dependable on-site technology and appliance support for homes and businesses.
+              Need On-Site Printer Service? Book a Professional Visit for Your Home or Business Today.
             </p>
 
             <div className="mb-6">
