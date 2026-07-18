@@ -419,7 +419,7 @@ export default function ServicesPage() {
                   {/* Content Side */}
                   <div className={`${!isEven && service.items.length > 0 ? "lg:[direction:ltr]" : ""} ${service.items.length === 0 ? "max-w-3xl" : ""}`}>
 
-                    {/* Service number + icon header */}
+                    {/* Service icon header */}
                     <div className="mb-5 flex items-center gap-4">
                       <div
                         className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl shadow-lg transition-transform duration-500 hover:scale-105"
@@ -431,9 +431,6 @@ export default function ServicesPage() {
                         <Icon className="h-7 w-7 text-white" />
                       </div>
                       <div>
-                        <span className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#024AD8]/60">
-                          Service {String(index + 1).padStart(2, "0")}
-                        </span>
                         <h2 className="text-2xl font-black tracking-tight text-gray-900 sm:text-3xl mt-0.5">
                           {service.title}
                         </h2>

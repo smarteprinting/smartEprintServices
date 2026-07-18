@@ -298,20 +298,21 @@ export default function HomePage() {
         <div className="text-center mb-10 max-w-2xl mx-auto">
           <h3 className="text-[11px] font-bold tracking-[0.2em] text-[#024AD8] uppercase mb-4 opacity-90">Benefits</h3>
           <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Why Choose Smart ePrint Services?
+            How Our On-Site Printer Service Works
           </h2>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[
-            { title: 'Local and Convenient Service', desc: 'We provide appointment-based service for customers in Blaine and nearby areas, subject to availability.', icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z', extraIcon: 'M15 11a3 3 0 11-6 0 3 3 0 016 0z' },
-            { title: 'Clear Service Process', desc: 'We gather the required information before the visit so the service professional arrives with a better understanding of the issue.', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4' },
-            { title: 'Upfront Communication', desc: 'The issue, recommended service, and applicable charges are explained before approved work begins.', icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z' },
-            { title: 'Home and Business Assistance', desc: 'Our services are suitable for home offices, remote workers, small businesses, professional offices, and other workplaces that depend on reliable printing.', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
-            { title: 'Customer-Focused Approach', desc: 'We take time to understand the problem, answer relevant questions, and explain the next steps in straightforward language.', icon: 'M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5' },
+            { title: 'Clear Explanations', desc: 'Printer problems are easier to handle when the customer understands what is happening. We explain the issue and available options without using unnecessary technical language.', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4' },
+            { title: 'Practical Recommendations', desc: 'We focus on the service that fits the reported problem instead of recommending work that may not be relevant.', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' },
+            { title: 'Home and Business Assistance', desc: 'Our services are suitable for individual home users, remote professionals, small businesses, offices, and other workplace environments.', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
+            { title: 'Convenient Service Requests', desc: 'Customers can provide their printer details online and request an appointment without waiting for a lengthy telephone assessment.', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
+            { title: 'Transparent Communication', desc: 'Service requirements, availability, and applicable charges are discussed before additional work is approved.', icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z' },
+            { title: 'United States Service Coverage', desc: 'We accept printer service requests from customers throughout the United States. The available service format and appointment options may differ depending on location.', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h.5A2.5 2.5 0 0018 5.5v-1.5M15 7v2.5A2.5 2.5 0 0112.5 12h-.5a2 2 0 00-2 2 2 2 0 11-4 0 2 2 0 00-2-2h-.5A2.5 2.5 0 016 7V6' },
           ].map((item, idx) => (
             <div key={idx} className="group flex gap-5 p-7 rounded-[24px] border border-slate-100 bg-white shadow-sm hover:shadow-[0_20px_40px_rgb(2,74,216,0.06)] hover:border-[#024AD8]/20 transition-all duration-300 hover:-translate-y-1">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-50 text-[#024AD8] border border-slate-100 group-hover:bg-[#024AD8] group-hover:border-[#024AD8] group-hover:text-white transition-colors">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#024AD8] text-white border border-slate-100  group-hover:border-[#024AD8] group-hover:text-white transition-colors">
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.icon}></path>
                   {item.extraIcon && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.extraIcon} />}
