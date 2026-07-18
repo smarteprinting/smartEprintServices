@@ -59,7 +59,20 @@ function buildEmailContent({ fullName, phone, email, serviceType, description })
 
 export async function POST(req) {
   try {
-    const body = await req.json();
+    const rawBody = await req.text();
+    let body = {};
+
+    if (rawBody) {
+      try {
+        body = JSON.parse(rawBody);
+      } catch (parseError) {
+        return NextResponse.json(
+          { success: false, message: 'Invalid request payload.' },
+          { status: 400 }
+        );
+      }
+    }
+
     const { fullName, phone, email, serviceType, description } = body;
 
     // Validate required fields
@@ -75,9 +88,9 @@ export async function POST(req) {
 
     // Get SMTP config from environment
     const smtpHost = process.env.SMTP_HOST || 'mail.innovationdynamicsgroup.com';
-    const smtpPort = parseInt(process.env.SMTP_PORT || '465', 10);
+    const smtpPort = parseInt(process.env.SMTP_PORT || '587', 10);
     const smtpSecure = process.env.SMTP_SECURE === 'true';
-    const smtpUser = process.env.SMTP_USER;
+    const smtpUser = process.env.SMTP_USER || process.env.SMTP_FROM || 'smarteps@innovationdynamicsgroup.com';
     const smtpPassword = process.env.SMTP_PASSWORD;
     const smtpTo = process.env.SMTP_TO || 'smarteps@innovationdynamicsgroup.com';
     const smtpFrom = process.env.SMTP_FROM || smtpUser;
@@ -110,23 +123,7 @@ export async function POST(req) {
       socketTimeout: 15000,
     });
 
-    // Verify the SMTP connection first
-    try {
-      await transporter.verify();
-      console.log('SMTP connection verified successfully.');
-    } catch (verifyError) {
-      console.error('SMTP connection verification failed:', verifyError.message);
-      console.error('Full verify error:', JSON.stringify(verifyError, Object.getOwnPropertyNames(verifyError)));
-      return NextResponse.json(
-        {
-          success: false,
-          message: 'Could not connect to the mail server. Please try again later.',
-        },
-        { status: 500 }
-      );
-    }
-
-    // Send the email
+    // Send the email directly; some hosts reject verify() even when sendMail works.
     const info = await transporter.sendMail({
       from: `"Smart ePrint Services" <${smtpFrom}>`,
       to: smtpTo,

@@ -3,7 +3,21 @@ import nodemailer from 'nodemailer';
 
 export async function POST(req) {
   try {
-    const { fullName, email, message } = await req.json();
+    const rawBody = await req.text();
+    let body = {};
+
+    if (rawBody) {
+      try {
+        body = JSON.parse(rawBody);
+      } catch (parseError) {
+        return NextResponse.json(
+          { success: false, message: 'Invalid request payload.' },
+          { status: 400 }
+        );
+      }
+    }
+
+    const { fullName, email, message } = body;
 
     // Validate required fields
     if (!fullName?.trim() || !email?.trim() || !message?.trim()) {
@@ -13,7 +27,10 @@ export async function POST(req) {
       );
     }
 
-    const smtpUser = process.env.SMTP_USER;
+    const smtpHost = process.env.SMTP_HOST || 'mail.innovationdynamicsgroup.com';
+    const smtpPort = parseInt(process.env.SMTP_PORT || '587', 10);
+    const smtpSecure = process.env.SMTP_SECURE === 'true';
+    const smtpUser = process.env.SMTP_USER || process.env.SMTP_FROM || 'smarteps@innovationdynamicsgroup.com';
     const smtpPassword = process.env.SMTP_PASSWORD;
     const smtpTo = process.env.SMTP_TO || 'smarteps@innovationdynamicsgroup.com';
     const smtpFrom = process.env.SMTP_FROM || smtpUser;
@@ -28,9 +45,9 @@ export async function POST(req) {
 
     // Configure nodemailer with webmail-compatible settings
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'mail.innovationdynamicsgroup.com',
-      port: parseInt(process.env.SMTP_PORT || '587', 10),
-      secure: process.env.SMTP_SECURE === 'true',
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpSecure,
       auth: {
         user: smtpUser,
         pass: smtpPassword,

@@ -38,7 +38,7 @@ export default function BookAppointmentForm() {
     setStatusMessage("");
 
     try {
-      const response = await fetch("/api/book-appointment", {
+      const response = await fetch("/api/book-appointment/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
