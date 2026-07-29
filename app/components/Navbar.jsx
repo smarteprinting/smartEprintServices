@@ -99,20 +99,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex flex-1 items-center justify-end gap-2 lg:hidden">
-          <form
-            onSubmit={handleSearch}
-            className="flex flex-1 max-w-[220px] items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-2 shadow-sm"
-          >
-            <Search size={15} className="mr-2 text-slate-400" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(event) => setSearchQuery(event.target.value)}
-              placeholder="Search"
-              className="w-full border-none bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
-              aria-label="Search services"
-            />
-          </form>
+          
 
           <button
             onClick={() => setOpen(!open)}
@@ -139,17 +126,7 @@ export default function Navbar() {
         <aside
           className={`fixed right-0 top-20 z-50 h-[calc(100vh-5rem)] w-full max-w-sm overflow-y-auto border-l border-slate-200 bg-white shadow-2xl transition-transform duration-300 ease-out lg:hidden translate-x-0`}>
           <nav className="flex flex-col gap-1 p-4">
-            <form onSubmit={handleSearch} className="mb-3 flex items-center rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 shadow-sm">
-              <Search size={16} className="mr-2 text-slate-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                placeholder="Search services"
-                className="w-full border-none bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
-                aria-label="Search services"
-              />
-            </form>
+           
 
             {quickLinks.map((link) => (
               <Link
@@ -164,13 +141,7 @@ export default function Navbar() {
 
             <div className="my-4 border-t border-slate-200" />
 
-            <Link
-              href="/book-an-appointment"
-              onClick={closeMenu}
-              className="rounded-2xl bg-gradient-to-r from-brand-500 to-brand-700 px-4 py-3 text-center font-semibold text-white shadow-lg transition hover:shadow-xl active:shadow-md"
-            >
-              Book Service
-            </Link>
+            
           </nav>
         </aside>
       )}
