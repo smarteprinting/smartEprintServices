@@ -8,7 +8,6 @@ import { Menu, X, Search } from "lucide-react";
 
 const quickLinks = [
   { href: "/", label: "Home" },
-  { href: "/about-us", label: "About" },
   { href: "/services", label: "Our Services" },
   { href: "/book-an-appointment", label: "Book an Appointment" },
   { href: "/contact-us", label: "Contact Us" },
@@ -81,20 +80,7 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex flex-1 items-center justify-end gap-4">
-          <form
-            onSubmit={handleSearch}
-            className="flex items-center rounded-full border border-slate-200 bg-slate-50 px-3 py-2 shadow-sm transition focus-within:border-brand-500 focus-within:bg-white focus-within:shadow-md"
-          >
-            <Search size={16} className="mr-2 text-slate-400" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(event) => setSearchQuery(event.target.value)}
-              placeholder="Search services"
-              className="w-40 border-none bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
-              aria-label="Search services"
-            />
-          </form>
+         
 
           <nav className="flex items-center gap-7">
             {quickLinks.map((link) => (
@@ -109,12 +95,7 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <Link
-            href="/book-an-appointment"
-            className="rounded-full bg-gradient-to-r from-brand-500 to-brand-700 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl"
-          >
-            Book Service
-          </Link>
+         
         </div>
 
         <div className="flex flex-1 items-center justify-end gap-2 lg:hidden">

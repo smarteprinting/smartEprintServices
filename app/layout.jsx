@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import SiteLayout from './components/SiteLayout';
 
@@ -27,6 +28,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Script
+          id="cookieyes"
+          strategy="beforeInteractive"
+          src="https://cdn-cookieyes.com/client_data/c10dbbbd8867014a9030d7802875f74c/script.js"
+        />
         <SiteLayout>{children}</SiteLayout>
       </body>
     </html>
