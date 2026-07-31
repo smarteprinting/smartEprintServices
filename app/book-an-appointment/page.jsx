@@ -3,7 +3,6 @@ import {
   Phone,
   Mail,
   MapPin,
-  ArrowRight,
   CheckCircle2,
   Calendar,
   MessageCircle,
@@ -62,83 +61,95 @@ const processSteps = [
 export default function BookingPage() {
   return (
     <section className="bg-white">
-      {/* ========== FULL-WIDTH HERO WITH BACKGROUND IMAGE ========== */}
+      {/* ========== COMBINED HERO + FORM FRAME ========== */}
 
       <div className="relative left-1/2 w-screen -ml-[50vw]">
+
+        {/* --- TOP: HERO WITH BACKGROUND IMAGE --- */}
         <div
           className="relative overflow-hidden"
           style={{
-            backgroundImage: "url('/bg-hero.webp')",
-            backgroundPosition: "center",
+            backgroundImage: "url('/appointment-hero-1.webp')",
+            backgroundPosition: "center right",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
           }}
         >
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#011B3E]/95 via-[#024AD8]/80 to-[#0B63F6]/70" />
 
-          {/* Decorative orbs */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-white/5 blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-[#3B82F6]/10 blur-3xl" />
-            <div className="absolute top-1/2 right-1/4 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
-          </div>
 
-          <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-10 lg:py-12 xl:py-14">
-            <div className="grid items-center gap-10 lg:gap-12 xl:gap-16 lg:grid-cols-12">
-              {/* LEFT: CONTENT */}
-              <div className="lg:col-span-7 xl:col-span-7">
-                <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold tracking-[0.2em] uppercase text-white backdrop-blur-sm">
-                  <span className="h-2 w-2 rounded-full bg-[#3B82F6] shadow-[0_0_8px_#3B82F6]" />
-                  On-site Printer Repair and Setup
-                </span>
-
-                <h1 className="mt-2 text-2xl font-black leading-[1.15] tracking-tight text-white sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-[44px]">
-                  Fast, reliable printer solutions
-                  <span className="block bg-gradient-to-r from-[#60A5FA] to-[#93C5FD] bg-clip-text text-transparent">
-                    at your doorstep
-                  </span>
-                </h1>
-
-                <p className="mt-3 max-w-xl text-sm sm:text-base lg:text-[14px] xl:text-[15px] font-medium leading-relaxed text-blue-100/90">
-                  Fast, reliable printer solutions at your doorstep for home and business users.
-                </p>
-
-                {/* Trust Badges */}
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {["Consultation-based service", "No hidden charges", "Doorstep service"].map((item, i) => (
-                    <div key={i} className="flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[10px] font-bold tracking-wide uppercase text-white backdrop-blur-sm">
-                      <CheckCircle2 className="h-3 w-3 text-[#60A5FA]" />
-                      {item}
-                    </div>
-                  ))}
-                </div>
-
-                {/* Call Us CTA */}
-                <div className="mt-5 flex flex-row items-center gap-4 sm:gap-5 flex-wrap">
-                  <a
-                    href="tel:+18777652289"
-                    className="group inline-flex items-center gap-2.5 rounded-full border-2 border-white bg-transparent px-4 py-2 text-[18px] sm:text-[20px] font-bold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#024AD8] hover:shadow-white/10 cursor-pointer"
-                  >
-                    <Phone size={28} />
-                    +1 (877)765-2289
-                    <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
-                  </a>
-                  
-                  <img src="/hp-partner.png" alt="HP Partner" width="220" height="100" className="h-14 lg:h-16 w-auto object-contain" />
-                </div>
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 py-7 sm:py-8 lg:py-10">
+            <div className="max-w-xl">
+              {/* HP Partner Badge */}
+              <div className="mb-3">
+                <img
+                  src="/hp-partner.png"
+                  alt="HP Partner"
+                  width="220"
+                  height="100"
+                  className="h-10 lg:h-12 w-auto object-contain drop-shadow-lg"
+                />
               </div>
 
-              {/* RIGHT: FORM */}
-              <div className="lg:col-span-5 xl:col-span-5 w-full">
-                <BookAppointmentForm />
-              </div>
+              {/* Title */}
+              <h1 className="text-lg font-bold text-white sm:text-xl lg:text-2xl">
+                On-site Printer Repair and Setup
+              </h1>
+
+              {/* Call Us */}
+              <p className="mt-2 text-xs font-medium text-blue-200/80">Call Us:</p>
+              <a
+                href="tel:+18777652289"
+                className="mt-1 inline-flex items-center gap-2 rounded-lg border-2 border-white/90 bg-white/10 backdrop-blur-sm px-4 py-2 text-base sm:text-lg font-bold text-white transition-all duration-300 hover:bg-white hover:text-[#024AD8] cursor-pointer"
+              >
+                <Phone size={18} />
+                +1 (877)765-2289
+              </a>
+
+              {/* Subtext */}
+              <p className="mt-3 max-w-md text-xs sm:text-sm font-medium leading-relaxed text-blue-100/85">
+                Fast, reliable printer solutions at your doorstep for home and business users.
+                <br />
+                100% professional service.
+              </p>
+
+              {/* Trust Points */}
+              <p className="mt-1.5 text-[11px] font-semibold text-blue-200/80">
+                • No hidden charges &nbsp;&nbsp; • Doorstep service
+              </p>
             </div>
           </div>
-
-          {/* Bottom fade */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
         </div>
+
+        {/* --- BOTTOM: FORM + IMAGE SECTION (seamless, no gap) --- */}
+        <div className="relative bg-[#F2F4F7]">
+          {/* Cyan/Blue top accent bar */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-[#00B4D8]" />
+
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 py-3 sm:py-6 lg:py-8">
+            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+
+              {/* LEFT: Form */}
+              <div>
+                <BookAppointmentForm />
+              </div>
+
+              {/* RIGHT: Image */}
+              <div className="hidden lg:block">
+                <div className="relative">
+                  <div className="overflow-hidden rounded-2xl shadow-lg border border-gray-200">
+                    <img
+                      src="/hero-consultatent.png"
+                      alt="Professional printer consultation and repair service"
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
       </div>
 
       {/* ========== OUR PROCESS ========== */}

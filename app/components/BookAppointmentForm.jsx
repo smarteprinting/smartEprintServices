@@ -68,21 +68,17 @@ export default function BookAppointmentForm() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-5 shadow-2xl sm:p-6 max-w-2xl lg:max-w-3xl mx-auto lg:ml-auto w-full">
+    <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white p-6 sm:p-8 lg:p-10 shadow-2xl shadow-[#024AD8]/8 w-full">
       {/* Decorative colored bar on top */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#024AD8] to-[#0B63F6]" />
+      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#024AD8] via-[#0B63F6] to-[#3B82F6]" />
 
-      <span className="inline-flex rounded-full bg-[#024AD8]/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-[#024AD8]">
-        Request a Consultation
-      </span>
-      <h2 className="mt-2 text-sm font-bold text-gray-900 sm:text-xl">Let's Get Started</h2>
-      <p className="mt-1 text-xs font-normal text-gray-500 leading-relaxed">
-        Tell us about your requirements, and we'll contact you to discuss suitable on-site assistance.
-      </p>
+      {/* Decorative corner accent */}
+      <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-[#024AD8]/5 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-16 -left-16 h-32 w-32 rounded-full bg-[#0B63F6]/5 blur-3xl pointer-events-none" />
 
       {statusMessage && (
         <div
-          className={`mt-3 rounded-lg p-3 text-center text-xs font-medium transition-all duration-300 ${
+          className={`mb-5 rounded-xl p-4 text-center text-sm font-medium transition-all duration-300 ${
             status === "success"
               ? "bg-green-50 text-green-800 border border-green-200 shadow-sm"
               : status === "error"
@@ -94,10 +90,10 @@ export default function BookAppointmentForm() {
         </div>
       )}
 
-      <form className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3.5" onSubmit={handleSubmit}>
+      <form className="grid grid-cols-1 sm:grid-cols-2 gap-5" onSubmit={handleSubmit}>
         {/* Full Name */}
         <div className="relative">
-          <label className="mb-1 block text-[11px] font-semibold text-gray-500">Full Name *</label>
+          <label className="mb-1.5 block text-[12px] font-semibold text-gray-600 uppercase tracking-wide">Full Name *</label>
           <div className="relative">
             <User className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 transition-colors duration-300" />
             <input
@@ -107,14 +103,14 @@ export default function BookAppointmentForm() {
               onChange={handleChange}
               placeholder="Enter your full name"
               required
-              className="w-full rounded-lg border border-gray-200 pl-10 pr-4 py-2.5 text-xs outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-4 focus:ring-[#024AD8]/10 bg-gray-50/50 focus:bg-white placeholder-gray-400 font-normal"
+              className="w-full rounded-xl border border-gray-200 pl-10 pr-4 py-3 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-4 focus:ring-[#024AD8]/10 bg-gray-50/50 focus:bg-white placeholder-gray-400 font-normal"
             />
           </div>
         </div>
 
         {/* Phone Number */}
         <div className="relative">
-          <label className="mb-1 block text-[11px] font-semibold ext-gray-500">Phone Number *</label>
+          <label className="mb-1.5 block text-[12px] font-semibold text-gray-600 uppercase tracking-wide">Phone Number *</label>
           <div className="relative">
             <Phone className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 transition-colors duration-300" />
             <input
@@ -124,14 +120,14 @@ export default function BookAppointmentForm() {
               onChange={handleChange}
               placeholder="Enter your phone number"
               required
-              className="w-full rounded-lg border border-gray-200 pl-10 pr-4 py-2.5 text-xs outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-4 focus:ring-[#024AD8]/10 bg-gray-50/50 focus:bg-white placeholder-gray-400 font-normal"
+              className="w-full rounded-xl border border-gray-200 pl-10 pr-4 py-3 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-4 focus:ring-[#024AD8]/10 bg-gray-50/50 focus:bg-white placeholder-gray-400 font-normal"
             />
           </div>
         </div>
 
         {/* Email Address */}
         <div className="relative">
-          <label className="mb-1 block text-[11px] font-semibold text-gray-500">Email Address *</label>
+          <label className="mb-1.5 block text-[12px] font-semibold text-gray-600 uppercase tracking-wide">Email Address *</label>
           <div className="relative">
             <Mail className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 transition-colors duration-300" />
             <input
@@ -141,14 +137,14 @@ export default function BookAppointmentForm() {
               onChange={handleChange}
               placeholder="Enter your email address"
               required
-              className="w-full rounded-lg border border-gray-200 pl-10 pr-4 py-2.5 text-xs outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-4 focus:ring-[#024AD8]/10 bg-gray-50/50 focus:bg-white placeholder-gray-400 font-normal"
+              className="w-full rounded-xl border border-gray-200 pl-10 pr-4 py-3 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-4 focus:ring-[#024AD8]/10 bg-gray-50/50 focus:bg-white placeholder-gray-400 font-normal"
             />
           </div>
         </div>
 
         {/* Service Type */}
         <div className="relative">
-          <label className="mb-1 block text-[11px] font-semibold text-gray-500">Service Type *</label>
+          <label className="mb-1.5 block text-[12px] font-semibold text-gray-600 uppercase tracking-wide">Service Type *</label>
           <div className="relative">
             <Wrench className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 transition-colors duration-300 pointer-events-none" />
             <select
@@ -156,7 +152,7 @@ export default function BookAppointmentForm() {
               value={formData.serviceType}
               onChange={handleChange}
               required
-              className="w-full rounded-lg border border-gray-200 pl-10 pr-10 py-2.5 text-xs outline-none appearance-none transition-all duration-300 focus:border-[#024AD8] focus:ring-4 focus:ring-[#024AD8]/10 bg-gray-50/50 focus:bg-white placeholder-gray-400 font-normal cursor-pointer"
+              className="w-full rounded-xl border border-gray-200 pl-10 pr-10 py-3 text-sm outline-none appearance-none transition-all duration-300 focus:border-[#024AD8] focus:ring-4 focus:ring-[#024AD8]/10 bg-gray-50/50 focus:bg-white placeholder-gray-400 font-normal cursor-pointer"
             >
               <option value="" disabled>Select Service</option>
               {serviceOptions.map((item) => (
@@ -169,16 +165,16 @@ export default function BookAppointmentForm() {
 
         {/* Describe Your Requirements */}
         <div className="sm:col-span-2 relative">
-          <label className="mb-1 block text-[11px] font-semibold text-gray-500">Describe Your Requirements</label>
+          <label className="mb-1.5 block text-[12px] font-semibold text-gray-600 uppercase tracking-wide">Describe Your Requirements</label>
           <div className="relative">
             <MessageSquare className="absolute left-3.5 top-3.5 h-4 w-4 text-gray-400 transition-colors duration-300" />
             <textarea
-              rows={3}
+              rows={4}
               name="description"
               value={formData.description}
               onChange={handleChange}
               placeholder="Tell us about your equipment or the assistance you need?"
-              className="w-full rounded-lg border border-gray-200 pl-10 pr-4 py-2.5 text-xs outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-4 focus:ring-[#024AD8]/10 bg-gray-50/50 focus:bg-white placeholder-gray-400 font-normal resize-none"
+              className="w-full rounded-xl border border-gray-200 pl-10 pr-4 py-3 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-4 focus:ring-[#024AD8]/10 bg-gray-50/50 focus:bg-white placeholder-gray-400 font-normal resize-none"
             />
           </div>
         </div>
@@ -188,11 +184,11 @@ export default function BookAppointmentForm() {
           <button
             type="submit"
             disabled={status === "loading"}
-            className="group flex w-full items-center justify-center gap-2.5 rounded-lg bg-gradient-to-r from-[#024AD8] to-[#0B63F6] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#024AD8]/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#024AD8]/30 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
+            className="group flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-[#024AD8] to-[#0B63F6] px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-[#024AD8]/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#024AD8]/30 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
           >
             {status === "loading" ? "Sending..." : "Request Consultation"}
             {status !== "loading" && (
-              <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
             )}
           </button>
         </div>
@@ -200,4 +196,3 @@ export default function BookAppointmentForm() {
     </div>
   );
 }
-
