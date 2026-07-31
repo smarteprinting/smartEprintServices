@@ -108,13 +108,12 @@ export default function BookingPage() {
               {/* Subtext */}
               <p className="mt-3 max-w-md text-xs sm:text-sm font-medium leading-relaxed text-blue-100/85">
                 Fast, reliable printer solutions at your doorstep for home and business users.
-                <br />
-                100% professional service.
+              
               </p>
 
               {/* Trust Points */}
               <p className="mt-1.5 text-[11px] font-semibold text-blue-200/80">
-                • No hidden charges &nbsp;&nbsp; • Doorstep service
+                • Consultation-based service &nbsp;&nbsp; • No hidden charges &nbsp;&nbsp; • Doorstep service
               </p>
             </div>
           </div>
