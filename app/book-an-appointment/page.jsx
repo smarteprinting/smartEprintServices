@@ -76,11 +76,10 @@ export default function BookingPage() {
           }}
         >
 
-
-          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 py-7 sm:py-8 lg:py-10">
-            <div className="max-w-xl">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 py-7 sm:py-10 lg:py-13 xl:py-16">
+            <div className="max-w-2xl">
               {/* HP Partner Badge */}
-              <div className="mb-3">
+              <div className="mb-6">
                 <img
                   src="/hp-partner.png"
                   alt="HP Partner"
@@ -90,31 +89,46 @@ export default function BookingPage() {
                 />
               </div>
 
-              {/* Title */}
-              <h1 className="text-lg font-bold text-white sm:text-xl lg:text-2xl">
+              {/* Badge */}
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-[4px] sm:text-[11px] font-bold tracking-[0.2em] uppercase text-white backdrop-blur-sm">
+                <span className="h-2 w-2 rounded-full bg-[#22C55E] shadow-[0_0_8px_#22C55E] animate-pulse" />
                 On-site Printer Repair and Setup
-              </h1>
+              </span>
+
+              {/* Heading */}
+              <h2 className="mt-5 text-2xl font-black leading-[1.1] tracking-tight text-white sm:text-3xl md:text-4xl lg:text-4xl xl:text-4xl">
+                Fast, reliable printer solutions
+                <span className="block mt-1 bg-gradient-to-r from-[#60A5FA] to-[#93C5FD] bg-clip-text text-transparent">
+                  at your doorstep
+                </span>
+              </h2>
 
               {/* Call Us */}
-              <p className="mt-2 text-xs font-medium text-blue-200/80">Call Us:</p>
-              <a
-                href="tel:+18777652289"
-                className="mt-1 inline-flex items-center gap-2 rounded-lg border-2 border-white/90 bg-white/10 backdrop-blur-sm px-4 py-2 text-base sm:text-lg font-bold text-white transition-all duration-300 hover:bg-white hover:text-[#024AD8] cursor-pointer"
-              >
-                <Phone size={18} />
-                +1 (877)765-2289
-              </a>
+              <div className="mt-6 mb-2">
+                <p className="mb-1 text-sm font-medium text-blue-200/80">Call Us:</p>
+                <a
+                  href="tel:+18777652289"
+                  className="inline-flex items-center gap-3 rounded-xl border border-white/40 bg-black/40 px-5 py-2.5 text-xl font-black tracking-wide text-white backdrop-blur-md transition-all duration-300 hover:bg-white hover:text-[#024AD8] cursor-pointer sm:text-2xl lg:text-3xl"
+                >
+                  <Phone className="h-6 w-6 sm:h-7 sm:w-7" />
+                  +1 (877) 765-2289
+                </a>
+              </div>
 
               {/* Subtext */}
-              <p className="mt-3 max-w-md text-xs sm:text-sm font-medium leading-relaxed text-blue-100/85">
+              <p className="mt-3 max-w-lg text-xm sm:text-sm leading-relaxed text-blue-100/90">
                 Fast, reliable printer solutions at your doorstep for home and business users.
-              
               </p>
 
-              {/* Trust Points */}
-              <p className="mt-1.5 text-[11px] font-semibold text-blue-200/80">
-                • Consultation-based service &nbsp;&nbsp; • No hidden charges &nbsp;&nbsp; • Doorstep service
-              </p>
+              {/* Trust Badges */}
+              <div className="mt-2 flex flex-wrap gap-2.5">
+                {["Consultation-based service", "No hidden charges", "Doorstep service"].map((item, i) => (
+                  <div key={i} className="flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[4px] sm:text-[8px] uppercase text-white backdrop-blur-sm">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-[#60A5FA]" />
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -125,23 +139,23 @@ export default function BookingPage() {
           <div className="absolute top-0 left-0 right-0 h-1 bg-[#00B4D8]" />
 
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-12 py-3 sm:py-6 lg:py-8">
-            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+            <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
 
               {/* LEFT: Form */}
-              <div>
-                <BookAppointmentForm />
+              <div className="flex">
+                <div className="w-full">
+                  <BookAppointmentForm />
+                </div>
               </div>
 
-              {/* RIGHT: Image */}
+              {/* RIGHT: Image (matches form height) */}
               <div className="hidden lg:block">
-                <div className="relative">
-                  <div className="overflow-hidden rounded-2xl shadow-lg border border-gray-200">
-                    <img
-                      src="/hero-consultatent.png"
-                      alt="Professional printer consultation and repair service"
-                      className="w-full h-auto object-cover"
-                    />
-                  </div>
+                <div className="h-full w-auto rounded-2xl shadow-lg border border-gray-200">
+                  <img
+                    src="/k-hub1.png"
+                    alt="Professional printer consultation and repair service"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
 
