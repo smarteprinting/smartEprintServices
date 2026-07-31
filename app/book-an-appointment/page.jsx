@@ -84,30 +84,30 @@ export default function BookingPage() {
             <div className="absolute top-1/2 right-1/4 h-40 w-40 rounded-full bg-white/5 blur-2xl" />
           </div>
 
-          <div className="relative z-10 mx-auto flex min-h-[50vh] max-w-7xl flex-col justify-center px-6 py-12 lg:py-16">
-            <div className="grid items-center gap-10 lg:grid-cols-2">
+          <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-10 lg:py-12 xl:py-14">
+            <div className="grid items-center gap-10 lg:gap-12 xl:gap-16 lg:grid-cols-12">
               {/* LEFT: CONTENT */}
-              <div>
-                <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-semibold tracking-[0.2em] uppercase text-white backdrop-blur-sm">
+              <div className="lg:col-span-7 xl:col-span-7">
+                <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold tracking-[0.2em] uppercase text-white backdrop-blur-sm">
                   <span className="h-2 w-2 rounded-full bg-[#3B82F6] shadow-[0_0_8px_#3B82F6]" />
                   On-site Printer Repair and Setup
                 </span>
 
-                <h1 className="mt-4 text-3xl font-black leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
+                <h1 className="mt-2 text-2xl font-black leading-[1.15] tracking-tight text-white sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl 2xl:text-[44px]">
                   Fast, reliable printer solutions
                   <span className="block bg-gradient-to-r from-[#60A5FA] to-[#93C5FD] bg-clip-text text-transparent">
                     at your doorstep
                   </span>
                 </h1>
 
-                <p className="mt-5 max-w-xl text-[15.5px] sm:text-[17px] font-medium leading-relaxed text-blue-100/90">
+                <p className="mt-3 max-w-xl text-sm sm:text-base lg:text-[14px] xl:text-[15px] font-medium leading-relaxed text-blue-100/90">
                   Fast, reliable printer solutions at your doorstep for home and business users.
                 </p>
 
                 {/* Trust Badges */}
-                <div className="mt-6 flex flex-wrap gap-2.5">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {["Consultation-based service", "No hidden charges", "Doorstep service"].map((item, i) => (
-                    <div key={i} className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-[11px] font-bold tracking-wide uppercase text-white backdrop-blur-sm">
+                    <div key={i} className="flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[10px] font-bold tracking-wide uppercase text-white backdrop-blur-sm">
                       <CheckCircle2 className="h-3 w-3 text-[#60A5FA]" />
                       {item}
                     </div>
@@ -115,22 +115,22 @@ export default function BookingPage() {
                 </div>
 
                 {/* Call Us CTA */}
-                <div className="mt-8 flex flex-row items-center gap-4 sm:gap-6 flex-wrap" >
+                <div className="mt-5 flex flex-row items-center gap-4 sm:gap-5 flex-wrap">
                   <a
                     href="tel:+18777652289"
-                    className="group inline-flex items-center gap-2.5 rounded-full bg-white px-6 py-3.5 text-[14px] font-bold text-[#024AD8] shadow-xl shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                    className="group inline-flex items-center gap-2.5 rounded-full border-2 border-white bg-transparent px-4 py-2 text-[18px] sm:text-[20px] font-bold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#024AD8] hover:shadow-white/10 cursor-pointer"
                   >
-                    <Phone size={16} />
-                    Call Us: +1 (877)765-2289
-                    <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+                    <Phone size={28} />
+                    +1 (877)765-2289
+                    <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                   
-                  <img src="/hp-partner.png" alt="HP Partner" width="220" height="100" className="h-16 lg:h-20 w-auto object-contain" />
+                  <img src="/hp-partner.png" alt="HP Partner" width="220" height="100" className="h-14 lg:h-16 w-auto object-contain" />
                 </div>
               </div>
 
               {/* RIGHT: FORM */}
-              <div>
+              <div className="lg:col-span-5 xl:col-span-5 w-full">
                 <BookAppointmentForm />
               </div>
             </div>

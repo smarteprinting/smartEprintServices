@@ -71,7 +71,7 @@ export default function HomePage() {
                 </span>
               </h1>
               
-              <p className="mt-8 text-[15.5px] leading-relaxed text-slate-600 sm:text-[17px] max-w-3xl mx-auto font-medium">
+              <p className="mt-5 text-[15.5px] leading-relaxed text-slate-600 sm:text-[17px] max-w-3xl mx-auto font-medium">
                 From printer setup and connectivity problems to paper jams, error messages, and routine maintenance, Smart ePrint Services provides practical on-site assistance to help keep your printer working properly.
               </p>
               
