@@ -33,6 +33,8 @@ export default function RootLayout({ children }) {
           strategy="beforeInteractive"
           src="https://cdn-cookieyes.com/client_data/c10dbbbd8867014a9030d7802875f74c/script.js"
         />
+
+        <Script src="//code.jivosite.com/widget/d7JjftxKYx" async></Script>
         <SiteLayout>{children}</SiteLayout>
       </body>
     </html>
