@@ -175,7 +175,7 @@ export default function BookAppointmentForm() {
                 <span className="text-xs text-gray-600">{country.callingCode}</span>
                 <ChevronDown className={`h-3.5 w-3.5 text-gray-400 transition-transform ${countryOpen ? "rotate-180" : ""}`} />
               </button>
-              <Phone className="ml-3 h-4 w-4 shrink-0 self-center text-gray-400" />
+              {/* <Phone className="ml-3 h-4 w-4 shrink-0 self-center text-gray-400" /> */}
               <input
                 type="tel"
                 name="phone"
