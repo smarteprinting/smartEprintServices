@@ -1,8 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, User, Phone, Mail, ChevronDown, MessageSquare, Wrench } from "lucide-react";
 import Turnstile from "../../components/Turnstile";
+import { getCountries, getCountryCallingCode, isValidPhoneNumber } from "libphonenumber-js";
+
+const countryNames = new Intl.DisplayNames(["en"], { type: "region" });
+const countries = getCountries().map((code) => ({
+  code,
+  name: countryNames.of(code) || code,
+  callingCode: `+${getCountryCallingCode(code)}`,
+  flagUrl: `https://flagcdn.com/20x15/${code.toLowerCase()}.png`,
+})).sort((first, second) => first.name.localeCompare(second.name));
 
 const serviceOptions = [
   "Printer Setup & Installation",
@@ -27,6 +36,24 @@ export default function BookAppointmentForm() {
   const [statusMessage, setStatusMessage] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
   const [honeypot, setHoneypot] = useState("");
+  const [countrySearch, setCountrySearch] = useState("");
+  const [countryOpen, setCountryOpen] = useState(false);
+  const [country, setCountry] = useState(countries.find((item) => item.code === "US") || countries[0]);
+  const countryPickerRef = useRef(null);
+
+  useEffect(() => {
+    const closePicker = (event) => {
+      if (countryPickerRef.current && !countryPickerRef.current.contains(event.target)) {
+        setCountryOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", closePicker);
+    return () => document.removeEventListener("mousedown", closePicker);
+  }, []);
+
+  const visibleCountries = countries.filter((item) =>
+    `${item.name} ${item.callingCode}`.toLowerCase().includes(countrySearch.toLowerCase())
+  );
 
   const handleChange = (e) => {
     setFormData({
@@ -37,8 +64,15 @@ export default function BookAppointmentForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("loading");
     setStatusMessage("");
+
+    if (!isValidPhoneNumber(formData.phone, country.code)) {
+      setStatus("error");
+      setStatusMessage("Please enter a valid phone number.");
+      return;
+    }
+
+    setStatus("loading");
 
     if (!turnstileToken) {
       setStatus("error");
@@ -52,7 +86,7 @@ export default function BookAppointmentForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...formData, turnstileToken, honeypot }),
+        body: JSON.stringify({ ...formData, phone: `${country.callingCode} ${formData.phone}`, turnstileToken, honeypot }),
       });
 
       const data = await response.json();
@@ -128,16 +162,56 @@ export default function BookAppointmentForm() {
         <div className="relative">
           <label className="mb-1.5 block text-[12px] font-semibold text-gray-600 uppercase tracking-wide">Phone Number *</label>
           <div className="relative">
-            <Phone className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 transition-colors duration-300" />
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="Enter your phone number"
-              required
-              className="w-full rounded-xl border border-gray-200 pl-10 pr-4 py-3 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-4 focus:ring-[#024AD8]/10 bg-gray-50/50 focus:bg-white placeholder-gray-400 font-normal"
-            />
+            <div ref={countryPickerRef} className="relative flex w-full rounded-xl border border-gray-200 bg-gray-50/50 transition-all duration-300 focus-within:border-[#024AD8] focus-within:ring-4 focus-within:ring-[#024AD8]/10 focus-within:bg-white">
+              <button
+                type="button"
+                aria-label={`Select country calling code. Currently ${country.name} ${country.callingCode}`}
+                title={`${country.name} ${country.callingCode}`}
+                aria-expanded={countryOpen}
+                onClick={() => setCountryOpen(!countryOpen)}
+                className="flex w-14 shrink-0 items-center justify-center gap-1 rounded-l-xl border-r border-gray-200 px-2 py-3 text-sm text-gray-700 transition-colors hover:bg-gray-100/70"
+              >
+                <img src={country.flagUrl} alt="" width="20" height="15" className="h-[15px] w-5 object-cover" />
+                <span className="text-xs text-gray-600">{country.callingCode}</span>
+                <ChevronDown className={`h-3.5 w-3.5 text-gray-400 transition-transform ${countryOpen ? "rotate-180" : ""}`} />
+              </button>
+              <Phone className="ml-3 h-4 w-4 shrink-0 self-center text-gray-400" />
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="Enter your phone number"
+                required
+                className="min-w-0 flex-1 rounded-r-xl bg-transparent px-3 py-3 text-sm outline-none placeholder-gray-400 font-normal"
+              />
+              {countryOpen && (
+                <div className="absolute left-0 top-[calc(100%+6px)] z-30 w-full min-w-[260px] overflow-hidden rounded-xl border border-gray-200 bg-white shadow-xl">
+                  <input
+                    type="search"
+                    value={countrySearch}
+                    onChange={(event) => setCountrySearch(event.target.value)}
+                    placeholder="Search country"
+                    autoFocus
+                    className="w-full border-b border-gray-200 px-4 py-3 text-sm outline-none"
+                  />
+                  <div className="max-h-56 overflow-y-auto py-1">
+                    {visibleCountries.map((item) => (
+                      <button
+                        key={item.code}
+                        type="button"
+                        onClick={() => { setCountry(item); setCountryOpen(false); setCountrySearch(""); }}
+                        className="flex w-full items-center gap-3 px-4 py-2 text-left text-sm hover:bg-gray-50"
+                      >
+                        <img src={item.flagUrl} alt="" width="20" height="15" className="h-[15px] w-5 object-cover" />
+                        <span className="min-w-0 flex-1 truncate text-gray-700">{item.name}</span>
+                        <span className="text-gray-500">{item.callingCode}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 

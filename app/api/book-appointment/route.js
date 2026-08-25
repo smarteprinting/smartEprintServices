@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { escapeHtml, isRateLimited, validateEmail, validateText, verifyTurnstile } from '../../../lib/security';
+import { escapeHtml, isRateLimited, validateEmail, validatePhone, validateText, verifyTurnstile } from '../../../lib/security';
 
 const serviceOptions = new Set([
   'Printer Setup & Installation',
@@ -99,9 +99,9 @@ export async function POST(req) {
       return NextResponse.json({ success: false, message: 'Security verification failed. Please try again.' }, { status: 403 });
     }
 
-    if (!validateText(fullName, 100) || !validateText(phone, 40) || !validateEmail(email) || !validateText(serviceType, 80) || !serviceOptions.has(serviceType) || (description && !validateText(description, 2000))) {
+    if (!validateText(fullName, 100) || !validatePhone(phone) || !validateEmail(email) || !validateText(serviceType, 80) || !serviceOptions.has(serviceType) || (description && !validateText(description, 2000))) {
       return NextResponse.json(
-        { success: false, message: 'Please check your form details and try again.' },
+        { success: false, message: 'Please enter a valid phone number and check your form details.' },
         { status: 400 }
       );
     }
