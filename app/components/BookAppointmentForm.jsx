@@ -197,7 +197,7 @@ export default function BookAppointmentForm() {
                   />
                   <div className="max-h-56 overflow-y-auto py-1">
                     {visibleCountries.map((item) => (
-                      <button
+                      <button 
                         key={item.code}
                         type="button"
                         onClick={() => { setCountry(item); setCountryOpen(false); setCountrySearch(""); }}
