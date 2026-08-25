@@ -28,11 +28,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Script
-          id="cookieyes"
-          strategy="beforeInteractive"
-          src="https://cdn-cookieyes.com/client_data/c10dbbbd8867014a9030d7802875f74c/script.js"
-        />
+        {process.env.NODE_ENV === 'production' && (
+          <Script
+            id="cookieyes"
+            strategy="beforeInteractive"
+            src="https://cdn-cookieyes.com/client_data/c10dbbbd8867014a9030d7802875f74c/script.js"
+          />
+        )}
 
         <Script
           id="jivo-chat"

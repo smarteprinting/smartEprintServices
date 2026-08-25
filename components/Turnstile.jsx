@@ -31,7 +31,9 @@ export default function Turnstile({ onToken }) {
         containerRef.current,
         {
           sitekey: siteKey,
-          size: "invisible",
+          size: "normal",
+          appearance: "execute",
+          execution: "execute",
 
           callback: (token) => {
             onTokenRef.current(token);
