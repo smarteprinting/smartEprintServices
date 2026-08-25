@@ -1,5 +1,17 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { escapeHtml, isRateLimited, validateEmail, validateText, verifyTurnstile } from '../../../lib/security';
+
+const serviceOptions = new Set([
+  'Printer Setup & Installation',
+  'Printer Troubleshooting & Repair',
+  'Computer Support',
+  'Network & Wi-Fi Setup',
+  'Smart Home Device Assistance',
+  'Home Appliance Help',
+  'Business Printing Solutions',
+  'General Consultation',
+]);
 
 function buildEmailContent({ fullName, phone, email, serviceType, description }) {
   return `
@@ -14,7 +26,7 @@ function buildEmailContent({ fullName, phone, email, serviceType, description })
               <strong style="color: #374151;">Full Name:</strong>
             </td>
             <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #111827;">
-              ${fullName}
+              ${escapeHtml(fullName)}
             </td>
           </tr>
           <tr>
@@ -22,7 +34,7 @@ function buildEmailContent({ fullName, phone, email, serviceType, description })
               <strong style="color: #374151;">Phone:</strong>
             </td>
             <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #111827;">
-              ${phone}
+              ${escapeHtml(phone)}
             </td>
           </tr>
           <tr>
@@ -30,7 +42,7 @@ function buildEmailContent({ fullName, phone, email, serviceType, description })
               <strong style="color: #374151;">Email:</strong>
             </td>
             <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #111827;">
-              <a href="mailto:${email}" style="color: #024AD8;">${email}</a>
+              <a href="mailto:${escapeHtml(email)}" style="color: #024AD8;">${escapeHtml(email)}</a>
             </td>
           </tr>
           <tr>
@@ -38,14 +50,14 @@ function buildEmailContent({ fullName, phone, email, serviceType, description })
               <strong style="color: #374151;">Service Type:</strong>
             </td>
             <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #111827;">
-              ${serviceType}
+              ${escapeHtml(serviceType)}
             </td>
           </tr>
         </table>
         <div style="margin-top: 16px;">
           <strong style="color: #374151;">Description:</strong>
           <p style="background-color: #f9fafb; padding: 15px; border-radius: 8px; color: #111827; margin-top: 8px; border: 1px solid #e5e7eb;">
-            ${description || 'No description provided.'}
+            ${escapeHtml(description || 'No description provided.')}
           </p>
         </div>
         <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;" />
@@ -59,6 +71,10 @@ function buildEmailContent({ fullName, phone, email, serviceType, description })
 
 export async function POST(req) {
   try {
+    if (isRateLimited(req, 'appointment')) {
+      return NextResponse.json({ success: false, message: 'Too many requests. Please try again later.' }, { status: 429 });
+    }
+
     const rawBody = await req.text();
     let body = {};
 
@@ -73,26 +89,30 @@ export async function POST(req) {
       }
     }
 
-    const { fullName, phone, email, serviceType, description } = body;
+    const { fullName, phone, email, serviceType, description, honeypot, turnstileToken } = body;
 
-    // Validate required fields
-    const requiredFields = [fullName, phone, email, serviceType];
-    const hasMissingFields = requiredFields.some((field) => !String(field || '').trim());
+    if (honeypot) {
+      return NextResponse.json({ success: false, message: 'Unable to process this request.' }, { status: 400 });
+    }
 
-    if (hasMissingFields) {
+    if (!(await verifyTurnstile(turnstileToken, req))) {
+      return NextResponse.json({ success: false, message: 'Security verification failed. Please try again.' }, { status: 403 });
+    }
+
+    if (!validateText(fullName, 100) || !validateText(phone, 40) || !validateEmail(email) || !validateText(serviceType, 80) || !serviceOptions.has(serviceType) || (description && !validateText(description, 2000))) {
       return NextResponse.json(
-        { success: false, message: 'Please fill in all required fields.' },
+        { success: false, message: 'Please check your form details and try again.' },
         { status: 400 }
       );
     }
 
     // Get SMTP config from environment
-    const smtpHost = process.env.SMTP_HOST || 'mail.dynamicsgroup.com';
-    const smtpPort = parseInt(process.env.SMTP_PORT || '587', 10);
+    const smtpHost = process.env.SMTP_HOST;
+    const smtpPort = parseInt(process.env.SMTP_PORT, 10);
     const smtpSecure = process.env.SMTP_SECURE === 'true';
-    const smtpUser = process.env.SMTP_USER || process.env.SMTP_FROM || 'smarteps@dynamicsgroup.com';
+    const smtpUser = process.env.SMTP_USER || process.env.SMTP_FROM;
     const smtpPassword = process.env.SMTP_PASSWORD;
-    const smtpTo = process.env.SMTP_TO || 'smarteps@dynamicsgroup.com';
+    const smtpTo = process.env.SMTP_TO;
     const smtpFrom = process.env.SMTP_FROM || smtpUser;
 
     if (!smtpUser || !smtpPassword) {

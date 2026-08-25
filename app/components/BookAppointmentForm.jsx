@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight, User, Phone, Mail, ChevronDown, MessageSquare, Wrench } from "lucide-react";
+import Turnstile from "../../components/Turnstile";
 
 const serviceOptions = [
   "Printer Setup & Installation",
@@ -24,6 +25,8 @@ export default function BookAppointmentForm() {
   });
   const [status, setStatus] = useState("idle");
   const [statusMessage, setStatusMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   const handleChange = (e) => {
     setFormData({
@@ -37,13 +40,19 @@ export default function BookAppointmentForm() {
     setStatus("loading");
     setStatusMessage("");
 
+    if (!turnstileToken) {
+      setStatus("error");
+      setStatusMessage("Please complete the security check and try again.");
+      return;
+    }
+
     try {
       const response = await fetch("/api/book-appointment/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, turnstileToken, honeypot }),
       });
 
       const data = await response.json();
@@ -91,6 +100,13 @@ export default function BookAppointmentForm() {
       )}
 
       <form className="grid grid-cols-1 sm:grid-cols-2 gap-5" onSubmit={handleSubmit}>
+        <div className="absolute -left-[9999px] -top-[9999px]" aria-hidden="true">
+          <label htmlFor="appointment-website">Website</label>
+          <input id="appointment-website" type="text" name="honeypot" tabIndex="-1" autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+        </div>
+        <div className="absolute h-0 w-0 overflow-hidden" aria-hidden="true">
+          <Turnstile onToken={setTurnstileToken} />
+        </div>
         {/* Full Name */}
         <div className="relative">
           <label className="mb-1.5 block text-[12px] font-semibold text-gray-600 uppercase tracking-wide">Full Name *</label>

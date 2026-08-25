@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
+import Turnstile from "../../components/Turnstile";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ export default function ContactForm() {
   });
   const [status, setStatus] = useState("idle"); // idle, loading, success, error
   const [statusMessage, setStatusMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [honeypot, setHoneypot] = useState("");
 
   const handleChange = (e) => {
     setFormData({
@@ -24,13 +27,19 @@ export default function ContactForm() {
     setStatus("loading");
     setStatusMessage("");
 
+    if (!turnstileToken) {
+      setStatus("error");
+      setStatusMessage("Please complete the security check and try again.");
+      return;
+    }
+
     try {
       const response = await fetch("/api/contact/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, turnstileToken, honeypot }),
       });
 
       const data = await response.json();
@@ -73,6 +82,13 @@ export default function ContactForm() {
       )}
 
       <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
+        <div className="absolute -left-[9999px] -top-[9999px]" aria-hidden="true">
+          <label htmlFor="contact-website">Website</label>
+          <input id="contact-website" type="text" name="honeypot" tabIndex="-1" autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+        </div>
+        <div className="absolute h-0 w-0 overflow-hidden" aria-hidden="true">
+          <Turnstile onToken={setTurnstileToken} />
+        </div>
         <div>
           <label className="mb-2 block text-sm font-semibold text-gray-700">Full Name</label>
           <input

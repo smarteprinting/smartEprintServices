@@ -1,8 +1,13 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { escapeHtml, isRateLimited, validateEmail, validateText, verifyTurnstile } from '../../../lib/security';
 
 export async function POST(req) {
   try {
+    if (isRateLimited(req, 'contact')) {
+      return NextResponse.json({ success: false, message: 'Too many requests. Please try again later.' }, { status: 429 });
+    }
+
     const rawBody = await req.text();
     let body = {};
 
@@ -17,22 +22,30 @@ export async function POST(req) {
       }
     }
 
-    const { fullName, email, message } = body;
+    const { fullName, email, message, honeypot, turnstileToken } = body;
 
-    // Validate required fields
-    if (!fullName?.trim() || !email?.trim() || !message?.trim()) {
+    if (honeypot) {
+      return NextResponse.json({ success: false, message: 'Unable to process this request.' }, { status: 400 });
+    }
+
+    if (!(await verifyTurnstile(turnstileToken, req))) {
+      return NextResponse.json({ success: false, message: 'Security verification failed. Please try again.' }, { status: 403 });
+    }
+
+    if (!validateText(fullName, 100) || !validateEmail(email) || !validateText(message, 4000)) {
       return NextResponse.json(
-        { success: false, message: 'Please fill in all required fields.' },
+        { success: false, message: 'Please check your form details and try again.' },
         { status: 400 }
       );
     }
 
-    const smtpHost = process.env.SMTP_HOST || 'mail.innovationdynamicsgroup.com';
-    const smtpPort = parseInt(process.env.SMTP_PORT || '587', 10);
+    // Get SMTP config from environment
+    const smtpHost = process.env.SMTP_HOST;
+    const smtpPort = parseInt(process.env.SMTP_PORT, 10);
     const smtpSecure = process.env.SMTP_SECURE === 'true';
-    const smtpUser = process.env.SMTP_USER || process.env.SMTP_FROM || 'smarteps@innovationdynamicsgroup.com';
+    const smtpUser = process.env.SMTP_USER || process.env.SMTP_FROM;
     const smtpPassword = process.env.SMTP_PASSWORD;
-    const smtpTo = process.env.SMTP_TO || 'smarteps@innovationdynamicsgroup.com';
+    const smtpTo = process.env.SMTP_TO;
     const smtpFrom = process.env.SMTP_FROM || smtpUser;
 
     if (!smtpUser || !smtpPassword) {
@@ -78,7 +91,7 @@ export async function POST(req) {
                   <strong style="color: #374151;">Name:</strong>
                 </td>
                 <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #111827;">
-                  ${fullName}
+                  ${escapeHtml(fullName)}
                 </td>
               </tr>
               <tr>
@@ -86,14 +99,14 @@ export async function POST(req) {
                   <strong style="color: #374151;">Email:</strong>
                 </td>
                 <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #111827;">
-                  <a href="mailto:${email}" style="color: #024AD8;">${email}</a>
+                  <a href="mailto:${escapeHtml(email)}" style="color: #024AD8;">${escapeHtml(email)}</a>
                 </td>
               </tr>
             </table>
             <div style="margin-top: 16px;">
               <strong style="color: #374151;">Message:</strong>
               <p style="background-color: #f9fafb; padding: 15px; border-radius: 8px; color: #111827; margin-top: 8px; border: 1px solid #e5e7eb;">
-                ${message}
+                ${escapeHtml(message)}
               </p>
             </div>
             <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;" />
