@@ -2,7 +2,7 @@ import { Redis } from "@upstash/redis/cloudflare";
 import { NextResponse } from "next/server";
 
 const RATE_LIMIT_MAX = 10;
-const RATE_LIMIT_WINDOW_SECONDS = 5 * 60;
+const RATE_LIMIT_WINDOW_SECONDS = 1 * 60;
 const redisUrl = process.env.UPSTASH_REDIS_REST_URL;
 const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN;
 const redis =
