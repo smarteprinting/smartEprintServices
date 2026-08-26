@@ -34,3 +34,5 @@ The appointment and contact APIs require Cloudflare Turnstile verification, reje
 4. Redeploy after changing environment variables.
 
 Middleware uses the shared Redis database to count all matched application-route requests per IP, including page routes, API routes, and form submissions. Request 11 within five minutes receives HTTP 429 and a page titled `Blocked`. Static Next.js assets are excluded so a normal page load does not consume the allowance. If Redis is unavailable or not configured, requests receive HTTP 503 rather than bypassing the protection.
+
+For Cloudflare-style bot challenges on every route, put the domain behind Cloudflare using the orange-cloud proxy, then create a WAF custom rule with action **Managed Challenge** for suspected automated traffic, such as `cf.bot_management.score lt 30` when Bot Management is available. You can also enable **Under Attack Mode** during an active attack. Turnstile in this project protects form submissions; it does not create a browser challenge for every page visit.
