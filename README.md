@@ -29,8 +29,8 @@ npm run build
 The appointment and contact APIs require Cloudflare Turnstile verification, reject honeypot submissions, validate and length-limit all fields, escape email content, and rate-limit each client IP before sending email.
 
 1. Copy `.env.example` to `.env.local` for local development and replace the SMTP values.
-2. Create an Upstash Redis database and add `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` to Vercel Environment Variables.
-3. Create a Cloudflare Turnstile widget for your production domain and add its site key and secret key to Vercel Environment Variables as `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY`.
+2. Create a Cloudflare Turnstile widget for your production domain and add its site key and secret key to Vercel Environment Variables as `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY`.
+3. In Vercel, open **Firewall > Rules > Add Rule**, choose a rate-limit rule, match `/*`, identify visitors by **IP address**, set the limit to **15 requests per 5 minutes**, and configure the action as **Deny**. This covers page routes, API routes, and form submissions.
 4. Add the same variables to the Preview environment if preview deployments need working forms. Redeploy after changing environment variables.
 
-Middleware uses the shared Redis database to allow 15 application-route requests per IP in a five-minute window. The 16th request receives HTTP 429 and no page or API response is served. This applies across the whole site, including both forms, not separately per form. Static Next.js assets are excluded so one page load does not consume the visitor's request allowance. If Redis is unavailable or not configured, requests receive HTTP 503 until it is fixed.
+Vercel Firewall is required for a reliable site-wide IP limit because Vercel runs multiple instances. An in-memory JavaScript counter would reset between instances and cannot enforce one shared limit.
