@@ -72,7 +72,7 @@ export default function WhyChooseUs() {
             <br />
             <span className="bg-gradient-to-r from-brand-600 via-brand-500 to-blue-600 bg-clip-text text-transparent">Delivered to Your Door</span>
           </h2>
-
+    
           <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Every service starts with understanding your equipment and needs. A technician arrives prepared to help support your technology and appliances on site.
           </p>
