@@ -1,13 +1,52 @@
+import { Redis } from '@upstash/redis/cloudflare';
 import { NextResponse } from 'next/server';
 
-export function middleware(request) {
-  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+const RATE_LIMIT_MAX = 15;
+const RATE_LIMIT_WINDOW_SECONDS = 5 * 60;
+const redis = process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+  ? Redis.fromEnv()
+  : null;
+
+function getClientIp(request) {
+  return request.headers.get('x-real-ip')
+    || request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
+    || 'unknown';
+}
+
+async function isRateLimited(ip) {
+  if (!redis) {
+    console.error('Rate limiter is disabled: configure UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.');
+    return false;
+  }
+
+  const results = await redis
+    .pipeline()
+    .incr(`site-rate-limit:${ip}`)
+    .expire(`site-rate-limit:${ip}`, RATE_LIMIT_WINDOW_SECONDS)
+    .exec();
+
+  return Number(results[0]) > RATE_LIMIT_MAX;
+}
+
+export async function middleware(request) {
+  const ip = getClientIp(request);
   console.info('[traffic]', JSON.stringify({
     ip,
     method: request.method,
     path: request.nextUrl.pathname,
     country: request.headers.get('x-vercel-ip-country') || 'unknown',
   }));
+
+  try {
+    if (await isRateLimited(ip)) {
+      return new NextResponse('Too many requests. Please try again in a few minutes.', {
+        status: 429,
+        headers: { 'Retry-After': String(RATE_LIMIT_WINDOW_SECONDS) },
+      });
+    }
+  } catch (error) {
+    console.error('Rate limiter failed:', error.message);
+  }
 
   const response = NextResponse.next();
   response.headers.set('X-Content-Type-Options', 'nosniff');

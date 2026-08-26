@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import { escapeHtml, isRateLimited, validateEmail, validatePhone, validateText, verifyTurnstile } from '../../../lib/security';
+import { escapeHtml, validateEmail, validatePhone, validateText, verifyTurnstile } from '../../../lib/security';
 
 const serviceOptions = new Set([
   'Printer Setup & Installation',
@@ -71,10 +71,6 @@ function buildEmailContent({ fullName, phone, email, serviceType, description })
 
 export async function POST(req) {
   try {
-    if (isRateLimited(req, 'appointment')) {
-      return NextResponse.json({ success: false, message: 'Too many requests. Please try again later.' }, { status: 429 });
-    }
-
     const rawBody = await req.text();
     let body = {};
 
