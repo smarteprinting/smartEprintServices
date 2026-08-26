@@ -18,10 +18,7 @@ const redis =
 function getClientIp(request) {
   return (
     request.headers.get("x-real-ip") ||
-    request.headers
-      .get("x-forwarded-for")
-      ?.split(",")[0]
-      ?.trim() ||
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     "unknown"
   );
 }
@@ -29,7 +26,7 @@ function getClientIp(request) {
 async function isRateLimited(ip) {
   if (!redis) {
     throw new Error(
-      "Missing UPSTASH_REDIS_REST_URL or UPSTASH_REDIS_REST_TOKEN."
+      "Missing UPSTASH_REDIS_REST_URL or UPSTASH_REDIS_REST_TOKEN.",
     );
   }
 
@@ -42,7 +39,7 @@ async function isRateLimited(ip) {
      end
      return count`,
     [key],
-    [RATE_LIMIT_WINDOW_SECONDS]
+    [RATE_LIMIT_WINDOW_SECONDS],
   );
 
   return Number(count) > RATE_LIMIT_MAX;
@@ -50,6 +47,11 @@ async function isRateLimited(ip) {
 
 export async function middleware(request) {
   const ip = getClientIp(request);
+  const hostname = request.nextUrl.hostname;
+  const isLocalhost =
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname === "[::1]";
 
   console.info(
     "[traffic]",
@@ -57,9 +59,8 @@ export async function middleware(request) {
       ip,
       method: request.method,
       path: request.nextUrl.pathname,
-      country:
-        request.headers.get("x-vercel-ip-country") || "unknown",
-    })
+      country: request.headers.get("x-vercel-ip-country") || "unknown",
+    }),
   );
 
   // -----------------------------
@@ -67,7 +68,7 @@ export async function middleware(request) {
   // -----------------------------
 
   try {
-    if (await isRateLimited(ip)) {
+    if (!isLocalhost && (await isRateLimited(ip))) {
       return new NextResponse(
         `<!doctype html>
 <html lang="en">
@@ -180,35 +181,30 @@ export async function middleware(request) {
             "Content-Type": "text/html; charset=utf-8",
             "Retry-After": String(RATE_LIMIT_WINDOW_SECONDS),
           },
-        }
+        },
       );
     }
   } catch (error) {
     console.error(
       "Rate limiter failed:",
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     );
 
-    return new NextResponse(
-      "Service temporarily unavailable.",
-      {
-        status: 503,
-      }
-    );
+    return new NextResponse("Service temporarily unavailable.", {
+      status: 503,
+    });
   }
 
   // -----------------------------
   // USER AGENT CHECK
   // -----------------------------
 
-  const userAgent =
-    request.headers.get("user-agent") || "";
+  const userAgent = request.headers.get("user-agent") || "";
 
   if (
-    !userAgent ||
-    /HeadlessChrome|PhantomJS|selenium|playwright|puppeteer/i.test(
-      userAgent
-    )
+    !isLocalhost &&
+    (!userAgent ||
+      /HeadlessChrome|PhantomJS|selenium|playwright|puppeteer/i.test(userAgent))
   ) {
     return new NextResponse(
       `<!doctype html>
@@ -278,7 +274,7 @@ export async function middleware(request) {
         headers: {
           "Content-Type": "text/html; charset=utf-8",
         },
-      }
+      },
     );
   }
 
@@ -288,24 +284,15 @@ export async function middleware(request) {
 
   const response = NextResponse.next();
 
-  response.headers.set(
-    "X-Content-Type-Options",
-    "nosniff"
-  );
+  response.headers.set("X-Content-Type-Options", "nosniff");
 
-  response.headers.set(
-    "Referrer-Policy",
-    "strict-origin-when-cross-origin"
-  );
+  response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
 
-  response.headers.set(
-    "X-Frame-Options",
-    "DENY"
-  );
+  response.headers.set("X-Frame-Options", "DENY");
 
   response.headers.set(
     "Permissions-Policy",
-    "camera=(), microphone=(), geolocation=()"
+    "camera=(), microphone=(), geolocation=()",
   );
 
   return response;
