@@ -33,4 +33,4 @@ The appointment and contact APIs require Cloudflare Turnstile verification, reje
 3. Create a Cloudflare Turnstile widget for your production domain and add its site key and secret key to Vercel Environment Variables as `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY`.
 4. Add the same variables to the Preview environment if preview deployments need working forms. Redeploy after changing environment variables.
 
-Middleware uses the shared Redis database to allow 15 requests per IP in a rolling 5-minute window. The 16th request receives HTTP 429 and no page or API response is served. This applies across the whole site, not separately per form.
+Middleware uses the shared Redis database to allow 15 application-route requests per IP in a five-minute window. The 16th request receives HTTP 429 and no page or API response is served. This applies across the whole site, including both forms, not separately per form. Static Next.js assets are excluded so one page load does not consume the visitor's request allowance. If Redis is unavailable or not configured, requests receive HTTP 503 until it is fixed.

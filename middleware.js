@@ -15,17 +15,19 @@ function getClientIp(request) {
 
 async function isRateLimited(ip) {
   if (!redis) {
-    console.error('Rate limiter is disabled: configure UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.');
-    return false;
+    throw new Error('Rate limiter is not configured. Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN.');
   }
 
-  const results = await redis
-    .pipeline()
-    .incr(`site-rate-limit:${ip}`)
-    .expire(`site-rate-limit:${ip}`, RATE_LIMIT_WINDOW_SECONDS)
-    .exec();
+  const key = `site-rate-limit:${ip}`;
+  const count = await redis.eval(
+    `local count = redis.call('INCR', KEYS[1])
+     if count == 1 then redis.call('EXPIRE', KEYS[1], ARGV[1]) end
+     return count`,
+    [key],
+    [RATE_LIMIT_WINDOW_SECONDS]
+  );
 
-  return Number(results[0]) > RATE_LIMIT_MAX;
+  return Number(count) > RATE_LIMIT_MAX;
 }
 
 export async function middleware(request) {
@@ -46,6 +48,7 @@ export async function middleware(request) {
     }
   } catch (error) {
     console.error('Rate limiter failed:', error.message);
+    return new NextResponse('Service temporarily unavailable.', { status: 503 });
   }
 
   const response = NextResponse.next();
