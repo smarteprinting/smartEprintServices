@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import StandardCTA from "../components/StandardCTA";
+import PremiumServicesPage from "../components/PremiumServicesPage";
 
 export const metadata = {
   title: "Printer Services | SmartEprint Services",
@@ -282,7 +283,7 @@ const quickServices = services.map((s) => ({
   gradient: s.gradient,
 }));
 
-export default function ServicesPage() {
+function LegacyServicesPage() {
   return (
     <section className="bg-white">
 
@@ -523,3 +524,5 @@ export default function ServicesPage() {
     </section>
   );
 }
+
+export default PremiumServicesPage;

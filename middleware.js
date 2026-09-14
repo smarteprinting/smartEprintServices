@@ -1,5 +1,6 @@
-import { Redis } from "@upstash/redis/cloudflare";
+import { Redis } from "@upstash/redis";
 import { NextResponse } from "next/server";
+import { jwtVerify } from "jose";
 
 const RATE_LIMIT_MAX = 15;
 const RATE_LIMIT_WINDOW_SECONDS = 6 * 60 * 60; // 6 hours
@@ -45,7 +46,40 @@ async function isRateLimited(ip) {
   return Number(count) > RATE_LIMIT_MAX;
 }
 
+async function isValidAdminSession(request) {
+  const token = request.cookies.get("auth_token")?.value;
+  if (!token) return false;
+
+  try {
+    const secret = new TextEncoder().encode(
+      process.env.JWT_SECRET || "supersecretkey54321_smarteprint",
+    );
+    const { payload } = await jwtVerify(token, secret);
+    return Boolean(payload?.isAdmin === true || payload?.id === "admin-super");
+  } catch {
+    return false;
+  }
+}
+
 export async function middleware(request) {
+  const pathname = request.nextUrl.pathname;
+  const isAdminRoute = pathname.startsWith("/admin");
+  const isPublicAdminRoute =
+    pathname === "/admin/login" || pathname === "/admin/signup";
+
+  if (isAdminRoute && !isPublicAdminRoute) {
+    const isAuthenticated = await isValidAdminSession(request);
+    if (!isAuthenticated) {
+      const loginUrl = new URL("/admin/login", request.url);
+      return NextResponse.redirect(loginUrl);
+    }
+
+    if (pathname !== "/admin/dashboard" && pathname !== "/admin") {
+      const dashboardUrl = new URL("/admin/dashboard", request.url);
+      return NextResponse.redirect(dashboardUrl);
+    }
+  }
+
   const ip = getClientIp(request);
   const hostname = request.nextUrl.hostname;
   const isLocalhost =
@@ -68,7 +102,7 @@ export async function middleware(request) {
   // -----------------------------
 
   try {
-    if (!isLocalhost && (await isRateLimited(ip))) {
+    if (!isLocalhost && redis && (await isRateLimited(ip))) {
       return new NextResponse(
         `<!doctype html>
 <html lang="en">
@@ -189,10 +223,7 @@ export async function middleware(request) {
       "Rate limiter failed:",
       error instanceof Error ? error.message : error,
     );
-
-    return new NextResponse("Service temporarily unavailable.", {
-      status: 503,
-    });
+    // Don't block request if rate limiter fails - just continue
   }
 
   // -----------------------------

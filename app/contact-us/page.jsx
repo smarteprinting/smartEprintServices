@@ -8,13 +8,14 @@ import {
 } from "lucide-react";
 import ContactForm from "../components/ContactForm";
 import StandardCTA from "../components/StandardCTA";
+import PremiumContactPage from "../components/PremiumContactPage";
 
 export const metadata = {
   title: "Contact Us | SmartEprint Services",
   description: "Get in touch with SmartEprint Services for on-site technology and appliance assistance.",
 };
 
-export default function ContactPage() {
+function LegacyContactPage() {
   return (
     <section className="bg-white">
       {/* ========== FULL-WIDTH HERO WITH BACKGROUND IMAGE ========== */}
@@ -135,3 +136,5 @@ export default function ContactPage() {
     </section>
   );
 }
+
+export default PremiumContactPage;

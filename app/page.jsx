@@ -1,4 +1,9 @@
 
+"use client";
+
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const services = [
   {
@@ -43,12 +48,24 @@ const quickBenefits = [
 ];
 
 export default function HomePage() {
+  const [products, setProducts] = useState([]);
+  const [visibleProducts, setVisibleProducts] = useState(8);
+
+  useEffect(() => {
+    fetch("/api/products?brand=HP", { cache: "no-store" })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success && Array.isArray(data.products)) setProducts(data.products);
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <div className="bg-slate-50 font-sans selection:bg-[#024AD8]/20 selection:text-[#024AD8]">
       <div className="relative left-1/2 w-screen -ml-[50vw]">
         
         {/* HERO SECTION */}
-        <section className="relative overflow-hidden min-h-[calc(80vh-80px)] flex flex-col justify-center py-12 lg:py-16">
+        <section className="relative overflow-hidden min-h-[390px] flex flex-col justify-center py-10 lg:min-h-[440px] lg:py-12">
           <div 
             className="absolute inset-0 z-0"
             style={{
@@ -60,8 +77,8 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 z-0 bg-gradient-to-b from-white/60 via-white/50 to-slate-50/80" />
           
-          <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 w-full flex flex-col items-center">
-            <div className="mx-auto max-w-4xl text-center">
+          <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[1.1fr_.9fr] lg:px-8 w-full">
+            <div className="max-w-3xl text-left">
             
 
               <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-[4.5rem] lg:leading-[1.1] pb-2 drop-shadow-sm">
@@ -71,11 +88,11 @@ export default function HomePage() {
                 </span>
               </h1>
               
-              <p className="mt-5 text-[15.5px] leading-relaxed text-slate-600 sm:text-[17px] max-w-3xl mx-auto font-medium">
+              <p className="mt-5 max-w-3xl text-[15.5px] leading-relaxed text-slate-600 sm:text-[17px] font-medium">
                 From printer setup and connectivity problems to paper jams, error messages, and routine maintenance, Smart ePrint Services provides practical on-site assistance to help keep your printer working properly.
               </p>
               
-              <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-5">
+              <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                 <a className="group relative flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-full bg-[#024AD8] px-9 py-4 text-[14px] font-bold text-white shadow-2xl shadow-[#024AD8]/30 ring-2 ring-white/20 transition-all hover:scale-[1.02] hover:bg-blue-800 hover:shadow-3xl hover:shadow-[#024AD8]/40" href="/book-an-appointment">
                   <span>Book Your Service Now</span>
                   <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
@@ -85,6 +102,11 @@ export default function HomePage() {
                 </a>
               </div>
 
+            </div>
+            <div className="hidden justify-end lg:flex">
+              <div className="relative w-full max-w-[390px] overflow-hidden rounded-[30px] border border-white/60 bg-white/55 p-3 shadow-2xl backdrop-blur-md">
+                <Image src="/printer-support-hero.png" alt="Printer support" width={520} height={520} className="h-[330px] w-full rounded-[22px] object-cover" />
+              </div>
             </div>
           </div>
         </section>
@@ -235,6 +257,33 @@ export default function HomePage() {
             </a>
           </div>
         </div>
+      </section>
+
+      {/* Featured HP Products */}
+      <section className="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-10">
+        <div className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#024AD8]">Featured Products</p>
+            <h2 className="mt-2 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">HP Printers & Supplies</h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-500">Shop reliable HP products selected for homes, offices, and everyday printing needs.</p>
+          </div>
+          <Link href="/shop" className="text-sm font-bold text-[#024AD8] hover:text-blue-800">View all HP products →</Link>
+        </div>
+
+        {products.length > 0 && <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {products.slice(0, visibleProducts).map((product) => (
+            <article key={product.id} className="group flex flex-col rounded-3xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl">
+              <Link href={`/shop/${product.id}`} className="relative flex h-48 items-center justify-center overflow-hidden rounded-2xl bg-slate-50 p-4">
+                {product.image ? <Image src={product.image} alt={product.name} fill className="object-contain p-5 transition duration-300 group-hover:scale-105" /> : <span className="text-xs text-slate-400">Image unavailable</span>}
+              </Link>
+              <p className="mt-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">{product.brand}</p>
+              <Link href={`/shop/${product.id}`} className="mt-1 line-clamp-2 min-h-10 text-sm font-bold leading-5 text-slate-800 hover:text-[#024AD8]">{product.name}</Link>
+              <div className="mt-auto flex items-center justify-between pt-4"><span className="text-lg font-extrabold text-slate-900">${Number(product.price || 0).toFixed(2)}</span><span className="text-[10px] font-semibold text-emerald-600">{product.inStock ? "In Stock" : "Out of Stock"}</span></div>
+            </article>
+          ))}
+        </div>}
+
+        {visibleProducts < products.length && <div className="mt-8 text-center"><button type="button" onClick={() => setVisibleProducts((count) => count + 8)} className="rounded-full bg-[#024AD8] px-7 py-3 text-sm font-bold text-white shadow-md shadow-blue-200 hover:bg-blue-800">Show More Products</button></div>}
       </section>
 
       {/* What We Offer Section */}

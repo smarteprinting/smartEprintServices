@@ -6,9 +6,19 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 
 const quickLinks = [
   { href: '/', label: 'Home' },
-  { href: '/book-an-appointment', label: 'Book an Appointment' },
+  { href: '/shop', label: 'Shop Products' },
   { href: '/services', label: 'Our Services' },
+  { href: '/book-an-appointment', label: 'Book an Appointment' },
   { href: '/contact-us', label: 'Contact Us' },
+];
+
+const shopLinks = [
+  { href: '/shop?category=laser', label: 'Laser Printers' },
+  { href: '/shop?category=inkjet', label: 'Inkjet & EcoTank' },
+  { href: '/shop?category=all-in-one', label: 'All-in-One Multi-Function' },
+  { href: '/shop?category=supplies', label: 'Original Ink & Toners' },
+  { href: '/shop?category=accessories', label: 'Printer Cables & Parts' },
+  { href: '/shop', label: 'View All Hardware Deals' },
 ];
 
 const serviceLinks = [
@@ -100,12 +110,12 @@ export default function Footer() {
             </div> */}
           </div>
 
-          {/* Quick Links */}
+          {/* Shop Hardware */}
           <div className="text-center md:text-left">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">Quick Links</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">Shop Hardware</h4>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
+              {shopLinks.map((link) => (
+                <li key={link.label}>
                   <Link 
                     href={link.href}
                     className="text-sm text-slate-400 hover:text-brand-400 transition duration-300"
