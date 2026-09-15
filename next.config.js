@@ -4,7 +4,6 @@ const path = require("path");
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
-  distDir: process.env.NEXT_DIST_DIR || ".next",
   images: {
     remotePatterns: [
       {
