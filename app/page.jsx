@@ -1,7 +1,31 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "SmartEprint Services",
+  url: "https://smarteprintservices.com",
+  logo: "https://smarteprintservices.com/hero-printer-clean.avif",
+  description:
+    "SmartEprint Services provides printers, scanners, office technology products, business printing solutions, and on-site support across the United States.",
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+1-877-765-2289",
+      contactType: "customer service",
+      areaServed: "US",
+      availableLanguage: ["en"],
+    },
+  ],
+  sameAs: ["https://smarteprintservices.com"],
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "US",
+  },
+};
 import {
   Printer,
   ScanLine,
@@ -385,8 +409,13 @@ export default function HomePage() {
   const displayProducts = dbProducts.slice(0, 8);
 
   return (
-    <div className="w-full bg-slate-50 text-slate-800 overflow-x-hidden">
-      {/* ========================================================================= */}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <div className="w-full bg-slate-50 text-slate-800 overflow-x-hidden">
+        {/* ========================================================================= */}
       {/* 1. HERO SECTION: 70VH MIN-HEIGHT, VISIBLE BG IMAGE, RIGHT PRINTER ONLY */}
       {/* ========================================================================= */}
       <section className="relative w-full min-h-[70vh] flex items-center justify-center bg-slate-950 py-8 sm:py-12 lg:py-14">
@@ -1351,5 +1380,6 @@ export default function HomePage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

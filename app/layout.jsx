@@ -6,15 +6,65 @@ import SiteLayout from './components/SiteLayout';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'SmartEprint Services | Premium Printing & Scanning Solutions',
+  metadataBase: new URL('https://smarteprintservices.com'),
+  title: 'SmartEprint Services | Printer, Scanner & Office Tech Solutions',
   description:
-    'SmartEprint Services offers printers, scanners, and trusted equipment solutions for homes, businesses, and organizations across the United States.',
-  keywords: ['printing solutions', 'scanner store', 'printer shopping', 'smart print services'],
+    'SmartEprint Services provides printers, scanners, office technology, and on-site support for homes, small businesses, schools, and organizations across the USA.',
+  keywords: [
+    'printer store',
+    'scanner store',
+    'office printers',
+    'printer installation',
+    'laser printer',
+    'all-in-one printer',
+    'business printing solutions',
+    'smart print services',
+    'on-site technology support',
+  ],
+  applicationName: 'SmartEprint Services',
+  authors: [{ name: 'SmartEprint Services' }],
+  creator: 'SmartEprint Services',
+  publisher: 'SmartEprint Services',
   alternates: {
     canonical: 'https://smarteprintservices.com',
   },
+  openGraph: {
+    title: 'SmartEprint Services | Printer, Scanner & Office Tech Solutions',
+    description:
+      'Shop printers, scanners, and office tech solutions with expert guidance, fast shipping, and on-site support across the United States.',
+    url: 'https://smarteprintservices.com',
+    siteName: 'SmartEprint Services',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: 'https://smarteprintservices.com/hero-printer-clean.avif',
+        width: 1200,
+        height: 630,
+        alt: 'SmartEprint Services printers and office technology',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SmartEprint Services | Printer, Scanner & Office Tech Solutions',
+    description:
+      'Explore reliable printer, scanner, and office technology solutions for home offices, businesses, and organizations.',
+    images: ['https://smarteprintservices.com/hero-printer-clean.avif'],
+  },
   icons: {
     icon: '/svg-icon.png',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
