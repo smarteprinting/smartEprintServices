@@ -36,62 +36,74 @@ export async function GET(request) {
     const brand = searchParams.get("brand");
     const search = searchParams.get("search");
 
+    const mongoUri = process.env.MONGODB_URI;
+    if (!mongoUri) {
+      return NextResponse.json({
+        success: true,
+        source: "fallback",
+        products: [],
+        total: 0,
+      });
+    }
+
     await connectDB();
     // Older admin-created records predate the source field. Treat them as catalog records once.
     await Product.updateMany(
       { $or: [{ source: { $exists: false } }, { source: null }] },
       { $set: { source: "admin" } }
     );
-      // Build MongoDB Query
-      const query = { source: "admin" };
-      if (category && category !== "all") {
-        query.category = category;
-      }
-      if (brand && brand !== "All Brands") {
-        query.brand = { $regex: new RegExp(`^${brand}$`, "i") };
-      }
-      if (search && search.trim()) {
-        const q = search.trim();
-        query.$or = [
-          { title: { $regex: q, $options: "i" } },
-          { brand: { $regex: q, $options: "i" } },
-          { shortDesc: { $regex: q, $options: "i" } },
-        ];
-      }
 
-      const products = await Product.find(query).sort({ createdAt: -1 }).lean();
+    const query = { source: "admin" };
+    if (category && category !== "all") {
+      query.category = category;
+    }
+    if (brand && brand !== "All Brands") {
+      query.brand = { $regex: new RegExp(`^${brand}$`, "i") };
+    }
+    if (search && search.trim()) {
+      const q = search.trim();
+      query.$or = [
+        { title: { $regex: q, $options: "i" } },
+        { brand: { $regex: q, $options: "i" } },
+        { shortDesc: { $regex: q, $options: "i" } },
+      ];
+    }
 
-      // Normalize fields so frontend can consume either `name` or `title`
-      const normalized = products.map((p) => ({
-        ...p,
-        id: p._id.toString(),
-        name: p.title || p.name,
-        image: p.image || p.images?.[0] || "",
-        images: Array.from(new Set([...(p.images || []), p.image].filter(Boolean))),
-        price: p.salePrice || p.price,
-        originalPrice: p.salePrice ? p.price : (p.oldPrice || p.originalPrice || p.price),
-        stockCount: p.countInStock ?? 10,
-        specs: p.specifications || {},
-        shortDesc: p.shortDesc || stripHtml(p.shortDetails || ""),
-        highlights: p.highlights || p.shortDetails || "",
-        overview: p.overview || p.description || "",
-        technicalSpecificationRows: p.technicalSpecificationRows?.length
-          ? p.technicalSpecificationRows
-          : parseSpecificationTable(p.technicalSpecification || p.shortSpecification || ""),
-      }));
+    const products = await Product.find(query).sort({ createdAt: -1 }).lean();
+
+    const normalized = products.map((p) => ({
+      ...p,
+      id: p._id.toString(),
+      name: p.title || p.name,
+      image: p.image || p.images?.[0] || "",
+      images: Array.from(new Set([...(p.images || []), p.image].filter(Boolean))),
+      price: p.salePrice || p.price,
+      originalPrice: p.salePrice ? p.price : (p.oldPrice || p.originalPrice || p.price),
+      stockCount: p.countInStock ?? 10,
+      specs: p.specifications || {},
+      shortDesc: p.shortDesc || stripHtml(p.shortDetails || ""),
+      highlights: p.highlights || p.shortDetails || "",
+      overview: p.overview || p.description || "",
+      technicalSpecificationRows: p.technicalSpecificationRows?.length
+        ? p.technicalSpecificationRows
+        : parseSpecificationTable(p.technicalSpecification || p.shortSpecification || ""),
+    }));
 
     return NextResponse.json({
-        success: true,
-        source: "database",
-        products: normalized,
-        total: normalized.length,
-      });
+      success: true,
+      source: "database",
+      products: normalized,
+      total: normalized.length,
+    });
   } catch (error) {
     console.error("GET /api/products error:", error);
-    return NextResponse.json(
-      { success: false, message: error.message || "Failed to fetch products" },
-      { status: 500 }
-    );
+    return NextResponse.json({
+      success: true,
+      source: "fallback",
+      products: [],
+      total: 0,
+      message: "Products temporarily unavailable",
+    });
   }
 }
 

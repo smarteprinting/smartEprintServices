@@ -9,13 +9,13 @@ export async function GET(request) {
   try {
     const token = await verifyToken(getTokenFromRequest(request));
     if (!token?.id) {
-      return NextResponse.json({ success: false, user: null }, { status: 401 });
+      return NextResponse.json({ success: false, user: null }, { status: 200 });
     }
 
     await connectDB();
     const user = await User.findById(token.id).select("-password").lean();
     if (!user || user.isBlocked) {
-      return NextResponse.json({ success: false, user: null }, { status: 401 });
+      return NextResponse.json({ success: false, user: null }, { status: 200 });
     }
 
     return NextResponse.json({
@@ -32,6 +32,6 @@ export async function GET(request) {
     });
   } catch (error) {
     console.error("GET /api/auth/me error:", error);
-    return NextResponse.json({ success: false, user: null }, { status: 401 });
+    return NextResponse.json({ success: false, user: null }, { status: 200 });
   }
 }
