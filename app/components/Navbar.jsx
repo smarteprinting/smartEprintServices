@@ -10,7 +10,9 @@ import { useAuth } from "./AuthContext";
 
 const quickLinks = [
   { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
   { href: "/shop", label: "Shop" },
+  { href: "/blogs", label: "Blogs" },
   { href: "/services", label: "Our Services" },
   { href: "/book-an-appointment", label: "Book an Appointment" },
   { href: "/contact-us", label: "Contact Us" },

@@ -53,11 +53,16 @@ img {
 }
 
 .header-inner,
-.site-main,
 .site-footer {
   max-width: 1240px;
   margin: 0 auto;
   /* padding: 18px 20px; */
+}
+
+.site-main {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .header-inner {

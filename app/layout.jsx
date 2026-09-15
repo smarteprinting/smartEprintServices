@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google';
+﻿import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import SiteLayout from './components/SiteLayout';
@@ -6,10 +6,10 @@ import SiteLayout from './components/SiteLayout';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'SmartEprint Services | On-Site Printer Support',
+  title: 'SmartEprint Services | Premium Printing & Scanning Solutions',
   description:
-    'SmartEprint Services offers consultation-based on-site printer, computer and smart home support for homes and businesses.',
-  keywords: ['printer support', 'smart home support', 'on-site services'],
+    'SmartEprint Services offers printers, scanners, and trusted equipment solutions for homes, businesses, and organizations across the United States.',
+  keywords: ['printing solutions', 'scanner store', 'printer shopping', 'smart print services'],
   alternates: {
     canonical: 'https://smarteprintservices.com',
   },
@@ -46,3 +46,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

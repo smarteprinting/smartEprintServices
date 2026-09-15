@@ -1,400 +1,1355 @@
-
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import {
+  Printer,
+  ScanLine,
+  Layers,
+  ShieldCheck,
+  Truck,
+  RotateCcw,
+  Sparkles,
+  ChevronDown,
+  CheckCircle2,
+  ArrowRight,
+  Headphones,
+  Star,
+  Check,
+  Building2,
+  Home,
+  GraduationCap,
+  HeartPulse,
+  Palette,
+  Briefcase,
+  Clock,
+  Wifi,
+  FileText,
+  Send,
+  ShoppingCart,
+  Zap,
+} from "lucide-react";
+import { useCart } from "./components/CartContext";
+import { products as fallbackCatalog } from "../lib/productsData";
 
-const services = [
+// Hardware Categories
+const productCategories = [
   {
-    title: 'Computer Assistance',
-    description: 'Reliable setup, troubleshooting, repair, and support for desktops, laptops, and everyday office technology.',
+    title: "Inkjet & Supertank Printers",
+    badge: "Vibrant Color",
+    description:
+      "Well-suited for vivid photos, marketing collateral, and everyday documents. Ideal for home offices and creative projects.",
+    image: "/printer-support-hero1.png",
+    accent: "from-blue-600/15 to-sky-500/10",
+    features: [
+      "Vibrant high-DPI color output",
+      "Borderless photo printing",
+      "Affordable upfront investment",
+      "Supertank refillable options",
+    ],
+    href: "/shop?category=inkjet",
   },
   {
-    title: 'Printer Assistance',
-    description: 'Fast installation, maintenance, and printer troubleshooting for homes and businesses.',
+    title: "High-Speed Laser Printers",
+    badge: "Fast & Sharp",
+    description:
+      "High-speed monochrome and color text printing with an ultra-low cost per page. A reliable powerhouse for busy offices.",
+    image: "/hp-support2.png",
+    accent: "from-indigo-600/15 to-blue-500/10",
+    features: [
+      "Blazing print speeds up to 40+ ppm",
+      "Minimal running cost per page",
+      "Razor-sharp micro-text clarity",
+      "Heavy-duty monthly duty cycles",
+    ],
+    href: "/shop?category=laser",
   },
   {
-    title: 'Smart Home Assistance',
-    description: 'Setup and support for connected devices, smart systems, and home technology.',
+    title: "All-in-One Multi-Function",
+    badge: "Space Saving",
+    description:
+      "Print, scan, copy, and fax combined into a single compact powerhouse. Maximizes workspace efficiency without sacrificing power.",
+    image: "/hp-printer4.png",
+    accent: "from-cyan-600/15 to-blue-500/10",
+    features: [
+      "Print, scan, copy & fax combined",
+      "Automatic document feeders (ADF)",
+      "Compact space-saving desktop footprint",
+      "Cloud and wireless mobile printing",
+    ],
+    href: "/shop?category=all-in-one",
   },
   {
-    title: 'TV Mounting',
-    description: 'Clean, secure installation and setup for televisions, displays, and entertainment systems.',
+    title: "Dedicated Document Scanners",
+    badge: "Paperless Flow",
+    description:
+      "Flatbed, portable, and high-speed sheetfed document scanners engineered for rapid archiving and clean digital workflows.",
+    image: "https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?auto=format&fit=crop&w=800&q=80",
+    accent: "from-emerald-600/15 to-teal-500/10",
+    features: [
+      "Rapid single-pass duplex scanning",
+      "Scan directly to Cloud, PDF & Email",
+      "Compact portable & desktop designs",
+      "Receipt, card & legal paper handling",
+    ],
+    href: "/shop?category=all",
   },
 ];
 
-const quickBenefits = [
+// Who We Serve (Solutions for Every Need)
+const solutions = [
   {
-    title: 'Convenient Scheduling',
-    description: 'Choose an available appointment time that works for your home or business schedule.',
-    icon: '📅'
+    title: "Home Office",
+    icon: Home,
+    summary: "Compact, reliable equipment well-suited for remote work, school assignments, and everyday home management.",
+    points: ["Wireless & mobile connectivity", "Compact desk-friendly designs", "Simple 5-minute setup"],
+    color: "from-blue-500/10 to-indigo-500/10",
+    borderColor: "border-blue-100",
   },
   {
-    title: 'On-Site Assistance',
-    description: 'A service professional visits your location to inspect the printer and determine the appropriate next steps.',
-    icon: '🛠️'
+    title: "Small Business",
+    icon: Briefcase,
+    summary: "Cost-effective, heavy-duty setups that scale with your growing transactions, shipping labels, and documents.",
+    points: ["High-volume paper capacity", "Gigabit network & Wi-Fi ready", "Ultra-low cost per page"],
+    color: "from-sky-500/10 to-blue-500/10",
+    borderColor: "border-sky-100",
   },
   {
-    title: 'Clear Communication',
-    description: 'We explain the issue, available service options, and expected charges before approved work begins.',
-    icon: '💬'
+    title: "Enterprise & Corporate",
+    icon: Building2,
+    summary: "High-performance multifunction devices designed for demanding corporate offices with advanced IT security.",
+    points: ["Multi-department sharing", "Advanced hardware-level security", "Seamless cloud & ERP integration"],
+    color: "from-slate-500/10 to-blue-500/10",
+    borderColor: "border-slate-200",
   },
   {
-    title: 'Home and Office Printers',
-    description: 'Assistance is available for commonly used inkjet, laser, wireless, and multifunction printers.',
-    icon: '🖨️'
+    title: "Creative & Photography",
+    icon: Palette,
+    summary: "Professional-grade photo printers and high-resolution scanners built for designers, artists, and photographers.",
+    points: ["Expansive, accurate color gamut", "Archival-grade pigment inks", "Wide-format & borderless media"],
+    color: "from-purple-500/10 to-pink-500/10",
+    borderColor: "border-purple-100",
+  },
+  {
+    title: "Education & Libraries",
+    icon: GraduationCap,
+    summary: "Durable, high-uptime equipment engineered for schools, universities, study centers, and administrative desks.",
+    points: ["Low maintenance & jam-resistant", "Student-friendly intuitive touchscreens", "Strict budget-conscious operation"],
+    color: "from-amber-500/10 to-orange-500/10",
+    borderColor: "border-amber-100",
+  },
+  {
+    title: "Healthcare & Clinics",
+    icon: HeartPulse,
+    summary: "Secure printing and document digitization equipment suitable for medical clinics, pharmacies, and dental offices.",
+    points: ["HIPAA-ready secure PIN release", "Prescription & medical label trays", "Fast ID card & insurance scanning"],
+    color: "from-emerald-500/10 to-teal-500/10",
+    borderColor: "border-emerald-100",
+  },
+];
+
+// The SmartEprint Advantage (Why Choose Us)
+const advantages = [
+  {
+    title: "Trusted Manufacturer Brands",
+    description:
+      "We exclusively carry hardware from recognized industry leaders—HP, Canon, Epson, and Brother—known for durability and consistent performance.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Fast 24-Hour Dispatch",
+    description:
+      "Most orders ship within 1 business day from nationwide distribution centers. Get your equipment quickly with full door-to-door tracking.",
+    icon: Truck,
+  },
+  {
+    title: "Personalized Human Guidance",
+    description:
+      "No confusing technical jargon. Our equipment specialists analyze your workload and help you select the exact device you need.",
+    icon: Headphones,
+  },
+  {
+    title: "Wide, Curated Hardware Selection",
+    description:
+      "From compact home-office printers to enterprise multifunction powerhouses, we stock solutions tailored for every budget and scale.",
+    icon: Layers,
+  },
+];
+
+// Simple 3-Step Process
+const processSteps = [
+  {
+    number: "01",
+    title: "Browse Our Curated Catalog",
+    description:
+      "Explore our handpicked selection of professional printers, scanners, and all-in-one machines without overwhelming technical jargon.",
+  },
+  {
+    number: "02",
+    title: "Compare & Choose",
+    description:
+      "Use our plain-English buying guides, transparent specifications, and expert advice to pick the right device for your exact volume.",
+  },
+  {
+    number: "03",
+    title: "Fast Delivery & Enjoy",
+    description:
+      "Experience fast checkout, prompt delivery straight to your doorstep, and easy plug-and-play setup to start printing immediately.",
+  },
+];
+
+// For Business: Boost Your Office Productivity
+const businessPerks = [
+  {
+    title: "Save Time",
+    description: "High-speed duplex printers and single-pass scanners eliminate waiting lines and keep workflow moving.",
+    icon: Clock,
+  },
+  {
+    title: "Reduce Operating Costs",
+    description: "Supertank models and high-yield laser cartridges dramatically lower cost-per-page expenses.",
+    icon: Zap,
+  },
+  {
+    title: "Stay Wirelessly Connected",
+    description: "Print effortlessly from laptops, iPhones, iPads, and Android devices with Wi-Fi 6, AirPrint, and Mopria.",
+    icon: Wifi,
+  },
+  {
+    title: "Go Completely Paperless",
+    description: "Convert stacks of paper into searchable digital PDFs, saving directly to cloud drives or email.",
+    icon: FileText,
+  },
+];
+
+// Buying Advice: What to Consider Before You Buy
+const buyingFactors = [
+  {
+    title: "Monthly Print Volume",
+    detail:
+      "Consider how many pages you print each month. Home users typically print under 200 pages, while busy offices need duty cycles rated for 1,000+ pages monthly. Matching volume prevents premature wear and keeps costs predictable.",
+  },
+  {
+    title: "Color vs. Monochrome",
+    detail:
+      "If you primarily print invoices, contracts, and text documents, a monochrome laser printer offers lightning speed and the lowest cost per page. For photos, charts, and marketing flyers, a color inkjet or color laser is essential.",
+  },
+  {
+    title: "Connectivity & Mobile Options",
+    detail:
+      "Ensure the model matches your setup. Dual-band Wi-Fi, Ethernet, and USB connectivity allow multiple computers, phones, and tablets to print simultaneously with Apple AirPrint, Mopria, and cloud apps.",
+  },
+  {
+    title: "Total Cost of Ownership (TCO)",
+    detail:
+      "The initial purchase price is just step one. Consider replacement ink and toner yields. While laser printers or refillable Supertanks cost a bit more upfront, they save hundreds of dollars over time with higher page yields.",
+  },
+  {
+    title: "Size & Available Desk Space",
+    detail:
+      "Measure your available workspace prior to purchasing. Compact all-in-one models conserve valuable desk space by combining printing, scanning, and copying into one footprint.",
+  },
+  {
+    title: "Print & Scan Resolution (DPI)",
+    detail:
+      "Resolution is measured in dots per inch (DPI). For standard office text, 600 DPI is crisp and professional. Photo printing benefits from 1200 x 4800 DPI, and document scanning is crisp at 300 to 600 DPI.",
+  },
+];
+
+// FAQs
+const faqs = [
+  {
+    q: "What types of printers and scanners do you sell?",
+    a: "We stock a complete catalog of printing and scanning hardware, including monochrome and color laser printers, cartridge-free ink tank printers, compact inkjet all-in-ones, desktop document scanners, and high-volume commercial multifunction systems from HP, Canon, Epson, and Brother.",
+  },
+  {
+    q: "Do you ship to all 50 U.S. states?",
+    a: "Yes! SmartEprint Services ships nationwide across all 50 U.S. states. We offer free standard delivery on all orders over $50 within the continental United States, with expedited shipping options available at checkout.",
+  },
+  {
+    q: "What is your return policy?",
+    a: "We offer a straightforward 30-day return policy. If your purchase does not meet your expectations, contact our customer support within 30 days of receipt. Once received in original packaging and inspected, your refund is processed within 5 to 10 business days.",
+  },
+  {
+    q: "Do your products come with a warranty?",
+    a: "All equipment sold through SmartEprint Services is 100% brand new and backed by official manufacturer warranties (typically 1 to 2 years, depending on the brand and model). We also provide dedicated post-purchase setup and guidance.",
+  },
+  {
+    q: "How do I decide between an inkjet and a laser printer?",
+    a: "Choose an inkjet if you need vibrant colors, photo quality, or have lower volume everyday printing needs. Choose a laser printer if you print predominantly text documents, need blazing print speeds, and want the lowest ongoing cost per page.",
+  },
+  {
+    q: "Can I print from my phone or tablet?",
+    a: "Yes. Nearly all modern wireless printers in our catalog support Apple AirPrint, Android Mopria, Wi-Fi Direct, and manufacturer apps (such as HP Smart, Epson Smart Panel, and Canon PRINT). You can easily print from iOS and Android devices without tangled cables.",
+  },
+  {
+    q: "Do you sell ink, toner, or replacement parts?",
+    a: "Yes! In addition to hardware, we provide genuine OEM replacement toner cartridges, ink bottles, high-yield multi-packs, and heavy-duty printer cables in our online shop.",
+  },
+  {
+    q: "How can I contact your support team?",
+    a: "Our customer support team is available via email, phone, and our website contact form. You can also book a 1-on-1 virtual consultation or appointment for personalized recommendations and setup assistance.",
   },
 ];
 
 export default function HomePage() {
-  const [products, setProducts] = useState([]);
-  const [visibleProducts, setVisibleProducts] = useState(8);
+  const { addToCart } = useCart();
+  const [openFaq, setOpenFaq] = useState(null);
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterSuccess, setNewsletterSuccess] = useState(false);
 
+  // Live Database Products State
+  const [dbProducts, setDbProducts] = useState([]);
+  const [isLoadingProducts, setIsLoadingProducts] = useState(true);
+
+  // Fetch real products from database via /api/products (Show ONLY HP)
   useEffect(() => {
-    fetch("/api/products?brand=HP", { cache: "no-store" })
-      .then((response) => response.json())
+    fetch("/api/products", { cache: "no-store" })
+      .then((res) => res.json())
       .then((data) => {
-        if (data.success && Array.isArray(data.products)) setProducts(data.products);
+        if (data.success && Array.isArray(data.products) && data.products.length > 0) {
+          // Filter ONLY HP products with valid images
+          const hpOnly = data.products.filter((p) => {
+            const isHp =
+              (p.brand || "").toLowerCase() === "hp" ||
+              (p.name || p.title || "").toLowerCase().includes("hp");
+            return isHp && p.image;
+          });
+
+          // Sort HP printers to the top
+          const sortedHp = hpOnly.sort((a, b) => {
+            const nameA = (a.name || a.title || "").toLowerCase();
+            const nameB = (b.name || b.title || "").toLowerCase();
+            const isPrinterA =
+              nameA.includes("printer") ||
+              nameA.includes("laserjet") ||
+              nameA.includes("officejet") ||
+              nameA.includes("smart tank") ||
+              nameA.includes("deskjet") ||
+              nameA.includes("envy")
+                ? 1
+                : 0;
+            const isPrinterB =
+              nameB.includes("printer") ||
+              nameB.includes("laserjet") ||
+              nameB.includes("officejet") ||
+              nameB.includes("smart tank") ||
+              nameB.includes("deskjet") ||
+              nameB.includes("envy")
+                ? 1
+                : 0;
+            return isPrinterB - isPrinterA;
+          });
+
+          if (sortedHp.length > 0) {
+            setDbProducts(sortedHp);
+          } else {
+            const fallbackHp = fallbackCatalog.filter(
+              (p) =>
+                (p.brand || "").toLowerCase() === "hp" ||
+                (p.name || "").toLowerCase().includes("hp")
+            );
+            setDbProducts(fallbackHp.length > 0 ? fallbackHp : fallbackCatalog);
+          }
+        } else {
+          const fallbackHp = fallbackCatalog.filter(
+            (p) =>
+              (p.brand || "").toLowerCase() === "hp" ||
+              (p.name || "").toLowerCase().includes("hp")
+          );
+          setDbProducts(fallbackHp.length > 0 ? fallbackHp : fallbackCatalog);
+        }
       })
-      .catch(() => {});
+      .catch((err) => {
+        console.warn("Could not load products from DB, using fallback:", err);
+        setDbProducts(fallbackCatalog);
+      })
+      .finally(() => {
+        setIsLoadingProducts(false);
+      });
   }, []);
 
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim()) return;
+    setNewsletterSuccess(true);
+    setNewsletterEmail("");
+    setTimeout(() => setNewsletterSuccess(false), 5000);
+  };
+
+  // Slice top 8 HP products from database
+  const displayProducts = dbProducts.slice(0, 8);
+
   return (
-    <div className="bg-slate-50 font-sans selection:bg-[#024AD8]/20 selection:text-[#024AD8]">
-      <div className="relative left-1/2 w-screen -ml-[50vw]">
-        
-        {/* HERO SECTION */}
-        <section className="relative overflow-hidden min-h-[390px] flex flex-col justify-center py-10 lg:min-h-[440px] lg:py-12">
-          <div 
-            className="absolute inset-0 z-0"
-            style={{
-              backgroundImage: "url('/bg-hero.webp')",
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat"
-            }}
-          />
-          <div className="absolute inset-0 z-0 bg-gradient-to-b from-white/60 via-white/50 to-slate-50/80" />
-          
-          <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[1.1fr_.9fr] lg:px-8 w-full">
-            <div className="max-w-3xl text-left">
-            
+    <div className="w-full bg-slate-50 text-slate-800 overflow-x-hidden">
+      {/* ========================================================================= */}
+      {/* 1. HERO SECTION: 70VH MIN-HEIGHT, VISIBLE BG IMAGE, RIGHT PRINTER ONLY */}
+      {/* ========================================================================= */}
+      <section className="relative w-full min-h-[70vh] flex items-center justify-center bg-slate-950 py-8 sm:py-12 lg:py-14">
+        {/* Background Image - Clearly Visible */}
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/bg-hero.webp')",
+          }}
+        />
 
-              <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-[4.5rem] lg:leading-[1.1] pb-2 drop-shadow-sm">
-                On-Site Printer Service <br className="hidden sm:block" />
-                <span className="bg-gradient-to-r from-slate-900 via-[#024AD8] to-[#024AD8] bg-clip-text text-transparent">
-                  for Homes and Businesses
-                </span>
+        {/* Soft, Transparent Overlay - Background Image is Clearly Visible */}
+        <div className="absolute inset-0 bg-slate-950/45" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/50 to-transparent" />
+
+        {/* Content Container */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12">
+            {/* Left Side: Heading, Paragraph, Badge, and Buttons ONLY */}
+            <div>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-sky-200 backdrop-blur-md">
+                <Sparkles className="h-3 w-3 text-sky-400" />
+                <span>SmartEprint Services • Nationwide USA</span>
+              </div>
+
+              {/* Reduced Font Size Heading */}
+              <h1 className="mt-3.5 text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-black tracking-tight text-white leading-tight">
+                Your Trusted Partner for Professional{" "}
+                <span className="bg-gradient-to-r from-sky-400 via-blue-300 to-indigo-300 bg-clip-text text-transparent">
+                  Printing &amp; Scanning
+                </span>{" "}
+                Solutions.
               </h1>
-              
-              <p className="mt-5 max-w-3xl text-[15.5px] leading-relaxed text-slate-600 sm:text-[17px] font-medium">
-                From printer setup and connectivity problems to paper jams, error messages, and routine maintenance, Smart ePrint Services provides practical on-site assistance to help keep your printer working properly.
+
+              {/* Reduced Font Size Paragraph */}
+              <p className="mt-3 max-w-lg text-xs sm:text-sm leading-relaxed text-slate-200">
+                At SmartEprint Services, we believe that everyone deserves access to reliable, high-quality printing
+                and scanning equipment. Whether you are a student, remote professional, or growing business, we take
+                the guesswork out of finding the right hardware—without confusing technical jargon.
               </p>
-              
-              <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-                <a className="group relative flex w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-full bg-[#024AD8] px-9 py-4 text-[14px] font-bold text-white shadow-2xl shadow-[#024AD8]/30 ring-2 ring-white/20 transition-all hover:scale-[1.02] hover:bg-blue-800 hover:shadow-3xl hover:shadow-[#024AD8]/40" href="/book-an-appointment">
-                  <span>Book Your Service Now</span>
-                  <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </a>
-                <a className="group flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-slate-200 bg-white/70 px-9 py-4 text-[14px] font-bold text-slate-700 backdrop-blur-md transition-all hover:border-[#024AD8]/30 hover:bg-white hover:text-[#024AD8] shadow-sm hover:shadow-md" href="/services">
-                  Explore Our Services
-                </a>
+
+              {/* Compact Action Buttons */}
+              <div className="mt-5 flex flex-wrap items-center gap-3">
+                <Link
+                  href="/shop"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0f6cff] px-6 py-2.5 text-xs sm:text-sm font-bold text-white shadow-[0_12px_28px_rgba(15,108,255,0.35)] transition duration-200 hover:-translate-y-0.5 hover:bg-blue-600 focus:outline-none"
+                >
+                  <ShoppingCart className="h-3.5 w-3.5" />
+                  <span>Shop Best Sellers</span>
+                </Link>
+
+                <Link
+                  href="/contact-us"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-2.5 text-xs sm:text-sm font-bold text-white backdrop-blur-md transition duration-200 hover:bg-white/20 focus:outline-none"
+                >
+                  <Headphones className="h-3.5 w-3.5 text-sky-300" />
+                  <span>Talk to an Expert</span>
+                </Link>
               </div>
 
-            </div>
-            <div className="hidden justify-end lg:flex">
-              <div className="relative w-full max-w-[390px] overflow-hidden rounded-[30px] border border-white/60 bg-white/55 p-3 shadow-2xl backdrop-blur-md">
-                <Image src="/printer-support-hero.png" alt="Printer support" width={520} height={520} className="h-[330px] w-full rounded-[22px] object-cover" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Quick Benefits Section */}
-        <section className="relative z-20 px-6 lg:px-8 max-w-7xl mx-auto -mt-8 mb-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {quickBenefits.map((benefit) => (
-              <div key={benefit.title} className="group rounded-[24px] border border-white bg-white/70 backdrop-blur-xl p-7 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_20px_40px_rgb(2,74,216,0.08)] hover:border-[#024AD8]/10">
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-50 text-2xl shadow-sm border border-slate-100 group-hover:bg-[#024AD8]/5 group-hover:border-[#024AD8]/20 transition-colors">
-                  {benefit.icon}
+              {/* Compact Trust Badges */}
+              <div className="mt-6 pt-4 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-[11px] font-semibold text-slate-300">
+                <div className="flex items-center gap-1.5">
+                  <Truck className="h-3.5 w-3.5 text-sky-400 shrink-0" />
+                  <span>Free Shipping &gt;$50</span>
                 </div>
-                <h3 className="text-[15px] font-extrabold text-slate-900 tracking-tight group-hover:text-[#024AD8] transition-colors">{benefit.title}</h3>
-                <p className="mt-2.5 text-[13px] leading-relaxed text-slate-500 font-medium">
-                  {benefit.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-      </div>
-
-      <section className="mx-auto max-w-7xl px-6 py-10 sm:px-8 lg:px-10">
-        <div className="mb-10 text-center max-w-3xl mx-auto">
-          <h3 className="text-[11px] font-bold tracking-[0.2em] text-[#024AD8] uppercase mb-4 opacity-90">
-            Find the Right Service for Your Printer
-          </h3>
-          <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Explore Our Printer Services
-          </h2>
-          <div className="mt-6 text-[15px] text-slate-500 leading-relaxed space-y-3 font-medium">
-            <p>
-              Printers are used differently in every home and workplace. Some customers need help installing a new device, while others are dealing with connection errors, poor print quality, repeated paper jams, or an older printer that requires attention.
-            </p>
-            <p>
-              Select the service category that best matches your requirement.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {/* Printer Troubleshooting */}
-          <div className="group flex flex-col rounded-[28px] border border-slate-200/60 bg-white p-8 shadow-sm hover:shadow-[0_20px_40px_rgb(2,74,216,0.06)] hover:border-[#024AD8]/30 transition-all duration-500 hover:-translate-y-1">
-            <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#024AD8] to-blue-700 text-white shadow-lg shadow-[#024AD8]/30 group-hover:scale-110 transition-transform duration-500">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-            </div>
-            <h3 className="text-[17px] font-extrabold text-slate-900 group-hover:text-[#024AD8] transition-colors tracking-tight">Printer Troubleshooting</h3>
-            <div className="mt-3.5 flex-1 space-y-2.5 text-[13.5px] text-slate-500 leading-relaxed font-medium">
-              <p>We review common printer problems such as offline status, unresponsive devices, printing interruptions, error notifications, paper-feed concerns, and unexpected changes in printer performance.</p>
-              <p>The purpose of the assessment is to understand the reported issue and identify practical next steps based on the printer model, condition, configuration, and available service options.</p>
-            </div>
-            <a href="/book-an-appointment" className="mt-8 inline-flex items-center gap-1.5 text-[13px] font-bold text-[#024AD8] hover:text-blue-800 transition-colors group/btn">
-              Book an Appointment
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
-          </div>
-
-          {/* Printer Installation and Setup */}
-          <div className="group flex flex-col rounded-[28px] border border-slate-200/60 bg-white p-8 shadow-sm hover:shadow-[0_20px_40px_rgb(2,74,216,0.06)] hover:border-[#024AD8]/30 transition-all duration-500 hover:-translate-y-1">
-            <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#024AD8] to-blue-700 text-white shadow-lg shadow-[#024AD8]/30 group-hover:scale-110 transition-transform duration-500">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
-              </svg>
-            </div>
-            <h3 className="text-[17px] font-extrabold text-slate-900 group-hover:text-[#024AD8] transition-colors tracking-tight">Printer Installation and Setup</h3>
-            <div className="mt-3.5 flex-1 space-y-2.5 text-[13.5px] text-slate-500 leading-relaxed font-medium">
-              <p>Setting up a printer involves more than connecting it to a power outlet. The printer may also need to be configured with a compatible computer, wireless network, mobile device, or office environment.</p>
-              <p>Our setup services may include assistance with basic printer preparation, device connection, network configuration, compatible software setup, printer preferences, and test printing.</p>
-            </div>
-            <a href="/book-an-appointment" className="mt-8 inline-flex items-center gap-1.5 text-[13px] font-bold text-[#024AD8] hover:text-blue-800 transition-colors group/btn">
-              Book an Appointment
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
-          </div>
-
-          {/* Wireless and Network Assistance */}
-          <div className="group flex flex-col rounded-[28px] border border-slate-200/60 bg-white p-8 shadow-sm hover:shadow-[0_20px_40px_rgb(2,74,216,0.06)] hover:border-[#024AD8]/30 transition-all duration-500 hover:-translate-y-1">
-            <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#024AD8] to-blue-700 text-white shadow-lg shadow-[#024AD8]/30 group-hover:scale-110 transition-transform duration-500">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path>
-              </svg>
-            </div>
-            <h3 className="text-[17px] font-extrabold text-slate-900 group-hover:text-[#024AD8] transition-colors tracking-tight">Wireless and Network Assistance</h3>
-            <div className="mt-3.5 flex-1 space-y-2.5 text-[13.5px] text-slate-500 leading-relaxed font-medium">
-              <p>A printer may stop connecting after a router replacement, Wi-Fi password change, operating-system update, computer replacement, or network interruption.</p>
-              <p>We help customers review common wireless and network configuration issues and reconnect compatible printers to supported computers or networks where possible.</p>
-            </div>
-            <a href="/book-an-appointment" className="mt-8 inline-flex items-center gap-1.5 text-[13px] font-bold text-[#024AD8] hover:text-blue-800 transition-colors group/btn">
-              Book an Appointment
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
-          </div>
-
-          {/* Printer Maintenance */}
-          <div className="group flex flex-col rounded-[28px] border border-slate-200/60 bg-white p-8 shadow-sm hover:shadow-[0_20px_40px_rgb(2,74,216,0.06)] hover:border-[#024AD8]/30 transition-all duration-500 hover:-translate-y-1">
-            <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#024AD8] to-blue-700 text-white shadow-lg shadow-[#024AD8]/30 group-hover:scale-110 transition-transform duration-500">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-              </svg>
-            </div>
-            <h3 className="text-[17px] font-extrabold text-slate-900 group-hover:text-[#024AD8] transition-colors tracking-tight">Printer Maintenance</h3>
-            <div className="mt-3.5 flex-1 space-y-2.5 text-[13.5px] text-slate-500 leading-relaxed font-medium">
-              <p>Routine printer care can help reduce avoidable printing interruptions and identify visible signs of wear before they become more disruptive.</p>
-              <p>Maintenance services may include accessible cleaning, paper-path checks, roller inspection, supply review, basic performance testing, and recommendations based on the printer’s condition.</p>
-            </div>
-            <a href="/book-an-appointment" className="mt-8 inline-flex items-center gap-1.5 text-[13px] font-bold text-[#024AD8] hover:text-blue-800 transition-colors group/btn">
-              Book an Appointment
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
-          </div>
-
-          {/* Home Printer Services */}
-          <div className="group flex flex-col rounded-[28px] border border-slate-200/60 bg-white p-8 shadow-sm hover:shadow-[0_20px_40px_rgb(2,74,216,0.06)] hover:border-[#024AD8]/30 transition-all duration-500 hover:-translate-y-1">
-            <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#024AD8] to-blue-700 text-white shadow-lg shadow-[#024AD8]/30 group-hover:scale-110 transition-transform duration-500">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-              </svg>
-            </div>
-            <h3 className="text-[17px] font-extrabold text-slate-900 group-hover:text-[#024AD8] transition-colors tracking-tight">Home Printer Services</h3>
-            <div className="mt-3.5 flex-1 space-y-2.5 text-[13.5px] text-slate-500 leading-relaxed font-medium">
-              <p>Home printers are commonly used for schoolwork, personal documents, remote work, forms, photographs, and everyday printing.</p>
-              <p>We assist residential customers with new printer setup, connection problems, paper handling, print-quality concerns, scanning configuration, and other common printer-related requirements.</p>
-            </div>
-            <a href="/book-an-appointment" className="mt-8 inline-flex items-center gap-1.5 text-[13px] font-bold text-[#024AD8] hover:text-blue-800 transition-colors group/btn">
-              Book an Appointment
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
-          </div>
-
-          {/* Business Printer Services */}
-          <div className="group flex flex-col rounded-[28px] border border-slate-200/60 bg-white p-8 shadow-sm hover:shadow-[0_20px_40px_rgb(2,74,216,0.06)] hover:border-[#024AD8]/30 transition-all duration-500 hover:-translate-y-1">
-            <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#024AD8] to-blue-700 text-white shadow-lg shadow-[#024AD8]/30 group-hover:scale-110 transition-transform duration-500">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
-            </div>
-            <h3 className="text-[17px] font-extrabold text-slate-900 group-hover:text-[#024AD8] transition-colors tracking-tight">Business Printer Services</h3>
-            <div className="mt-3.5 flex-1 space-y-2.5 text-[13.5px] text-slate-500 leading-relaxed font-medium">
-              <p>Reliable printing is important for invoices, customer records, reports, contracts, labels, shipping documents, and daily office operations.</p>
-              <p>Smart ePrint Services works with offices and businesses that need help with printer setup, workstation connections, device configuration, recurring maintenance, or common printing interruptions.</p>
-            </div>
-            <a href="/book-an-appointment" className="mt-8 inline-flex items-center gap-1.5 text-[13px] font-bold text-[#024AD8] hover:text-blue-800 transition-colors group/btn">
-              Book an Appointment
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured HP Products */}
-      <section className="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-10">
-        <div className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#024AD8]">Featured Products</p>
-            <h2 className="mt-2 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">HP Printers & Supplies</h2>
-            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-500">Shop reliable HP products selected for homes, offices, and everyday printing needs.</p>
-          </div>
-          <Link href="/shop" className="text-sm font-bold text-[#024AD8] hover:text-blue-800">View all HP products →</Link>
-        </div>
-
-        {products.length > 0 && <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {products.slice(0, visibleProducts).map((product) => (
-            <article key={product.id} className="group flex flex-col rounded-3xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl">
-              <Link href={`/shop/${product.id}`} className="relative flex h-48 items-center justify-center overflow-hidden rounded-2xl bg-slate-50 p-4">
-                {product.image ? <Image src={product.image} alt={product.name} fill className="object-contain p-5 transition duration-300 group-hover:scale-105" /> : <span className="text-xs text-slate-400">Image unavailable</span>}
-              </Link>
-              <p className="mt-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">{product.brand}</p>
-              <Link href={`/shop/${product.id}`} className="mt-1 line-clamp-2 min-h-10 text-sm font-bold leading-5 text-slate-800 hover:text-[#024AD8]">{product.name}</Link>
-              <div className="mt-auto flex items-center justify-between pt-4"><span className="text-lg font-extrabold text-slate-900">${Number(product.price || 0).toFixed(2)}</span><span className="text-[10px] font-semibold text-emerald-600">{product.inStock ? "In Stock" : "Out of Stock"}</span></div>
-            </article>
-          ))}
-        </div>}
-
-        {visibleProducts < products.length && <div className="mt-8 text-center"><button type="button" onClick={() => setVisibleProducts((count) => count + 8)} className="rounded-full bg-[#024AD8] px-7 py-3 text-sm font-bold text-white shadow-md shadow-blue-200 hover:bg-blue-800">Show More Products</button></div>}
-      </section>
-
-      {/* What We Offer Section */}
-      <section className="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-10 relative">
-        <div className="absolute top-1/2 left-0 -ml-32 -mt-32 h-64 w-64 rounded-full bg-[#024AD8]/5 blur-3xl -z-10 pointer-events-none"></div>
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
-          <div className="lg:col-span-5 relative">
-            <div className="absolute -left-6 top-2 h-20 w-1 bg-[#024AD8] rounded-r-full"></div>
-            <h3 className="text-[11px] font-bold tracking-[0.2em] text-[#024AD8] uppercase mb-4 opacity-90">What We Offer</h3>
-            <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl lg:text-5xl leading-tight">
-              Practical Printer Assistance at Your Location
-            </h2>
-          </div>
-          <div className="lg:col-span-7 space-y-5 text-[15px] text-slate-500 leading-relaxed font-medium">
-            <p className="text-lg text-slate-700 font-semibold leading-relaxed">Printer problems can interrupt work, delay important documents, and create unnecessary frustration. Smart ePrint Services helps home users, professionals, and businesses address common printer issues without requiring them to transport bulky equipment to a service location.</p>
-            <div className="h-px w-20 bg-slate-200 my-6"></div>
-            <p>Our services may include printer setup, basic troubleshooting, wireless configuration, print-quality checks, paper-feed inspection, driver guidance, scanning setup, preventive maintenance, and other printer-related assistance.</p>
-            <p>Every service request is different. The exact solution depends on the printer model, age, condition, the availability of compatible parts, and the nature of the problem. Our goal is to provide a clear assessment and practical recommendation based on the condition of the equipment.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* How Our On-Site Printer Service Works */}
-      <section className="relative overflow-hidden bg-white py-14 border-y border-slate-100">
-        <div className="absolute top-0 right-0 h-full w-1/2 bg-slate-50/50 -z-10 skew-x-[-20deg] transform origin-top hidden lg:block"></div>
-        
-        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
-          <div className="text-center mb-10 max-w-2xl mx-auto">
-            <h3 className="text-[11px] font-bold tracking-[0.2em] text-[#024AD8] uppercase mb-4 opacity-90">Process</h3>
-            <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-              How Our On-Site Printer Service Works
-            </h2>
-          </div>
-          
-          <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-5 relative z-10">
-            {[
-              { num: '1', title: 'Submit Your Request', desc: 'Call us or complete the appointment form with your contact details, printer model, location, and a short description of the issue.' },
-              { num: '2', title: 'Confirm the Appointment', desc: 'Our team reviews your request and contacts you to confirm service availability, appointment timing, and any information needed before the visit.' },
-              { num: '3', title: 'On-Site Inspection', desc: 'A service professional visits the confirmed location, inspects the printer, and explains the likely cause of the problem.' },
-              { num: '4', title: 'Approve the Service', desc: 'You receive an explanation of the recommended work and applicable charges. No additional work should begin without your approval.' },
-              { num: '5', title: 'Service and Testing', desc: 'After approval, the service professional completes the agreed work and tests the printer where possible.' },
-            ].map((step, idx) => (
-              <div key={idx} className="relative group flex flex-col rounded-[24px] bg-white p-7 shadow-sm hover:shadow-xl hover:shadow-[#024AD8]/10 border border-slate-100 hover:border-[#024AD8]/20 transition-all duration-300 hover:-translate-y-1">
-                <div className="mb-5 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-[#024AD8] font-black text-xl shadow-sm border border-slate-100 group-hover:bg-[#024AD8] group-hover:text-white group-hover:border-[#024AD8] transition-colors">
-                  {step.num}
+                <div className="flex items-center gap-1.5">
+                  <RotateCcw className="h-3.5 w-3.5 text-sky-400 shrink-0" />
+                  <span>30-Day Returns</span>
                 </div>
-                <h4 className="text-[16px] font-extrabold text-slate-900 mb-2.5 tracking-tight group-hover:text-[#024AD8] transition-colors">{step.title}</h4>
-                <p className="text-[13px] text-slate-500 leading-relaxed flex-1 font-medium">{step.desc}</p>
+                <div className="flex items-center gap-1.5">
+                  <ShieldCheck className="h-3.5 w-3.5 text-sky-400 shrink-0" />
+                  <span>Brand Warranty</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-sky-400 shrink-0" />
+                  <span>24h Dispatch</span>
+                </div>
               </div>
-            ))}
+            </div>
+
+            {/* Right Side: Clean Printer Image ONLY (No people, no text overlays, no cards) */}
+            <div className="relative flex items-center justify-center lg:justify-end">
+              {/* Subtle ambient lighting glow */}
+              <div className="absolute h-60 w-60 sm:h-72 sm:w-72 rounded-full bg-sky-500/20 blur-3xl pointer-events-none" />
+
+              {/* Pure printer image */}
+              <div className="relative w-full max-w-md lg:max-w-lg flex items-center justify-center">
+                <img
+                  src="/hero-printer-only.jpg"
+                  alt="SmartEprint Professional Printing Hardware"
+                  className="w-full max-h-[300px] sm:max-h-[350px] lg:max-h-[390px] object-cover rounded-3xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.55)] transition-transform duration-500 hover:scale-[1.02]"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Smart ePrint Services? */}
-      <section className="mx-auto max-w-7xl px-6 py-14 sm:px-8 lg:px-10 relative">
-        <div className="absolute bottom-0 right-0 -mr-32 -mb-32 h-64 w-64 rounded-full bg-[#024AD8]/5 blur-3xl -z-10 pointer-events-none"></div>
-        <div className="text-center mb-10 max-w-2xl mx-auto">
-          <h3 className="text-[11px] font-bold tracking-[0.2em] text-[#024AD8] uppercase mb-4 opacity-90">Benefits</h3>
-          <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            How Our On-Site Printer Service Works
-          </h2>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {[
-            { title: 'Clear Explanations', desc: 'Printer problems are easier to handle when the customer understands what is happening. We explain the issue and available options without using unnecessary technical language.', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4' },
-            { title: 'Practical Recommendations', desc: 'We focus on the service that fits the reported problem instead of recommending work that may not be relevant.', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' },
-            { title: 'Home and Business Assistance', desc: 'Our services are suitable for individual home users, remote professionals, small businesses, offices, and other workplace environments.', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
-            { title: 'Convenient Service Requests', desc: 'Customers can provide their printer details online and request an appointment without waiting for a lengthy telephone assessment.', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
-            { title: 'Transparent Communication', desc: 'Service requirements, availability, and applicable charges are discussed before additional work is approved.', icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z' },
-            { title: 'United States Service Coverage', desc: 'We accept printer service requests from customers throughout the United States. The available service format and appointment options may differ depending on location.', icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h.5A2.5 2.5 0 0018 5.5v-1.5M15 7v2.5A2.5 2.5 0 0112.5 12h-.5a2 2 0 00-2 2 2 2 0 11-4 0 2 2 0 00-2-2h-.5A2.5 2.5 0 016 7V6' },
-          ].map((item, idx) => (
-            <div key={idx} className="group flex gap-5 p-7 rounded-[24px] border border-slate-100 bg-white shadow-sm hover:shadow-[0_20px_40px_rgb(2,74,216,0.06)] hover:border-[#024AD8]/20 transition-all duration-300 hover:-translate-y-1">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#024AD8] text-white border border-slate-100  group-hover:border-[#024AD8] group-hover:text-white transition-colors">
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.icon}></path>
-                  {item.extraIcon && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={item.extraIcon} />}
-                </svg>
+      {/* ========================================================================= */}
+      {/* 2. TRUST STATS & HIGHLIGHTS BAR */}
+      {/* ========================================================================= */}
+      <section className="border-y border-slate-200 bg-white py-6">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-[#0f6cff]">
+                <ShieldCheck className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="text-[15px] font-extrabold text-slate-900 mb-2 tracking-tight group-hover:text-[#024AD8] transition-colors">{item.title}</h4>
-                <p className="text-[13px] text-slate-500 leading-relaxed font-medium">{item.desc}</p>
+                <h4 className="text-sm font-extrabold text-slate-900">Authorized Equipment</h4>
+                <p className="text-xs text-slate-500">HP, Canon, Epson &amp; Brother</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-[#0f6cff]">
+                <Truck className="h-6 w-6" />
+              </div>
+              <div>
+                <h4 className="text-sm font-extrabold text-slate-900">Free U.S. Shipping</h4>
+                <p className="text-xs text-slate-500">On all orders over $50</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-[#0f6cff]">
+                <RotateCcw className="h-6 w-6" />
+              </div>
+              <div>
+                <h4 className="text-sm font-extrabold text-slate-900">30-Day Returns</h4>
+                <p className="text-xs text-slate-500">Hassle-free guarantee</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-[#0f6cff]">
+                <Headphones className="h-6 w-6" />
+              </div>
+              <div>
+                <h4 className="text-sm font-extrabold text-slate-900">Dedicated Guidance</h4>
+                <p className="text-xs text-slate-500">No technical jargon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3. HARDWARE CATEGORIES (PRODUCT TYPES: FIND THE RIGHT PRINTER) */}
+      {/* ========================================================================= */}
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+          <div>
+            <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#0f6cff]">
+              Product Types
+            </span>
+            <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">
+              Find the Right Printing &amp; Scanning Hardware
+            </h2>
+            <p className="mt-3 text-base text-slate-600 max-w-2xl">
+              Different workflows require specialized hardware. Explore our primary equipment categories curated for
+              reliability, quality, and low operating costs.
+            </p>
+          </div>
+          <Link
+            href="/shop"
+            className="inline-flex items-center gap-2 text-sm font-bold text-[#0f6cff] hover:text-blue-700 shrink-0"
+          >
+            <span>Explore Complete Shop</span>
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {productCategories.map((cat) => (
+            <div
+              key={cat.title}
+              className="group flex flex-col justify-between overflow-hidden rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+            >
+              <div>
+                {/* Category Image Box */}
+                <div
+                  className={`relative mb-6 h-48 w-full rounded-2xl bg-gradient-to-br ${cat.accent} flex items-center justify-center p-4 overflow-hidden`}
+                >
+                  <img
+                    src={cat.image}
+                    alt={cat.title}
+                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span className="absolute top-3 left-3 rounded-full bg-white/90 px-3 py-1 text-[10px] font-black uppercase tracking-wider text-slate-800 backdrop-blur-sm shadow-sm">
+                    {cat.badge}
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-black text-slate-900">{cat.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{cat.description}</p>
+
+                {/* Features List */}
+                <div className="mt-5 space-y-2 border-t border-slate-100 pt-4">
+                  {cat.features.map((feat) => (
+                    <div key={feat} className="flex items-start gap-2 text-xs font-medium text-slate-700">
+                      <Check className="h-3.5 w-3.5 text-emerald-600 mt-0.5 shrink-0" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-6 pt-4">
+                <Link
+                  href={cat.href}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-900 py-3 text-xs font-bold text-white transition hover:bg-[#0f6cff]"
+                >
+                  <span>Browse Collection</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Final Call to Action */}
-      <section className="mx-auto max-w-5xl px-6 py-10 pb-16 sm:px-8 lg:px-10">
-        <div className="rounded-[40px] bg-gradient-to-br from-[#024AD8] to-blue-900 px-8 py-16 text-center sm:px-16 shadow-[0_30px_60px_rgba(2,74,216,0.3)] relative overflow-hidden group">
-          {/* animated background decorations */}
-          <div className="absolute top-0 right-0 -mr-20 -mt-20 h-72 w-72 rounded-full bg-white/10 blur-3xl transition-transform duration-1000 group-hover:scale-110"></div>
-          <div className="absolute bottom-0 left-0 -ml-20 -mb-20 h-72 w-72 rounded-full bg-white/10 blur-3xl transition-transform duration-1000 group-hover:scale-110"></div>
-          
-          <div className="relative z-10">
-            <h2 className="text-3xl font-black text-white sm:text-4xl tracking-tight drop-shadow-sm">Need Fast Printer Help?</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-[15px] text-blue-100/90 leading-relaxed font-medium">
-              Tell us what is happening, share your printer model, and choose a convenient appointment time. Our team will review your request and contact you with the next steps quickly.
-            </p>
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-5">
-              <a href="/book-an-appointment" className="inline-flex items-center rounded-full bg-white px-8 py-4 text-[14px] font-bold text-[#024AD8] transition-all hover:scale-105 hover:bg-slate-50 hover:shadow-lg hover:shadow-black/10">
-                Schedule My Service
-              </a>
-             
+      {/* ========================================================================= */}
+      {/* 4. FEATURED PRODUCTS (HP HARDWARE LOADED DIRECTLY FROM THE DATABASE) */}
+      {/* ========================================================================= */}
+      <section className="bg-slate-100/70 py-12 lg:py-16 border-y border-slate-200">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+            <div>
+              <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#0f6cff]">
+                HP Certified Hardware
+              </span>
+              <h2 className="mt-2 text-2xl sm:text-3xl font-black text-slate-900">
+                Featured HP Printers &amp; Hardware
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-slate-600 max-w-2xl">
+                Official HP hardware synced directly from our inventory. Backed by genuine HP warranties,
+                reliability, and fast nationwide delivery.
+              </p>
+            </div>
+            <Link
+              href="/shop"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0f6cff] hover:text-blue-700 shrink-0"
+            >
+              <span>View All HP Products</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
+
+          {isLoadingProducts ? (
+            /* Loading Skeleton Grid (Compact 4-col) */
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="animate-pulse rounded-2xl border border-slate-200 bg-white p-3.5 shadow-sm"
+                >
+                  <div className="h-36 bg-slate-200 rounded-xl mb-3" />
+                  <div className="h-3 bg-slate-200 rounded w-1/3 mb-2" />
+                  <div className="h-4 bg-slate-200 rounded w-3/4 mb-3" />
+                  <div className="h-6 bg-slate-200 rounded w-1/2" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            /* Real HP Database Products Grid (Compact 4-col) */
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+              {displayProducts.map((item) => {
+                const productName = item.name || item.title || "HP Hardware";
+                const productPrice = Number(item.price || 0);
+                const originalPrice = item.originalPrice ? Number(item.originalPrice) : null;
+                const brand = item.brand || "HP";
+                const badge = item.badge || (item.inStock !== false ? "In Stock" : "HP Genuine");
+                const imageUrl = item.image || "/hero-printer-only.jpg";
+
+                return (
+                  <div
+                    key={item.id || item._id}
+                    className="group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  >
+                    <div>
+                      {/* Reduced Image Container */}
+                      <div className="relative h-36 sm:h-40 w-full bg-slate-50/80 p-3 flex items-center justify-center border-b border-slate-100 overflow-hidden">
+                        <img
+                          src={imageUrl}
+                          alt={productName}
+                          className="h-full w-full object-contain transition duration-300 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                        <div className="absolute top-2 left-2 flex items-center gap-1">
+                          <span className="rounded bg-slate-900/90 text-white px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider backdrop-blur-sm">
+                            {badge}
+                          </span>
+                          <span className="rounded bg-blue-50 text-[#0f6cff] border border-blue-200 px-1.5 py-0.5 text-[9px] font-bold">
+                            {brand}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Reduced Body Content */}
+                      <div className="p-3">
+                        {/* Rating & Category */}
+                        <div className="flex items-center justify-between gap-1 text-[11px] mb-1">
+                          <span className="font-semibold text-slate-500 uppercase tracking-wide truncate text-[10px]">
+                            {item.category || "HP Printer"}
+                          </span>
+                          <div className="flex items-center gap-0.5 text-amber-500 font-bold shrink-0 text-[11px]">
+                            <Star className="h-3 w-3 fill-current" />
+                            <span>{item.rating || 4.8}</span>
+                          </div>
+                        </div>
+
+                        {/* Name */}
+                        <h3 className="text-xs sm:text-sm font-bold text-slate-900 leading-snug line-clamp-2 h-9">
+                          {productName}
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Reduced Footer Price & Add to Cart */}
+                    <div className="p-3 pt-0 border-t border-slate-100 mt-1">
+                      <div className="flex items-baseline justify-between gap-1 mb-2 pt-2">
+                        <div>
+                          <span className="text-base font-black text-slate-900">
+                            ${productPrice.toFixed(2)}
+                          </span>
+                          {originalPrice && originalPrice > productPrice && (
+                            <span className="ml-1.5 text-[10px] text-slate-400 line-through">
+                              ${originalPrice.toFixed(2)}
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-[10px] font-medium text-emerald-600">Free Shipping</span>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2">
+                        <button
+                          onClick={() =>
+                            addToCart({
+                              id: item.id || item._id,
+                              name: productName,
+                              price: productPrice,
+                              image: imageUrl,
+                            })
+                          }
+                          className="inline-flex items-center justify-center gap-1 rounded-full bg-[#0f6cff] py-1.5 px-2 text-[11px] font-bold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none"
+                        >
+                          <ShoppingCart className="h-3 w-3" />
+                          <span>Add</span>
+                        </button>
+                        <Link
+                          href="/shop"
+                          className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-slate-50 py-1.5 px-2 text-[11px] font-semibold text-slate-700 transition hover:bg-white hover:border-slate-300"
+                        >
+                          <span>Details</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. WHO WE SERVE: SOLUTIONS FOR EVERY NEED */}
+      {/* ========================================================================= */}
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#0f6cff]">
+            Who We Serve
+          </span>
+          <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">
+            Solutions Built for Every Sector &amp; Workflow
+          </h2>
+          <p className="mt-4 text-base text-slate-600 leading-relaxed">
+            SmartEprint Services proudly serves a diverse range of customers across the United States. Whether you
+            are outfitting a home workspace, a creative photography studio, or a corporate hospital floor, we have
+            tailored equipment built for your exact demands.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {solutions.map((sol) => {
+            const IconComp = sol.icon;
+            return (
+              <div
+                key={sol.title}
+                className={`rounded-[28px] border ${sol.borderColor} bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg`}
+              >
+                <div
+                  className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${sol.color} text-[#0f6cff]`}
+                >
+                  <IconComp className="h-7 w-7" />
+                </div>
+
+                <h3 className="text-xl font-black text-slate-900">{sol.title}</h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-slate-600">{sol.summary}</p>
+
+                <div className="mt-6 space-y-2.5 border-t border-slate-100 pt-5">
+                  {sol.points.map((pt) => (
+                    <div key={pt} className="flex items-center gap-2 text-xs font-medium text-slate-700">
+                      <Check className="h-3.5 w-3.5 text-[#0f6cff] shrink-0" />
+                      <span>{pt}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 6. THE SMARTEPRINT ADVANTAGE: WHY CHOOSE US */}
+      {/* ========================================================================= */}
+      <section className="bg-gradient-to-b from-slate-900 to-slate-950 py-16 lg:py-24 text-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-400">
+                Why Choose Us
+              </span>
+              <h2 className="mt-3 text-3xl font-black sm:text-5xl leading-tight">
+                The SmartEprint Advantage.
+              </h2>
+              <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+                We're more than just an equipment store—we're your trusted long-term printing technology partner.
+                Our team takes the guesswork out of hardware selection with honest buying advice, genuine brand
+                stock, and dedicated nationwide customer care.
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-md">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-500/20 text-sky-400">
+                  <ShieldCheck className="h-6 w-6" />
+                </span>
+                <div>
+                  <h3 className="text-lg font-bold text-white">Our Product Guarantee</h3>
+                  <p className="text-xs text-slate-300">Selected for durability, value &amp; satisfaction</p>
+                </div>
+              </div>
+              <p className="text-sm leading-relaxed text-slate-300">
+                Every product in our catalog has been selected based on reliability, value, and customer satisfaction
+                ratings. We stand firmly behind what we sell and are committed to helping you find equipment that will
+                serve you well for years to come.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {advantages.map((adv) => {
+              const IconComp = adv.icon;
+              return (
+                <div
+                  key={adv.title}
+                  className="rounded-[26px] border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition duration-300 hover:border-sky-400/40 hover:bg-white/10"
+                >
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#0f6cff]/20 text-sky-400">
+                    <IconComp className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white">{adv.title}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-300">{adv.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 7. SIMPLE PROCESS: HOW IT WORKS */}
+      {/* ========================================================================= */}
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#0f6cff]">
+            Simple Process
+          </span>
+          <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">
+            How Getting Equipment Works
+          </h2>
+          <p className="mt-3 text-base text-slate-600">
+            Getting your new printer or scanner is seamless and straightforward with SmartEprint Services.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          {processSteps.map((step) => (
+            <div
+              key={step.number}
+              className="relative flex flex-col rounded-[30px] border border-slate-200 bg-white p-8 shadow-sm transition hover:shadow-md"
+            >
+              <span className="text-5xl font-black text-blue-100 mb-4">{step.number}</span>
+              <h3 className="text-xl font-black text-slate-900">{step.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">{step.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 8. FOR BUSINESS: BOOST YOUR OFFICE PRODUCTIVITY */}
+      {/* ========================================================================= */}
+      <section className="bg-slate-900 text-white py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+            <div>
+              <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky-400">
+                For Business
+              </span>
+              <h2 className="mt-3 text-3xl font-black sm:text-4xl lg:text-5xl leading-tight">
+                Boost Your Office Productivity With Modern Equipment
+              </h2>
+              <p className="mt-5 text-base sm:text-lg leading-relaxed text-slate-300">
+                Modern printing and scanning equipment can transform how your business operates. From reducing
+                delays to curbing recurring ink costs, the right tools make an immediate difference to your bottom
+                line.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  href="/shop"
+                  className="inline-flex rounded-full bg-[#0f6cff] px-7 py-3.5 text-xs font-bold text-white shadow-lg transition hover:bg-blue-600"
+                >
+                  Shop Office Laser &amp; Scanners
+                </Link>
+                <Link
+                  href="/contact-us"
+                  className="inline-flex rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-xs font-bold text-white transition hover:bg-white/10"
+                >
+                  Request Business Quote
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {businessPerks.map((perk) => {
+                const IconComp = perk.icon;
+                return (
+                  <div
+                    key={perk.title}
+                    className="rounded-[26px] border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
+                  >
+                    <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-500/20 text-sky-400">
+                      <IconComp className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white">{perk.title}</h3>
+                    <p className="mt-2 text-xs leading-relaxed text-slate-300">{perk.description}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
- 
+
+      {/* ========================================================================= */}
+      {/* 9. BUYING ADVICE: WHAT TO CONSIDER BEFORE YOU BUY */}
+      {/* ========================================================================= */}
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#0f6cff]">
+            Buying Advice
+          </span>
+          <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">
+            What to Consider Before You Buy
+          </h2>
+          <p className="mt-3 text-base text-slate-600">
+            Choosing the right printer or scanner is a practical decision that depends on your specific volume,
+            space, and media needs. Review the key factors below before purchasing.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {buyingFactors.map((factor, i) => (
+            <div
+              key={factor.title}
+              className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-sm transition hover:shadow-md"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-[#0f6cff] text-xs font-black">
+                  {i + 1}
+                </span>
+                <h3 className="text-lg font-black text-slate-900">{factor.title}</h3>
+              </div>
+              <p className="text-xs leading-relaxed text-slate-600">{factor.detail}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 rounded-[28px] bg-blue-50 border border-blue-200 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 className="text-lg font-bold text-slate-900">Need personalized equipment comparison?</h3>
+            <p className="text-xs text-slate-600 mt-1">
+              Our hardware advisors will guide you through duty cycles, toner costs, and connectivity.
+            </p>
+          </div>
+          <Link
+            href="/contact-us"
+            className="inline-flex rounded-full bg-[#0f6cff] px-6 py-3 text-xs font-bold text-white transition hover:bg-blue-700 shrink-0"
+          >
+            Ask a Specialist
+          </Link>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 10. SERVING THE USA: SHIPPING, DELIVERY & 3-STEP RETURNS */}
+      {/* ========================================================================= */}
+      <section className="bg-slate-100/70 border-y border-slate-200 py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Left: Shipping & Delivery Details */}
+            <div className="rounded-[32px] border border-slate-200 bg-white p-8 sm:p-10 shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-[#0f6cff]">
+                  <Truck className="h-6 w-6" />
+                </span>
+                <div>
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-[#0f6cff]">
+                    Serving the USA
+                  </span>
+                  <h3 className="text-2xl font-black text-slate-900">Shipping &amp; Delivery Details</h3>
+                </div>
+              </div>
+
+              <p className="text-sm leading-relaxed text-slate-600 mb-6">
+                SmartEprint Services ships from certified distribution partners across the United States. We work to
+                get your equipment to you as swiftly and securely as possible.
+              </p>
+
+              <div className="space-y-4 text-xs text-slate-700">
+                <div className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 border border-slate-100">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" />
+                  <span>
+                    <strong>Free standard shipping</strong> on all orders over $50 within the continental United
+                    States.
+                  </span>
+                </div>
+
+                <div className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 border border-slate-100">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" />
+                  <span>
+                    <strong>5 to 7 business days</strong> standard delivery time depending on your destination.
+                  </span>
+                </div>
+
+                <div className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 border border-slate-100">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" />
+                  <span>
+                    <strong>Expedited &amp; express options</strong> available during checkout for urgent deadlines.
+                  </span>
+                </div>
+
+                <div className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 border border-slate-100">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" />
+                  <span>
+                    <strong>Live tracking numbers</strong> provided for every shipment so you can monitor progress.
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-slate-100 flex flex-wrap gap-4">
+                <Link href="/refund-cancellation-policy" className="text-xs font-bold text-[#0f6cff] hover:underline">
+                  View Shipping &amp; Cancellation Policy →
+                </Link>
+                <Link href="/disclaimer" className="text-xs font-bold text-slate-500 hover:underline">
+                  Warranty &amp; Compliance Info
+                </Link>
+              </div>
+            </div>
+
+            {/* Right: 3-Step Return Process */}
+            <div className="rounded-[32px] border border-slate-200 bg-white p-8 sm:p-10 shadow-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-[#0f6cff]">
+                  <RotateCcw className="h-6 w-6" />
+                </span>
+                <div>
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-[#0f6cff]">
+                    Peace of Mind
+                  </span>
+                  <h3 className="text-2xl font-black text-slate-900">Our Return Process</h3>
+                </div>
+              </div>
+
+              <p className="text-sm leading-relaxed text-slate-600 mb-6">
+                We want you to be completely satisfied with your purchase. If a product does not meet your expectations,
+                our return procedure is transparent and uncomplicated:
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-4 rounded-2xl bg-slate-50 p-4 border border-slate-100">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-900 text-white text-xs font-black">
+                    1
+                  </span>
+                  <div>
+                    <h4 className="text-xs font-bold text-slate-900">Contact Us Within 30 Days</h4>
+                    <p className="text-xs text-slate-600 mt-0.5">
+                      Reach out to our customer support team within 30 days of receiving your order to request an RMA.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 rounded-2xl bg-slate-50 p-4 border border-slate-100">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-900 text-white text-xs font-black">
+                    2
+                  </span>
+                  <div>
+                    <h4 className="text-xs font-bold text-slate-900">Ship in Original Packaging</h4>
+                    <p className="text-xs text-slate-600 mt-0.5">
+                      Pack the item securely with all original cables, accessories, and manuals using provided instructions.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 rounded-2xl bg-slate-50 p-4 border border-slate-100">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-900 text-white text-xs font-black">
+                    3
+                  </span>
+                  <div>
+                    <h4 className="text-xs font-bold text-slate-900">Prompt Inspection &amp; Refund</h4>
+                    <p className="text-xs text-slate-600 mt-0.5">
+                      Once received and checked, your full refund is processed back to your original payment in 5 to 10 days.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-slate-100">
+                <Link
+                  href="/contact-us"
+                  className="inline-flex rounded-full bg-slate-900 px-6 py-3 text-xs font-bold text-white transition hover:bg-[#0f6cff]"
+                >
+                  Start a Return or Inquiry
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 11. INTERACTIVE FREQUENTLY ASKED QUESTIONS (ACCORDIONS) */}
+      {/* ========================================================================= */}
+      <section className="mx-auto max-w-5xl px-6 py-16 lg:px-10 lg:py-24">
+        <div className="text-center mb-16">
+          <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#0f6cff]">
+            Common Questions
+          </span>
+          <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <p className="mt-3 text-base text-slate-600">
+            Straightforward answers to the questions we hear most often from our customers across the USA.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {faqs.map((faq, index) => {
+            const isOpen = openFaq === index;
+            return (
+              <div
+                key={faq.q}
+                className="overflow-hidden rounded-2xl border border-slate-200 bg-white transition duration-200 shadow-sm"
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleFaq(index)}
+                  className="flex w-full items-center justify-between gap-4 p-6 text-left focus:outline-none"
+                >
+                  <span className="text-base font-extrabold text-slate-900">{faq.q}</span>
+                  <ChevronDown
+                    className={`h-5 w-5 text-[#0f6cff] shrink-0 transition-transform duration-300 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {isOpen && (
+                  <div className="px-6 pb-6 text-sm leading-relaxed text-slate-600 border-t border-slate-100 pt-4">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-sm text-slate-600">
+            Have a question that is not listed here? Our support team is happy to assist.
+          </p>
+          <Link
+            href="/contact-us"
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#0f6cff] px-6 py-3 text-xs font-bold text-white transition hover:bg-blue-700"
+          >
+            <span>Contact Support Team</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 12. HELPFUL BUYING GUIDES & RESOURCES */}
+      {/* ========================================================================= */}
+      <section className="bg-slate-100/70 border-t border-slate-200 py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+            <div>
+              <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#0f6cff]">
+                Resources &amp; Knowledge
+              </span>
+              <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">
+                Helpful Hardware Buying Guides
+              </h2>
+            </div>
+            <Link href="/blogs" className="text-sm font-bold text-[#0f6cff] hover:underline">
+              Read All Articles →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                Printers Guide
+              </span>
+              <h3 className="mt-4 text-xl font-black text-slate-900">How to Choose the Right Printer</h3>
+              <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                Learn about laser vs. inkjet mechanisms, refillable supertanks, duty cycles, and operating costs.
+              </p>
+              <Link
+                href="/blogs"
+                className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold text-[#0f6cff] hover:text-blue-700"
+              >
+                <span>Read Full Guide</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+            <div className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                Scanners Guide
+              </span>
+              <h3 className="mt-4 text-xl font-black text-slate-900">Finding the Right Scanner</h3>
+              <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                Discover the key differences between flatbed, sheet-fed, and portable scanners for paperless office flow.
+              </p>
+              <Link
+                href="/blogs"
+                className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold text-[#0f6cff] hover:text-blue-700"
+              >
+                <span>Read Full Guide</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+
+            <div className="rounded-[28px] border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                Maintenance Tips
+              </span>
+              <h3 className="mt-4 text-xl font-black text-slate-900">Setup &amp; Maintenance Tips</h3>
+              <p className="mt-2 text-xs leading-relaxed text-slate-600">
+                Keep your equipment running smoothly with practical calibration, head-cleaning, and paper-feed advice.
+              </p>
+              <Link
+                href="/blogs"
+                className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold text-[#0f6cff] hover:text-blue-700"
+              >
+                <span>Read Full Guide</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 13. NEWSLETTER & FINAL CONSULTATION CALL TO ACTION */}
+      {/* ========================================================================= */}
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:pb-24">
+        <div className="rounded-[36px] bg-gradient-to-br from-[#0b3b63] via-[#041a2f] to-slate-950 p-8 sm:p-14 text-white shadow-2xl relative overflow-hidden">
+          {/* Decorative Glow */}
+          <div className="absolute -right-20 -bottom-20 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-sky-200">
+                <Sparkles className="h-3 w-3 text-sky-400" />
+                Stay Updated
+              </span>
+              <h2 className="mt-4 text-3xl font-black sm:text-4xl text-white">
+                Get Exclusive Hardware Deals &amp; Printing Tips
+              </h2>
+              <p className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
+                Subscribe to the SmartEprint Services newsletter for early access to product discounts, new arrivals,
+                and practical maintenance advice delivered to your inbox.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-6 text-xs text-slate-300">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-sky-400" />
+                  <span>Free shipping on orders over $50</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-sky-400" />
+                  <span>30-Day hassle-free returns</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-sky-400" />
+                  <span>Official Brand Warranties</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
+              {newsletterSuccess ? (
+                <div className="text-center py-6">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 mb-3">
+                    <Check className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white">Thank you for subscribing!</h3>
+                  <p className="text-xs text-slate-300 mt-1">
+                    Check your email soon for your welcome guide and exclusive discounts.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+                  <label htmlFor="newsletter-email" className="block text-xs font-bold text-slate-200">
+                    Enter your work or personal email
+                  </label>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <input
+                      id="newsletter-email"
+                      type="email"
+                      required
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      placeholder="e.g. name@company.com"
+                      className="flex-1 rounded-full border border-white/15 bg-white/10 px-5 py-3 text-xs text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                    />
+                    <button
+                      type="submit"
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0f6cff] px-6 py-3 text-xs font-bold text-white shadow-md transition hover:bg-blue-600 focus:outline-none shrink-0"
+                    >
+                      <Send className="h-3.5 w-3.5" />
+                      <span>Subscribe</span>
+                    </button>
+                  </div>
+                  <p className="text-[11px] text-slate-400">
+                    No spam ever. Unsubscribe anytime. We deeply respect your privacy.
+                  </p>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

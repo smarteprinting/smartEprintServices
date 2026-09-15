@@ -24,7 +24,7 @@ import {
   CheckCircle2,
   ChevronDown,
 } from "lucide-react";
-import { categories, brands } from "../../lib/productsData";
+import { categories, brands, products as fallbackCatalog } from "../../lib/productsData";
 import { useCart } from "../components/CartContext";
 import CheckoutModal from "../components/CheckoutModal";
 import { useAuth } from "../components/AuthContext";
@@ -44,17 +44,45 @@ function ShopContent() {
   const [onlyInStock, setOnlyInStock] = useState(false);
   const [visibleCount, setVisibleCount] = useState(12);
 
-  // Live fetch from MongoDB /api/products
+  // Live fetch from MongoDB /api/products (Strictly HP Only)
   useEffect(() => {
     fetch("/api/products", { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
-        if (data.success && Array.isArray(data.products)) {
-          setCatalogProducts(data.products);
+        if (data.success && Array.isArray(data.products) && data.products.length > 0) {
+          // Filter ONLY HP products
+          const hpDbProducts = data.products.filter((p) => {
+            const b = (p.brand || "").toLowerCase();
+            const n = (p.name || p.title || "").toLowerCase();
+            return b === "hp" || n.includes("hp");
+          });
+
+          // Include HP accessories from local catalog if not already in DB
+          const hpAccessories = fallbackCatalog.filter(
+            (p) =>
+              (p.brand || "").toLowerCase() === "hp" &&
+              (p.category === "accessories" || (p.name || "").toLowerCase().includes("cable"))
+          );
+
+          setCatalogProducts([...hpDbProducts, ...hpAccessories]);
+        } else {
+          // Fallback to HP products from local catalog
+          const hpFallback = fallbackCatalog.filter((p) => {
+            const b = (p.brand || "").toLowerCase();
+            const n = (p.name || "").toLowerCase();
+            return b === "hp" || n.includes("hp");
+          });
+          setCatalogProducts(hpFallback);
         }
       })
       .catch((err) => {
         console.warn("Could not fetch live products from API:", err);
+        const hpFallback = fallbackCatalog.filter((p) => {
+          const b = (p.brand || "").toLowerCase();
+          const n = (p.name || "").toLowerCase();
+          return b === "hp" || n.includes("hp");
+        });
+        setCatalogProducts(hpFallback);
       });
   }, []);
 
@@ -65,30 +93,100 @@ function ShopContent() {
   // Quantity inside Quick View
   const [quickViewQty, setQuickViewQty] = useState(1);
 
-  // Filtered and Sorted Products
+  // Filtered and Sorted Products (HP Only, with workable multi-attribute category matching)
   const filteredProducts = useMemo(() => {
     return catalogProducts
       .filter((product) => {
+        // Enforce HP only
+        const brandStr = (product.brand || "").toLowerCase();
+        const nameStr = (product.name || product.title || "").toLowerCase();
+        const isHp = brandStr === "hp" || nameStr.includes("hp") || brandStr.includes("hp");
+        if (!isHp) {
+          return false;
+        }
+
         // Category filter
-        if (selectedCategory !== "all" && product.category !== selectedCategory) {
-          return false;
+        if (selectedCategory !== "all") {
+          const catId = (product.category || "").toString().toLowerCase();
+          const techList = Array.isArray(product.technology)
+            ? product.technology.map((t) => String(t).toLowerCase())
+            : [String(product.technology || "").toLowerCase()];
+          const aioList = Array.isArray(product.allInOneType)
+            ? product.allInOneType.map((t) => String(t).toLowerCase())
+            : [String(product.allInOneType || "").toLowerCase()];
+
+          let matchesCategory = false;
+
+          if (selectedCategory === "laser") {
+            // Laser Printers
+            matchesCategory =
+              catId === "laser" ||
+              catId === "698238c9aafc80955cc50c40" ||
+              techList.includes("laser") ||
+              nameStr.includes("laserjet") ||
+              (nameStr.includes("laser") && !nameStr.includes("toner"));
+          } else if (selectedCategory === "inkjet") {
+            // Inkjet & EcoTank
+            matchesCategory =
+              catId === "inkjet" ||
+              catId === "698238b9aafc80955cc50c3b" ||
+              techList.includes("inkjet") ||
+              nameStr.includes("smart tank") ||
+              nameStr.includes("deskjet") ||
+              nameStr.includes("envy") ||
+              nameStr.includes("officejet") ||
+              (nameStr.includes("inkjet") && !nameStr.includes("cartridge"));
+          } else if (selectedCategory === "all-in-one") {
+            // All-in-One Multi-Function
+            matchesCategory =
+              catId === "all-in-one" ||
+              catId === "6982389caafc80955cc50c31" ||
+              aioList.includes("multifunction") ||
+              aioList.includes("all-in-one") ||
+              nameStr.includes("all-in-one") ||
+              nameStr.includes("all in one") ||
+              nameStr.includes("mfp");
+          } else if (selectedCategory === "supplies") {
+            // Ink & Toners
+            matchesCategory =
+              catId === "supplies" ||
+              catId === "ink-toner" ||
+              catId === "698238e1aafc80955cc50c4a" ||
+              catId === "6aa5d0fa035a474cc5e0c719" ||
+              nameStr.includes("toner") ||
+              nameStr.includes("cartridge") ||
+              nameStr.includes("ink cartridge") ||
+              nameStr.includes("ink bottle");
+          } else if (selectedCategory === "accessories") {
+            // Accessories & Cables
+            matchesCategory =
+              catId === "accessories" ||
+              catId === "6aa5d0fa035a474cc5e0c71a" ||
+              nameStr.includes("cable") ||
+              nameStr.includes("cord") ||
+              nameStr.includes("adapter") ||
+              nameStr.includes("tray") ||
+              nameStr.includes("accessory");
+          }
+
+          if (!matchesCategory) {
+            return false;
+          }
         }
-        // Brand filter
-        if (selectedBrand !== "All Brands" && product.brand !== selectedBrand) {
-          return false;
-        }
+
         // In stock filter
-        if (onlyInStock && !product.inStock) {
+        if (onlyInStock && product.inStock === false) {
           return false;
         }
+
         // Search query
         if (searchQuery.trim()) {
           const q = searchQuery.toLowerCase();
-          const matchName = (product.name || product.title || "").toLowerCase().includes(q);
-          const matchBrand = (product.brand || "").toLowerCase().includes(q);
+          const matchName = nameStr.includes(q);
+          const matchBrand = brandStr.includes(q);
           const matchDesc = (product.shortDesc || "").toLowerCase().includes(q);
           const matchFeatures = (product.features || []).some((f) =>
-            f.toLowerCase().includes(q)
+            String(f).toLowerCase().includes(q)
           );
           if (!matchName && !matchBrand && !matchDesc && !matchFeatures) {
             return false;
@@ -102,7 +200,7 @@ function ShopContent() {
         if (sortBy === "rating") return b.rating - a.rating;
         return 0; // featured
       });
-  }, [catalogProducts, selectedCategory, selectedBrand, searchQuery, sortBy, onlyInStock]);
+  }, [catalogProducts, selectedCategory, searchQuery, sortBy, onlyInStock]);
 
   useEffect(() => {
     setVisibleCount(12);

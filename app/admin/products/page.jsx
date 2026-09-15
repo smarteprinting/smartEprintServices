@@ -420,7 +420,7 @@ function ProductsManager() {
                   <option value="inkjet">Inkjet & EcoTank</option>
                   <option value="all-in-one">All-in-One Multi-Function</option>
                   <option value="supplies">Ink & Toners</option>
-                  <option value="accessories">Accessories & Cables</option>
+                  
                 </select>
               </div>
 
