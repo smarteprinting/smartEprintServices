@@ -39,7 +39,7 @@ const productCategories = [
     badge: "Vibrant Color",
     description:
       "Well-suited for vivid photos, marketing collateral, and everyday documents. Ideal for home offices and creative projects.",
-    image: "/printer-support-hero1.png",
+    image: "/h1.png",
     accent: "from-blue-600/15 to-sky-500/10",
     features: [
       "Vibrant high-DPI color output",
@@ -54,7 +54,7 @@ const productCategories = [
     badge: "Fast & Sharp",
     description:
       "High-speed monochrome and color text printing with an ultra-low cost per page. A reliable powerhouse for busy offices.",
-    image: "/hp-support2.png",
+    image: "/h2.png",
     accent: "from-indigo-600/15 to-blue-500/10",
     features: [
       "Blazing print speeds up to 40+ ppm",
@@ -69,7 +69,7 @@ const productCategories = [
     badge: "Space Saving",
     description:
       "Print, scan, copy, and fax combined into a single compact powerhouse. Maximizes workspace efficiency without sacrificing power.",
-    image: "/hp-printer4.png",
+    image: "/h3.png",
     accent: "from-cyan-600/15 to-blue-500/10",
     features: [
       "Print, scan, copy & fax combined",
@@ -84,7 +84,7 @@ const productCategories = [
     badge: "Paperless Flow",
     description:
       "Flatbed, portable, and high-speed sheetfed document scanners engineered for rapid archiving and clean digital workflows.",
-    image: "https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?auto=format&fit=crop&w=800&q=80",
+    image: "/h4.png",
     accent: "from-emerald-600/15 to-teal-500/10",
     features: [
       "Rapid single-pass duplex scanning",
