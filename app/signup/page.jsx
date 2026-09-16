@@ -59,7 +59,7 @@ export default function SignupPage() {
     <main className="flex min-h-[calc(100vh-5rem)] items-center justify-center bg-slate-50 px-4 py-12">
       <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-6 shadow-xl sm:p-8">
         <h1 className="text-3xl font-extrabold text-slate-900">Create your account</h1>
-        <p className="mt-2 text-sm text-slate-500">{verificationStep ? "Enter the code sent to your email." : "Join SmartEprint Services."}</p>
+        <p className="mt-2 text-sm text-slate-500">{verificationStep ? "Enter the code sent to your email." : "Join Smart ePrint Services."}</p>
         {message && <p className="mt-5 rounded-xl bg-blue-50 p-3 text-sm text-blue-700">{message}</p>}
         {!verificationStep ? (
           <form onSubmit={requestCode} className="mt-6 space-y-4">

@@ -100,7 +100,7 @@ export default function AdminSignupPage() {
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-3xl bg-white/10 p-2 shadow-2xl backdrop-blur-xl border border-white/20">
             <Image
               src="/logo.png"
-              alt="SmartEprint"
+              alt="Smart ePrint Services"
               width={52}
               height={52}
               className="object-contain"
@@ -110,7 +110,7 @@ export default function AdminSignupPage() {
             Admin Registration
           </h1>
           <p className="mt-1 text-xs sm:text-sm text-slate-400">
-            Create an administrator account for SmartEprint Services
+            Create an administrator account for Smart ePrint Services
           </p>
         </div>
 
