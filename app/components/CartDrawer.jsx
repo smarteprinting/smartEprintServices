@@ -13,7 +13,6 @@ import {
   ShieldCheck,
   Truck,
   Sparkles,
-  Tag,
 } from "lucide-react";
 import { useCart } from "./CartContext";
 import CheckoutModal from "./CheckoutModal";
@@ -29,13 +28,8 @@ export default function CartDrawer() {
     clearCart,
     totalItems,
     subtotal,
-    totalSavings,
   } = useCart();
 
-  const [promoCode, setPromoCode] = useState("");
-  const [promoApplied, setPromoApplied] = useState(false);
-  const [promoDiscount, setPromoDiscount] = useState(0);
-  const [promoError, setPromoError] = useState("");
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const { user, loading: authLoading } = useAuth();
 
@@ -51,20 +45,7 @@ export default function CartDrawer() {
 
   if (!isCartOpen) return null;
 
-  const handleApplyPromo = (e) => {
-    e.preventDefault();
-    setPromoError("");
-    const clean = promoCode.trim().toUpperCase();
-    if (clean === "SMART10" || clean === "SAVE10") {
-      const discount = subtotal * 0.1;
-      setPromoDiscount(discount);
-      setPromoApplied(true);
-    } else {
-      setPromoError("Invalid code. Try 'SMART10' for 10% off!");
-    }
-  };
-
-  const calculatedTotal = Math.max(0, subtotal - promoDiscount);
+  const calculatedTotal = subtotal;
 
   return (
     <>
@@ -226,43 +207,6 @@ export default function CartDrawer() {
           {/* Drawer Footer / Summary */}
           {cart.length > 0 && (
             <div className="border-t border-slate-100 bg-slate-50/80 px-6 py-4 backdrop-blur-sm">
-              {/* Promo code form */}
-              <form onSubmit={handleApplyPromo} className="mb-4">
-                <div className="flex gap-2">
-                  <div className="relative flex-1">
-                    <Tag
-                      size={15}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
-                    />
-                    <input
-                      type="text"
-                      placeholder="Promo code (e.g. SMART10)"
-                      value={promoCode}
-                      onChange={(e) => setPromoCode(e.target.value)}
-                      disabled={promoApplied}
-                      className="w-full rounded-xl border border-slate-200 bg-white py-2 pl-9 pr-3 text-xs text-slate-800 outline-none transition focus:border-brand-500 focus:ring-1 focus:ring-brand-500 disabled:bg-slate-100"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    disabled={promoApplied || !promoCode}
-                    className="rounded-xl bg-slate-800 px-4 py-2 text-xs font-bold text-white transition hover:bg-slate-900 disabled:opacity-50"
-                  >
-                    {promoApplied ? "Applied" : "Apply"}
-                  </button>
-                </div>
-                {promoApplied && (
-                  <p className="mt-1 text-xs text-emerald-600 font-medium">
-                    ✓ 10% discount applied to your subtotal!
-                  </p>
-                )}
-                {promoError && (
-                  <p className="mt-1 text-xs text-red-500 font-medium">
-                    {promoError}
-                  </p>
-                )}
-              </form>
-
               {/* Totals */}
               <div className="space-y-1.5 text-xs text-slate-600">
                 <div className="flex justify-between">
@@ -271,18 +215,6 @@ export default function CartDrawer() {
                     ${subtotal.toFixed(2)}
                   </span>
                 </div>
-                {totalSavings > 0 && (
-                  <div className="flex justify-between text-emerald-600 font-medium">
-                    <span>Catalog Discount Savings</span>
-                    <span>-${totalSavings.toFixed(2)}</span>
-                  </div>
-                )}
-                {promoDiscount > 0 && (
-                  <div className="flex justify-between text-emerald-600 font-medium">
-                    <span>Promo Discount (10%)</span>
-                    <span>-${promoDiscount.toFixed(2)}</span>
-                  </div>
-                )}
                 <div className="flex justify-between">
                   <span>Estimated Shipping</span>
                   <span className="font-semibold text-slate-800">
@@ -292,7 +224,7 @@ export default function CartDrawer() {
                 <div className="flex justify-between pt-2 border-t border-slate-200 text-sm font-bold text-slate-900">
                   <span>Estimated Total</span>
                   <span className="text-base text-brand-600">
-                    ${calculatedTotal.toFixed(2)}
+                    ${subtotal.toFixed(2)}
                   </span>
                 </div>
               </div>

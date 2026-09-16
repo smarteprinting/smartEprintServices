@@ -749,11 +749,6 @@ export default function HomePage() {
                           <span className="text-base font-black text-slate-900">
                             ${productPrice.toFixed(2)}
                           </span>
-                          {originalPrice && originalPrice > productPrice && (
-                            <span className="ml-1.5 text-[10px] text-slate-400 line-through">
-                              ${originalPrice.toFixed(2)}
-                            </span>
-                          )}
                         </div>
                         <span className="text-[10px] font-medium text-emerald-600">Free Shipping</span>
                       </div>
@@ -1318,10 +1313,10 @@ export default function HomePage() {
                 Stay Updated
               </span>
               <h2 className="mt-4 text-3xl font-black sm:text-4xl text-white">
-                Get Exclusive Hardware Deals &amp; Printing Tips
+                Get Hardware Updates &amp; Printing Tips
               </h2>
               <p className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
-                Subscribe to the SmartEprint Services newsletter for early access to product discounts, new arrivals,
+                Subscribe to the SmartEprint Services newsletter for product announcements, new arrivals,
                 and practical maintenance advice delivered to your inbox.
               </p>
 
@@ -1349,7 +1344,7 @@ export default function HomePage() {
                   </div>
                   <h3 className="text-lg font-bold text-white">Thank you for subscribing!</h3>
                   <p className="text-xs text-slate-300 mt-1">
-                    Check your email soon for your welcome guide and exclusive discounts.
+                    Check your email soon for your welcome guide and technology updates.
                   </p>
                 </div>
               ) : (

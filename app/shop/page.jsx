@@ -296,7 +296,7 @@ function ShopContent() {
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
                 Printers, Toners & <br />
                 <span className="bg-gradient-to-r from-blue-400 to-sky-300 bg-clip-text text-transparent">
-                  Smart Hardware Deals
+                  Smart Hardware Catalog
                 </span>
               </h1>
               <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
@@ -326,19 +326,19 @@ function ShopContent() {
               </div>
             </div>
 
-            {/* Banner Promotional Card */}
+            {/* Specialist Guidance Card */}
             <div className="w-full max-w-sm rounded-3xl border border-white/15 bg-white/10 p-6 backdrop-blur-xl shadow-2xl">
               <div className="flex items-center justify-between mb-4">
                 <span className="rounded-full bg-brand-500 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
-                  Limited Offer
+                  Expert Advice
                 </span>
-                <span className="text-xs text-blue-200">Coupon: SMART10</span>
+                <span className="text-xs text-blue-200">Hardware Guidance</span>
               </div>
               <h3 className="text-xl font-bold text-white">
-                Save 10% Extra Today
+                Need Help Choosing?
               </h3>
               <p className="mt-1 text-xs text-slate-300 leading-relaxed">
-                Use promo code <span className="font-mono font-bold text-white">SMART10</span> in your cart on any printer or genuine supply bundle.
+                Connect directly with a printer specialist to match page yields, wireless connectivity, and hardware with your workflow.
               </p>
               <div className="mt-5 rounded-2xl bg-slate-900/60 p-3.5 border border-white/10 flex items-center justify-between text-xs">
                 <span className="text-slate-400">Questions on compatibility?</span>
@@ -501,14 +501,6 @@ function ShopContent() {
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {visibleProducts.map((product) => {
-              const discountPercent = product.originalPrice
-                ? Math.round(
-                    ((product.originalPrice - product.price) /
-                      product.originalPrice) *
-                      100
-                  )
-                : 0;
-
               return (
                 <div
                   key={product.id}
@@ -524,12 +516,6 @@ function ShopContent() {
                       ) : (
                         <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                           {product.brand}
-                        </span>
-                      )}
-
-                      {discountPercent > 0 && (
-                        <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-extrabold text-emerald-700 border border-emerald-100">
-                          Save {discountPercent}%
                         </span>
                       )}
                     </div>
@@ -619,11 +605,6 @@ function ShopContent() {
                         <span className="text-xl font-extrabold text-slate-900">
                           ${product.price.toFixed(2)}
                         </span>
-                        {product.originalPrice && product.originalPrice > product.price && (
-                          <span className="ml-2 text-xs text-slate-400 line-through">
-                            ${product.originalPrice.toFixed(2)}
-                          </span>
-                        )}
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-600">
                         {product.inStock ? "● In Stock" : "Out of Stock"}
@@ -838,11 +819,6 @@ function ShopContent() {
                     <span className="text-3xl font-extrabold text-slate-900">
                       ${quickViewProduct.price.toFixed(2)}
                     </span>
-                    {quickViewProduct.originalPrice && (
-                      <span className="text-sm text-slate-400 line-through">
-                        ${quickViewProduct.originalPrice.toFixed(2)}
-                      </span>
-                    )}
                   </div>
 
                   <p className="mt-3 text-sm text-slate-600 leading-relaxed">

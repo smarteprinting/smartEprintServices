@@ -208,11 +208,6 @@ export default function ProductDetailPage() {
             </h1>
             <div className="mt-5 flex flex-wrap items-baseline gap-3">
               <span className="text-3xl font-black">${price.toFixed(2)}</span>
-              {regularPrice > price && (
-                <span className="text-sm text-slate-400 line-through">
-                  ${regularPrice.toFixed(2)}
-                </span>
-              )}
             </div>
             <div className="mt-5 flex flex-wrap gap-2">
               {[

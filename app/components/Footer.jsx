@@ -20,7 +20,7 @@ const shopLinks = [
   { href: '/shop?category=all-in-one', label: 'All-in-One Multi-Function' },
   { href: '/shop?category=supplies', label: 'Original Ink & Toners' },
   { href: '/shop?category=accessories', label: 'Printer Cables & Parts' },
-  { href: '/shop', label: 'View All Hardware Deals' },
+  { href: '/shop', label: 'View All Hardware' },
 ];
 
 const serviceLinks = [
