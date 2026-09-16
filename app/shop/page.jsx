@@ -29,6 +29,65 @@ import { useCart } from "../components/CartContext";
 import CheckoutModal from "../components/CheckoutModal";
 import { useAuth } from "../components/AuthContext";
 
+function isHpPrinter(product) {
+  if (!product) return false;
+  const brand = (product.brand || "").toLowerCase();
+  const name = (product.name || product.title || "").toLowerCase();
+  const isHp = brand === "hp" || name.includes("hp");
+  if (!isHp) return false;
+
+  const cat = String(product.category || "").toLowerCase();
+  const isSupplies =
+    name.includes("cartridge") ||
+    name.includes("toner") ||
+    name.includes("ink bottle") ||
+    name.includes("cable") ||
+    name.includes("cord") ||
+    name.includes("drum") ||
+    name.includes("printhead") ||
+    name.includes("yield") ||
+    cat.includes("supplies") ||
+    cat.includes("accessories") ||
+    cat === "698238e1aafc80955cc50c4a" ||
+    cat === "6aa5d0fa035a474cc5e0c719" ||
+    cat === "6aa5d0fa035a474cc5e0c71a";
+
+  if (isSupplies) return false;
+
+  return (
+    name.includes("printer") ||
+    name.includes("laserjet") ||
+    name.includes("deskjet") ||
+    name.includes("officejet") ||
+    name.includes("smart tank") ||
+    name.includes("envy") ||
+    name.includes("all-in-one") ||
+    name.includes("mfp") ||
+    name.includes("pagewide") ||
+    name.includes("designjet") ||
+    cat === "laser" ||
+    cat === "inkjet" ||
+    cat === "all-in-one" ||
+    cat === "698238c9aafc80955cc50c40" ||
+    cat === "698238b9aafc80955cc50c3b" ||
+    cat === "6982389caafc80955cc50c31"
+  );
+}
+
+function getProductPriority(product) {
+  if (!product) return 0;
+  const isPrinter = isHpPrinter(product);
+  const name = (product.name || product.title || "").toLowerCase();
+
+  if (isPrinter) {
+    if (name.includes("laserjet") || name.includes("smart tank")) return 120;
+    if (name.includes("officejet") || name.includes("envy") || name.includes("deskjet")) return 110;
+    return 100;
+  }
+
+  return 10;
+}
+
 function ShopContent() {
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category") || "all";
@@ -44,7 +103,7 @@ function ShopContent() {
   const [onlyInStock, setOnlyInStock] = useState(false);
   const [visibleCount, setVisibleCount] = useState(12);
 
-  // Load HP products for the focused HP storefront.
+  // Load HP products for the focused HP storefront, showing HP printers first.
   useEffect(() => {
     fetch("/api/products", { cache: "no-store" })
       .then((res) => res.json())
@@ -55,14 +114,19 @@ function ShopContent() {
             const name = (product.name || product.title || "").toLowerCase();
             return (brand === "hp" || name.includes("hp")) && product.image;
           });
+          hpProducts.sort((a, b) => getProductPriority(b) - getProductPriority(a));
           setCatalogProducts(hpProducts);
         } else {
-          setCatalogProducts(fallbackCatalog.filter((product) => (product.brand || "").toLowerCase() === "hp" || (product.name || "").toLowerCase().includes("hp")));
+          const hpFallback = fallbackCatalog.filter((product) => (product.brand || "").toLowerCase() === "hp" || (product.name || "").toLowerCase().includes("hp"));
+          hpFallback.sort((a, b) => getProductPriority(b) - getProductPriority(a));
+          setCatalogProducts(hpFallback);
         }
       })
       .catch((err) => {
         console.warn("Could not fetch live products from API:", err);
-        setCatalogProducts(fallbackCatalog.filter((product) => (product.brand || "").toLowerCase() === "hp" || (product.name || "").toLowerCase().includes("hp")));
+        const hpFallback = fallbackCatalog.filter((product) => (product.brand || "").toLowerCase() === "hp" || (product.name || "").toLowerCase().includes("hp"));
+        hpFallback.sort((a, b) => getProductPriority(b) - getProductPriority(a));
+        setCatalogProducts(hpFallback);
       });
   }, []);
 
@@ -176,7 +240,11 @@ function ShopContent() {
         if (sortBy === "price-low") return a.price - b.price;
         if (sortBy === "price-high") return b.price - a.price;
         if (sortBy === "rating") return b.rating - a.rating;
-        return 0; // featured
+        // Default "featured": show HP printer products first!
+        const priorityDiff = getProductPriority(b) - getProductPriority(a);
+        if (priorityDiff !== 0) return priorityDiff;
+        if (a.inStock !== b.inStock) return a.inStock ? -1 : 1;
+        return (b.rating || 0) - (a.rating || 0);
       });
   }, [catalogProducts, selectedCategory, searchQuery, sortBy, onlyInStock]);
 

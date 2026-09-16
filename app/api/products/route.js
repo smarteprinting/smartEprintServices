@@ -89,6 +89,52 @@ export async function GET(request) {
         : parseSpecificationTable(p.technicalSpecification || p.shortSpecification || ""),
     }));
 
+    function isHpPrinter(p) {
+      const name = (p.title || p.name || "").toLowerCase();
+      const brand = (p.brand || "").toLowerCase();
+      const isHp = brand === "hp" || name.includes("hp");
+      if (!isHp) return false;
+      const cat = String(p.category || "").toLowerCase();
+      const isSupplies =
+        name.includes("cartridge") ||
+        name.includes("toner") ||
+        name.includes("ink bottle") ||
+        name.includes("cable") ||
+        name.includes("cord") ||
+        name.includes("drum") ||
+        name.includes("yield") ||
+        cat.includes("supplies") ||
+        cat.includes("accessories") ||
+        cat === "698238e1aafc80955cc50c4a" ||
+        cat === "6aa5d0fa035a474cc5e0c719" ||
+        cat === "6aa5d0fa035a474cc5e0c71a";
+      if (isSupplies) return false;
+      return (
+        name.includes("printer") ||
+        name.includes("laserjet") ||
+        name.includes("deskjet") ||
+        name.includes("officejet") ||
+        name.includes("smart tank") ||
+        name.includes("envy") ||
+        name.includes("all-in-one") ||
+        name.includes("mfp") ||
+        name.includes("pagewide") ||
+        name.includes("designjet") ||
+        cat === "laser" ||
+        cat === "inkjet" ||
+        cat === "all-in-one" ||
+        cat === "698238c9aafc80955cc50c40" ||
+        cat === "698238b9aafc80955cc50c3b" ||
+        cat === "6982389caafc80955cc50c31"
+      );
+    }
+
+    normalized.sort((a, b) => {
+      const aHpPrinter = isHpPrinter(a) ? 1 : 0;
+      const bHpPrinter = isHpPrinter(b) ? 1 : 0;
+      return bHpPrinter - aHpPrinter;
+    });
+
     return NextResponse.json({
       success: true,
       source: "database",
