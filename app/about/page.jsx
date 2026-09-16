@@ -20,8 +20,8 @@ import {
 } from "lucide-react";
 
 const offerings = [
-  { icon: Truck, title: "Free Shipping on Orders Over $50", desc: "We cover shipping costs on qualifying orders so you get your equipment delivered without extra fees." },
-  { icon: RotateCcw, title: "30-Day Hassle-Free Returns", desc: "Not the right fit? Return any item within 30 days for a full refund — no questions asked." },
+  { icon: Truck, title: "Free Shipping on Orders Over $49", desc: "We cover standard shipping costs on qualifying orders within the continental United States." },
+  { icon: RotateCcw, title: "30-Day Returns", desc: "Unused items in original condition may be returned within 30 days; exclusions and return shipping rules apply." },
   { icon: Headphones, title: "Dedicated Assistance Team", desc: "Our knowledgeable team is here to answer product and compatibility questions before and after your purchase." },
   { icon: Star, title: "Expert Product Recommendations", desc: "We help you cut through the noise and choose the right printer or scanner for your exact use case." },
   { icon: Lock, title: "Secure Checkout Process", desc: "Your transactions are protected with industry-standard encryption and trusted payment processing." },
@@ -60,10 +60,10 @@ export default function AboutPage() {
       {/* HERO */}
       <section className="relative w-full min-h-[55vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/bg-hero.webp')" }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/65 to-slate-800/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#024AD8]/95 via-[#023b9f]/85 to-[#011f59]/70" />
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20 lg:px-10 lg:py-24">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-sky-200 backdrop-blur-md mb-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/30 bg-[#024AD8]/30 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-blue-100 backdrop-blur-md mb-6">
               <Sparkles className="h-3.5 w-3.5 text-sky-400" />
               <span>About SmartEprint Services</span>
             </div>
@@ -141,7 +141,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              {["Free shipping on orders over $50", "30-day hassle-free returns", "Dedicated assistance team", "Expert product recommendations", "Secure checkout process", "Order tracking available"].map((label) => (
+              {["Free shipping on orders over $49", "30-day returns on unused items", "Dedicated assistance team", "Expert product recommendations", "Secure checkout process", "Order tracking available"].map((label) => (
                 <div key={label} className="flex items-center gap-3 rounded-xl bg-white/10 border border-white/10 p-4 backdrop-blur-sm">
                   <CheckCircle2 className="h-4 w-4 text-sky-300 shrink-0" />
                   <span className="text-xs font-semibold text-blue-100 leading-tight">{label}</span>
@@ -157,7 +157,7 @@ export default function AboutPage() {
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#0f6cff]">What We Offer</span>
           <h2 className="mt-3 text-3xl font-black text-slate-900 sm:text-4xl">Everything You Need in One Place</h2>
-          <p className="mt-3 text-sm leading-relaxed text-slate-500">From free shipping to expert recommendations, every aspect of your shopping experience is designed to save you time and deliver real value.</p>
+          <p className="mt-3 text-sm leading-relaxed text-slate-500">From free shipping to expert recommendations, every part of your shopping experience is designed to save time and deliver practical value.</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {offerings.map((item) => {

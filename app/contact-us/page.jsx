@@ -31,7 +31,7 @@ function LegacyContactPage() {
           }}
         >
           {/* Dark overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#011B3E]/95 via-[#024AD8]/80 to-[#0B63F6]/70" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#024AD8]/95 via-[#023b9f]/85 to-[#011f59]/75" />
 
           {/* Decorative orbs */}
           <div className="absolute inset-0 overflow-hidden">

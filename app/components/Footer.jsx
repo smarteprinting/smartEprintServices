@@ -9,7 +9,7 @@ const quickLinks = [
   { href: '/about', label: 'About Us' },
   { href: '/shop', label: 'Shop Products' },
   { href: '/blogs', label: 'Blogs' },
-  { href: '/services', label: 'Our Services' },
+  { href: '/services', label: 'Setup & Support' },
   { href: '/book-an-appointment', label: 'Book an Appointment' },
   { href: '/contact-us', label: 'Contact Us' },
 ];
@@ -24,12 +24,10 @@ const shopLinks = [
 ];
 
 const serviceLinks = [
-  { href: '/book-an-appointment', label: 'Computer Assistance' },
-  { href: '/book-an-appointment', label: 'Printer Assistance' },
-  { href: '/book-an-appointment', label: 'Smart Home Assistance' },
-  { href: '/book-an-appointment', label: 'Network Assistance' },
-  { href: '/book-an-appointment', label: 'TV Mounting' },
-  { href: '/book-an-appointment', label: 'Appliance Support' },
+  { href: '/book-an-appointment', label: 'Printer Setup' },
+  { href: '/book-an-appointment', label: 'Printer Repair' },
+  { href: '/book-an-appointment', label: 'Network & Wi-Fi Setup' },
+  { href: '/book-an-appointment', label: 'Business Printing Support' },
 ];
 
 const policyLinks = [

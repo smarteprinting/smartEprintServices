@@ -20,7 +20,7 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
   const [step, setStep] = useState("form"); // 'form' | 'success'
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderNumber, setOrderNumber] = useState("");
-  const [includeSetup, setIncludeSetup] = useState(true);
+  const [includeSetup, setIncludeSetup] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [submitError, setSubmitError] = useState("");
   const [shippingFee, setShippingFee] = useState(null);
@@ -262,7 +262,7 @@ export default function CheckoutModal({ isOpen, onClose, directItem = null }) {
                       </span>
                     </div>
                     <p className="mt-0.5 text-xs text-slate-500">
-                      Our certified technician delivers, unpacks, unboxes, configures Wi-Fi, and connects all your home/office devices.
+                      Optional local setup service. A technician can unpack the printer, configure Wi-Fi, and connect your devices where service is available.
                     </p>
                   </div>
                 </div>

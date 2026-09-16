@@ -13,10 +13,10 @@ const serviceOptions = new Set([
   'General Consultation',
 ]);
 
-function buildEmailContent({ fullName, phone, email, serviceType, description }) {
+function buildEmailContent({ fullName, phone, email, serviceType, modelNumber, description }) {
   return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-      <div style="background: linear-gradient(135deg, #024AD8, #0B63F6); padding: 20px; border-radius: 12px 12px 0 0;">
+      <div style="background: linear-gradient(135deg, #023eb6, #0B63F6); padding: 20px; border-radius: 12px 12px 0 0;">
         <h2 style="color: #ffffff; margin: 0; font-size: 22px;">📋 New Appointment Request</h2>
       </div>
       <div style="background-color: #ffffff; padding: 24px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 12px 12px;">
@@ -42,7 +42,7 @@ function buildEmailContent({ fullName, phone, email, serviceType, description })
               <strong style="color: #374151;">Email:</strong>
             </td>
             <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #111827;">
-              <a href="mailto:${escapeHtml(email)}" style="color: #024AD8;">${escapeHtml(email)}</a>
+              <a href="mailto:${escapeHtml(email)}" style="color: #0337a0;">${escapeHtml(email)}</a>
             </td>
           </tr>
           <tr>
@@ -51,6 +51,14 @@ function buildEmailContent({ fullName, phone, email, serviceType, description })
             </td>
             <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #111827;">
               ${escapeHtml(serviceType)}
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0;">
+              <strong style="color: #374151;">Model Number:</strong>
+            </td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #111827;">
+              ${escapeHtml(modelNumber)}
             </td>
           </tr>
         </table>
@@ -85,7 +93,7 @@ export async function POST(req) {
       }
     }
 
-    const { fullName, phone, email, serviceType, description, honeypot, turnstileToken } = body;
+    const { fullName, phone, email, serviceType, modelNumber, description, honeypot, turnstileToken } = body;
 
     if (honeypot) {
       return NextResponse.json({ success: false, message: 'Unable to process this request.' }, { status: 400 });
@@ -95,7 +103,7 @@ export async function POST(req) {
       return NextResponse.json({ success: false, message: 'Security verification failed. Please try again.' }, { status: 403 });
     }
 
-    if (!validateText(fullName, 100) || !validatePhone(phone) || !validateEmail(email) || !validateText(serviceType, 80) || !serviceOptions.has(serviceType) || (description && !validateText(description, 2000))) {
+    if (!validateText(fullName, 100) || !validatePhone(phone) || !validateEmail(email) || !validateText(serviceType, 80) || !serviceOptions.has(serviceType) || !validateText(modelNumber, 100) || (description && !validateText(description, 2000))) {
       return NextResponse.json(
         { success: false, message: 'Please enter a valid phone number and check your form details.' },
         { status: 400 }
@@ -145,7 +153,7 @@ export async function POST(req) {
       to: smtpTo,
       replyTo: email,
       subject: `New Appointment Request from ${fullName}`,
-      html: buildEmailContent({ fullName, phone, email, serviceType, description }),
+      html: buildEmailContent({ fullName, phone, email, serviceType, modelNumber, description }),
     });
 
     console.log('Email sent successfully. Message ID:', info.messageId);

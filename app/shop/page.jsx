@@ -44,45 +44,25 @@ function ShopContent() {
   const [onlyInStock, setOnlyInStock] = useState(false);
   const [visibleCount, setVisibleCount] = useState(12);
 
-  // Live fetch from MongoDB /api/products (Strictly HP Only)
+  // Load HP products for the focused HP storefront.
   useEffect(() => {
     fetch("/api/products", { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         if (data.success && Array.isArray(data.products) && data.products.length > 0) {
-          // Filter ONLY HP products
-          const hpDbProducts = data.products.filter((p) => {
-            const b = (p.brand || "").toLowerCase();
-            const n = (p.name || p.title || "").toLowerCase();
-            return b === "hp" || n.includes("hp");
+          const hpProducts = data.products.filter((product) => {
+            const brand = (product.brand || "").toLowerCase();
+            const name = (product.name || product.title || "").toLowerCase();
+            return (brand === "hp" || name.includes("hp")) && product.image;
           });
-
-          // Include HP accessories from local catalog if not already in DB
-          const hpAccessories = fallbackCatalog.filter(
-            (p) =>
-              (p.brand || "").toLowerCase() === "hp" &&
-              (p.category === "accessories" || (p.name || "").toLowerCase().includes("cable"))
-          );
-
-          setCatalogProducts([...hpDbProducts, ...hpAccessories]);
+          setCatalogProducts(hpProducts);
         } else {
-          // Fallback to HP products from local catalog
-          const hpFallback = fallbackCatalog.filter((p) => {
-            const b = (p.brand || "").toLowerCase();
-            const n = (p.name || "").toLowerCase();
-            return b === "hp" || n.includes("hp");
-          });
-          setCatalogProducts(hpFallback);
+          setCatalogProducts(fallbackCatalog.filter((product) => (product.brand || "").toLowerCase() === "hp" || (product.name || "").toLowerCase().includes("hp")));
         }
       })
       .catch((err) => {
         console.warn("Could not fetch live products from API:", err);
-        const hpFallback = fallbackCatalog.filter((p) => {
-          const b = (p.brand || "").toLowerCase();
-          const n = (p.name || "").toLowerCase();
-          return b === "hp" || n.includes("hp");
-        });
-        setCatalogProducts(hpFallback);
+        setCatalogProducts(fallbackCatalog.filter((product) => (product.brand || "").toLowerCase() === "hp" || (product.name || "").toLowerCase().includes("hp")));
       });
   }, []);
 
@@ -93,15 +73,13 @@ function ShopContent() {
   // Quantity inside Quick View
   const [quickViewQty, setQuickViewQty] = useState(1);
 
-  // Filtered and Sorted Products (HP Only, with workable multi-attribute category matching)
+  // Filter and sort the HP catalog.
   const filteredProducts = useMemo(() => {
     return catalogProducts
       .filter((product) => {
-        // Enforce HP only
         const brandStr = (product.brand || "").toLowerCase();
         const nameStr = (product.name || product.title || "").toLowerCase();
-        const isHp = brandStr === "hp" || nameStr.includes("hp") || brandStr.includes("hp");
-        if (!isHp) {
+        if (brandStr !== "hp" && !nameStr.includes("hp")) {
           return false;
         }
 
@@ -235,7 +213,7 @@ function ShopContent() {
   return (
     <div className="min-h-screen bg-slate-50/60 pb-20">
       {/* Hero Banner */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-[#01235b] text-white py-16 lg:py-20">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#024AD8] via-[#023b9f] to-[#011f59] text-white py-16 lg:py-20">
         {/* Glow decoration */}
         <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-brand-500/20 blur-3xl pointer-events-none" />
         <div className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-blue-600/15 blur-3xl pointer-events-none" />
@@ -245,7 +223,7 @@ function ShopContent() {
             <div className="max-w-2xl text-center lg:text-left">
               <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold text-blue-300 mb-4 backdrop-blur-md">
                 <Sparkles size={14} className="text-blue-400" />
-                <span>Authorized Hardware & Genuine Supplies Store</span>
+                <span>Genuine Hardware & Supplies Store</span>
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
                 Printers, Toners & <br />
@@ -263,7 +241,7 @@ function ShopContent() {
                   <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/10 text-blue-400">
                     <Truck size={15} />
                   </div>
-                  <span>Free Shipping over $49</span>
+                  <span>Free Standard Shipping over $49</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/10 text-emerald-400">
@@ -408,7 +386,7 @@ function ShopContent() {
             {selectedCategory !== "all" && (
               <span> in <strong className="text-brand-600">{categories.find(c => c.id === selectedCategory)?.label}</strong></span>
             )}
-            {selectedBrand !== "All Brands" && (
+            {selectedBrand === "HP" && (
               <span> by <strong className="text-brand-600">{selectedBrand}</strong></span>
             )}
           </p>
@@ -628,7 +606,7 @@ function ShopContent() {
                 100% Genuine Supplies
               </h4>
               <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
-                Direct authorized vendor supplies with guaranteed serials and manufacturer warranties.
+                Genuine products from trusted brands with manufacturer warranty coverage where applicable.
               </p>
             </div>
 
@@ -640,7 +618,7 @@ function ShopContent() {
                 Fast Insured Shipping
               </h4>
               <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
-                Reliable dispatch with tracking numbers. Free standard delivery on all orders over $49.
+                Reliable dispatch with tracking numbers. Free standard delivery on orders over $49.
               </p>
             </div>
 
@@ -664,7 +642,7 @@ function ShopContent() {
                 30-Day Easy Returns
               </h4>
               <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">
-                Hassle-free replacement or return options if your hardware does not suit your operational needs.
+                30-day returns on unused items in original condition; exclusions and return shipping rules apply.
               </p>
             </div>
           </div>

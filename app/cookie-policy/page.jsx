@@ -68,14 +68,14 @@ const sections = [
 export default function CookiePolicy() {
   return (
     <main className="overflow-hidden bg-[#f7faff] text-[#10233d]">
-      <section className="relative isolate border-b border-blue-950/10 bg-[#061d39]">
-        <div className="absolute inset-0 -z-10 bg-[url('/bg-hero.webp')] bg-cover bg-center opacity-25" />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(100deg,#061d39_10%,rgba(6,29,57,.9),rgba(6,29,57,.45))]" />
+      <section className="relative isolate border-b border-blue-950/10 bg-[#023b9f]">
+        <div className="absolute inset-0 -z-10 bg-[url('/bg-hero.webp')] bg-cover bg-center opacity-15" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(115deg,#024AD8_0%,#023b9f_48%,#011f59_100%)]" />
         <div className="mx-auto flex min-h-[300px] max-w-7xl items-center px-6 py-14 sm:px-8 lg:px-10 lg:py-16">
           <div>
-            <p className="text-[10px] font-black uppercase tracking-[0.24em] text-blue-200">Smart ePrint Services</p>
-            <h1 className="mt-4 text-4xl font-black tracking-tight text-white sm:text-6xl">Cookies <span className="text-[#65adff]">Policy</span></h1>
-            <p className="mt-4 text-sm font-medium text-blue-100/75">Last updated: January 2026</p>
+            <p className="text-[10px] font-black uppercase tracking-[0.24em] text-blue-100">Smart ePrint Services</p>
+            <h1 className="mt-4 text-4xl font-black tracking-tight text-white sm:text-6xl">Cookies <span className="text-blue-100">Policy</span></h1>
+            <p className="mt-4 text-sm font-medium text-blue-50/80">Last updated: January 2026</p>
           </div>
         </div>
       </section>

@@ -34,6 +34,20 @@ body {
   overflow-x: hidden;
 }
 
+/* Keep the compact Privacy Policy hero aligned with the brand palette. */
+section[class~="bg-[#061d39]"] {
+  background-color: #023b9f !important;
+  background-image: linear-gradient(115deg, #024AD8 0%, #023b9f 48%, #011f59 100%) !important;
+}
+
+section[class~="bg-[#061d39]"] > div:first-child {
+  opacity: 0.15;
+}
+
+section[class~="bg-[#061d39]"] > div:nth-child(2) {
+  background-image: linear-gradient(115deg, #024AD8 0%, #023b9f 48%, #011f59 100%) !important;
+}
+
 a {
   color: inherit;
   text-decoration: none;

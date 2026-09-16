@@ -258,7 +258,7 @@ export default function ProductDetailPage() {
                 <span>
                   <b>Free Shipping</b>
                   <small className="block text-slate-400">
-                    Orders over $249
+                    Orders over $49
                   </small>
                 </span>
               </div>
@@ -281,9 +281,9 @@ export default function ProductDetailPage() {
               <div className="flex gap-3">
                 <Award size={18} className="text-brand-500" />
                 <span>
-                  <b>Authentic</b>
+                  <b>Genuine Products</b>
                   <small className="block text-slate-400">
-                    Official hardware
+                    Trusted brand sources
                   </small>
                 </span>
               </div>

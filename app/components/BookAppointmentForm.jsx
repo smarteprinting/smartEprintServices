@@ -30,6 +30,7 @@ export default function BookAppointmentForm() {
     phone: "",
     email: "",
     serviceType: "",
+    modelNumber: "",
     description: "",
   });
   const [status, setStatus] = useState("idle");
@@ -98,6 +99,7 @@ export default function BookAppointmentForm() {
           phone: "",
           email: "",
           serviceType: "",
+          modelNumber: "",
           description: "",
         });
       } else {
@@ -250,6 +252,24 @@ export default function BookAppointmentForm() {
               ))}
             </select>
             <ChevronDown className="absolute right-3.5 top-1/2 h-4.5 w-4.5 -translate-y-1/2 text-gray-400 transition-colors duration-300 pointer-events-none" />
+          </div>
+        </div>
+
+        {/* Model Number */}
+        <div className="relative">
+          <label className="mb-1.5 block text-[12px] font-semibold text-gray-600 uppercase tracking-wide">Model Number *</label>
+          <div className="relative">
+            <Wrench className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 transition-colors duration-300" />
+            <input
+              type="text"
+              name="modelNumber"
+              value={formData.modelNumber}
+              onChange={handleChange}
+              placeholder="Enter your equipment model number"
+              required
+              maxLength={100}
+              className="w-full rounded-xl border border-gray-200 pl-10 pr-4 py-3 text-sm outline-none transition-all duration-300 focus:border-[#024AD8] focus:ring-4 focus:ring-[#024AD8]/10 bg-gray-50/50 focus:bg-white placeholder-gray-400 font-normal"
+            />
           </div>
         </div>
 

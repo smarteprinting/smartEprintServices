@@ -177,7 +177,7 @@ const advantages = [
   {
     title: "Trusted Manufacturer Brands",
     description:
-      "We exclusively carry hardware from recognized industry leaders—HP, Canon, Epson, and Brother—known for durability and consistent performance.",
+      "We focus on genuine HP hardware known for durability, consistent performance, and dependable manufacturer support.",
     icon: ShieldCheck,
   },
   {
@@ -284,11 +284,11 @@ const buyingFactors = [
 const faqs = [
   {
     q: "What types of printers and scanners do you sell?",
-    a: "We stock a complete catalog of printing and scanning hardware, including monochrome and color laser printers, cartridge-free ink tank printers, compact inkjet all-in-ones, desktop document scanners, and high-volume commercial multifunction systems from HP, Canon, Epson, and Brother.",
+    a: "We stock a focused catalog of HP printing and scanning hardware, including laser printers, inkjet all-in-ones, desktop document scanners, and multifunction systems.",
   },
   {
     q: "Do you ship to all 50 U.S. states?",
-    a: "Yes! SmartEprint Services ships nationwide across all 50 U.S. states. We offer free standard delivery on all orders over $50 within the continental United States, with expedited shipping options available at checkout.",
+    a: "Yes! SmartEprint Services ships nationwide across all 50 U.S. states. We offer free standard delivery on orders over $49 within the continental United States, with expedited shipping options available at checkout.",
   },
   {
     q: "What is your return policy?",
@@ -428,8 +428,8 @@ export default function HomePage() {
         />
 
         {/* Soft, Transparent Overlay - Background Image is Clearly Visible */}
-        <div className="absolute inset-0 bg-slate-950/45" />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/50 to-transparent" />
+        <div className="absolute inset-0 bg-blue-750/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-750/60 via-blue-850/30 to-transparent" />
 
         {/* Content Container */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10">
@@ -445,7 +445,7 @@ export default function HomePage() {
               {/* Reduced Font Size Heading */}
               <h1 className="mt-3.5 text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-black tracking-tight text-white leading-tight">
                 Your Trusted Partner for Professional{" "}
-                <span className="bg-gradient-to-r from-sky-400 via-blue-300 to-indigo-300 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-500 bg-clip-text text-transparent">
                   Printing &amp; Scanning
                 </span>{" "}
                 Solutions.
@@ -481,7 +481,7 @@ export default function HomePage() {
               <div className="mt-6 pt-4 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-[11px] font-semibold text-slate-300">
                 <div className="flex items-center gap-1.5">
                   <Truck className="h-3.5 w-3.5 text-sky-400 shrink-0" />
-                  <span>Free Shipping &gt;$50</span>
+                  <span>Free Shipping &gt;$49</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <RotateCcw className="h-3.5 w-3.5 text-sky-400 shrink-0" />
@@ -527,8 +527,8 @@ export default function HomePage() {
                 <ShieldCheck className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="text-sm font-extrabold text-slate-900">Authorized Equipment</h4>
-                <p className="text-xs text-slate-500">HP, Canon, Epson &amp; Brother</p>
+                <h4 className="text-sm font-extrabold text-slate-900">Genuine Equipment</h4>
+                <p className="text-xs text-slate-500">Printers, scanners &amp; supplies</p>
               </div>
             </div>
 
@@ -538,7 +538,7 @@ export default function HomePage() {
               </div>
               <div>
                 <h4 className="text-sm font-extrabold text-slate-900">Free U.S. Shipping</h4>
-                <p className="text-xs text-slate-500">On all orders over $50</p>
+                <p className="text-xs text-slate-500">On orders over $49</p>
               </div>
             </div>
 
@@ -548,7 +548,7 @@ export default function HomePage() {
               </div>
               <div>
                 <h4 className="text-sm font-extrabold text-slate-900">30-Day Returns</h4>
-                <p className="text-xs text-slate-500">Hassle-free guarantee</p>
+                <p className="text-xs text-slate-500">Unused items; exclusions apply</p>
               </div>
             </div>
 
@@ -769,7 +769,7 @@ export default function HomePage() {
                           <span>Add</span>
                         </button>
                         <Link
-                          href="/shop"
+                          href={`/shop/${item.id || item._id}`}
                           className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-slate-50 py-1.5 px-2 text-[11px] font-semibold text-slate-700 transition hover:bg-white hover:border-slate-300"
                         >
                           <span>Details</span>
@@ -1056,7 +1056,7 @@ export default function HomePage() {
                 <div className="flex items-start gap-3 rounded-2xl bg-slate-50 p-4 border border-slate-100">
                   <CheckCircle2 className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" />
                   <span>
-                    <strong>Free standard shipping</strong> on all orders over $50 within the continental United
+                    <strong>Free standard shipping</strong> on orders over $49 within the continental United
                     States.
                   </span>
                 </div>
@@ -1323,11 +1323,11 @@ export default function HomePage() {
               <div className="mt-6 flex flex-wrap gap-6 text-xs text-slate-300">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-sky-400" />
-                  <span>Free shipping on orders over $50</span>
+                  <span>Free shipping on orders over $49</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-sky-400" />
-                  <span>30-Day hassle-free returns</span>
+                  <span>30-Day returns on unused items</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-sky-400" />
