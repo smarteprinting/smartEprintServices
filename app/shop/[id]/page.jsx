@@ -20,6 +20,7 @@ import {
 import { useCart } from "../../components/CartContext";
 import CheckoutModal from "../../components/CheckoutModal";
 import { useAuth } from "../../components/AuthContext";
+import { products as fallbackCatalog } from "../../../lib/productsData";
 
 function htmlToText(value = "") {
   if (typeof window === "undefined")
@@ -62,7 +63,37 @@ export default function ProductDetailPage() {
           throw new Error(data.message || "Product not found");
         setProduct(data.product);
       })
-      .catch((reason) => setError(reason.message));
+      .catch((reason) => {
+        const fb = fallbackCatalog.find(
+          (p) => String(p.id) === String(params.id) || String(p.slug) === String(params.id)
+        );
+        if (fb) {
+          setProduct({
+            ...fb,
+            id: fb.id,
+            name: fb.name || fb.title,
+            title: fb.name || fb.title,
+            image: fb.image || fb.images?.[0] || "",
+            price: fb.price,
+            salePrice: fb.price,
+            oldPrice: fb.originalPrice || fb.price,
+            originalPrice: fb.originalPrice || fb.price,
+            images: Array.from(new Set([...(fb.images || []), fb.image].filter(Boolean))),
+            shortDesc: fb.shortDesc || "",
+            highlights: fb.highlights || fb.shortDesc || "",
+            overview: fb.overview || fb.shortDesc || "",
+            countInStock: fb.stockCount || 10,
+            inStock: fb.inStock !== false,
+            technicalSpecificationRows: fb.specs
+              ? Object.entries(fb.specs).map(([label, value]) => ({ label, value: String(value) }))
+              : [],
+            specs: fb.specs || {},
+          });
+          setError("");
+        } else {
+          setError(reason.message);
+        }
+      });
   }, [params?.id]);
 
   const images = useMemo(

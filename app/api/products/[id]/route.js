@@ -3,6 +3,7 @@ import { connectDB } from "@/lib/db";
 import Product from "@/lib/models/Product";
 import mongoose from "mongoose";
 import { isAdminRequest } from "@/lib/adminAuth";
+import { products as fallbackCatalog } from "@/lib/productsData";
 
 function stripHtml(value = "") {
   return String(value).replace(/<[^>]*>/g, " ").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
@@ -22,18 +23,52 @@ function parseSpecificationTable(value = "") {
 
 export async function GET(request, { params }) {
   try {
-    await connectDB();
     const { id } = params;
-
     let product = null;
-    if (mongoose.Types.ObjectId.isValid(id)) {
-      product = await Product.findById(id).lean();
-    }
-    if (!product) {
-      product = await Product.findOne({ slug: id }).lean();
+
+    try {
+      await connectDB();
+      if (mongoose.Types.ObjectId.isValid(id)) {
+        product = await Product.findById(id).lean();
+      }
+      if (!product) {
+        product = await Product.findOne({ slug: id }).lean();
+      }
+    } catch (dbErr) {
+      console.warn("DB lookup error in GET /api/products/[id]:", dbErr.message);
     }
 
     if (!product) {
+      const fb = fallbackCatalog.find(
+        (p) => String(p.id) === String(id) || String(p.slug) === String(id)
+      );
+      if (fb) {
+        return NextResponse.json({
+          success: true,
+          product: {
+            ...fb,
+            id: fb.id,
+            name: fb.name || fb.title,
+            title: fb.name || fb.title,
+            image: fb.image || fb.images?.[0] || "",
+            price: fb.price,
+            salePrice: fb.price,
+            oldPrice: fb.originalPrice || fb.price,
+            originalPrice: fb.originalPrice || fb.price,
+            images: Array.from(new Set([...(fb.images || []), fb.image].filter(Boolean))),
+            shortDesc: fb.shortDesc || "",
+            highlights: fb.highlights || fb.shortDesc || "",
+            overview: fb.overview || fb.shortDesc || "",
+            countInStock: fb.stockCount || 10,
+            inStock: fb.inStock !== false,
+            technicalSpecificationRows: fb.specs
+              ? Object.entries(fb.specs).map(([label, value]) => ({ label, value: String(value) }))
+              : [],
+            specs: fb.specs || {},
+          },
+        });
+      }
+
       return NextResponse.json(
         { success: false, message: "Product not found" },
         { status: 404 }

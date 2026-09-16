@@ -216,7 +216,7 @@ export default function PremiumServicesPage() {
             </span>
             <h1 className="mt-7 text-4xl font-black leading-[1.02] tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
               A printer should<br />
-              <span className="text-[#65adff]">just work.</span>
+              <span className="text-blue-700">just work.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-base leading-7 text-blue-100/80 sm:text-lg sm:leading-8">
               From first-time setup to stubborn offline errors, Smart ePrint Services brings calm, practical help to homes and workplaces across the United States.

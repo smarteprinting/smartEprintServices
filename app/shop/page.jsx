@@ -466,25 +466,37 @@ function ShopContent() {
                       )}
                     </div>
 
-                    {/* Image Area with Quick View Hover Overlay */}
-                    <div className="relative mb-4 flex h-48 w-full items-center justify-center overflow-hidden rounded-2xl bg-slate-50 p-4 transition group-hover:bg-blue-50/30">
-                      {product.image ? <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className="object-contain p-3 transition-transform duration-300 group-hover:scale-105"
-                      /> : <span className="text-xs font-semibold text-slate-400">Image unavailable</span>}
+                    {/* Image Area with Link to Product Details */}
+                    <Link
+                      href={`/shop/${product.id}`}
+                      className="relative mb-4 flex h-48 w-full items-center justify-center overflow-hidden rounded-2xl bg-slate-50 p-4 transition group-hover:bg-blue-50/30 cursor-pointer block"
+                    >
+                      {product.image ? (
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          className="object-contain p-3 transition-transform duration-300 group-hover:scale-105"
+                        />
+                      ) : (
+                        <span className="text-xs font-semibold text-slate-400">Image unavailable</span>
+                      )}
 
                       {/* Quick View Button on Hover */}
                       <button
-                        onClick={() => handleQuickView(product)}
-                        className="absolute inset-x-4 bottom-3 flex items-center justify-center gap-1.5 rounded-xl bg-slate-900/85 py-2 text-xs font-semibold text-white backdrop-blur-sm opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-slate-900 shadow-md"
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleQuickView(product);
+                        }}
+                        className="absolute inset-x-4 bottom-3 z-10 flex items-center justify-center gap-1.5 rounded-xl bg-slate-900/85 py-2 text-xs font-semibold text-white backdrop-blur-sm opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-slate-900 shadow-md"
                         aria-label={`Quick preview for ${product.name}`}
                       >
                         <Eye size={14} />
                         <span>Quick Preview</span>
                       </button>
-                    </div>
+                    </Link>
 
                     {/* Brand & Rating */}
                     <div className="flex items-center justify-between text-xs text-slate-500 mb-1.5">
@@ -500,14 +512,15 @@ function ShopContent() {
                       </div>
                     </div>
 
-                    {/* Product Name */}
-                    <h3
-                      onClick={() => handleQuickView(product)}
-                      className="cursor-pointer line-clamp-2 text-sm font-bold text-slate-800 transition hover:text-brand-500"
-                      title={product.name}
-                    >
-                      {product.name}
-                    </h3>
+                    {/* Product Name - Links to Product Details */}
+                    <Link href={`/shop/${product.id}`} className="block group/title">
+                      <h3
+                        className="cursor-pointer line-clamp-2 text-sm font-bold text-slate-800 transition group-hover/title:text-brand-600"
+                        title={product.name}
+                      >
+                        {product.name}
+                      </h3>
+                    </Link>
                     <Link href={`/shop/${product.id}`} className="mt-2 inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-brand-600 hover:text-brand-700">
                       View full details <ArrowRight size={12} />
                     </Link>
@@ -693,19 +706,25 @@ function ShopContent() {
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               {/* Product Visual */}
-              <div className="flex flex-col items-center justify-center rounded-2xl bg-slate-50 p-6 border border-slate-100">
+              <Link
+                href={`/shop/${quickViewProduct.id}`}
+                onClick={() => setQuickViewProduct(null)}
+                className="group/img flex flex-col items-center justify-center rounded-2xl bg-slate-50 p-6 border border-slate-100 cursor-pointer hover:border-brand-200 transition"
+                title="Click to view full product details"
+              >
                 <div className="relative h-64 w-full">
                   <Image
                     src={quickViewProduct.image || "/logo.png"}
                     alt={quickViewProduct.name}
                     fill
-                    className="object-contain"
+                    className="object-contain transition-transform duration-300 group-hover/img:scale-105"
                   />
                 </div>
-                <span className="mt-4 text-xs font-semibold text-slate-400">
-                  {quickViewProduct.brand} Official Hardware
+                <span className="mt-4 text-xs font-semibold text-brand-600 group-hover/img:underline flex items-center gap-1">
+                  <span>View full specifications page</span>
+                  <ArrowRight size={12} />
                 </span>
-              </div>
+              </Link>
 
               {/* Details */}
               <div className="flex flex-col justify-between">
@@ -715,13 +734,28 @@ function ShopContent() {
                       {quickViewProduct.badge || "Verified"}
                     </span>
                     <span className="text-xs text-slate-400">
-                      SKU: {quickViewProduct.id.slice(0, 10).toUpperCase()}
+                      SKU: {String(quickViewProduct.id).slice(0, 10).toUpperCase()}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900">
-                    {quickViewProduct.name}
-                  </h3>
+                  <Link
+                    href={`/shop/${quickViewProduct.id}`}
+                    onClick={() => setQuickViewProduct(null)}
+                    className="block group/title"
+                  >
+                    <h3 className="text-xl font-bold text-slate-900 transition group-hover/title:text-brand-600">
+                      {quickViewProduct.name}
+                    </h3>
+                  </Link>
+
+                  <Link
+                    href={`/shop/${quickViewProduct.id}`}
+                    onClick={() => setQuickViewProduct(null)}
+                    className="mt-1.5 inline-flex items-center gap-1 text-xs font-bold text-brand-600 hover:text-brand-700 hover:underline"
+                  >
+                    <span>Open complete product details</span>
+                    <ArrowRight size={13} />
+                  </Link>
 
                   <div className="mt-2 flex items-center gap-2 text-xs text-slate-500">
                     <div className="flex items-center text-amber-500 font-bold">
@@ -798,15 +832,25 @@ function ShopContent() {
                     </button>
                   </div>
 
-                  <button
-                    onClick={() => {
-                      const item = { ...quickViewProduct, quantity: quickViewQty };
-                      handleQuickViewCheckout(item);
-                    }}
-                    className="w-full rounded-xl border border-slate-300 py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-50"
-                  >
-                    Direct Checkout Now
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => {
+                        const item = { ...quickViewProduct, quantity: quickViewQty };
+                        handleQuickViewCheckout(item);
+                      }}
+                      className="flex-1 rounded-xl border border-slate-300 py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-50"
+                    >
+                      Direct Checkout
+                    </button>
+                    <Link
+                      href={`/shop/${quickViewProduct.id}`}
+                      onClick={() => setQuickViewProduct(null)}
+                      className="inline-flex items-center justify-center gap-1 rounded-xl bg-slate-100 px-4 py-2.5 text-xs font-bold text-slate-800 transition hover:bg-slate-200"
+                    >
+                      <span>Full Details</span>
+                      <ArrowRight size={13} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

@@ -700,7 +700,10 @@ export default function HomePage() {
                   >
                     <div>
                       {/* Reduced Image Container */}
-                      <div className="relative h-36 sm:h-40 w-full bg-slate-50/80 p-3 flex items-center justify-center border-b border-slate-100 overflow-hidden">
+                      <Link
+                        href={`/shop/${item.id || item._id}`}
+                        className="relative h-36 sm:h-40 w-full bg-slate-50/80 p-3 flex items-center justify-center border-b border-slate-100 overflow-hidden block cursor-pointer"
+                      >
                         <img
                           src={imageUrl}
                           alt={productName}
@@ -715,7 +718,7 @@ export default function HomePage() {
                             {brand}
                           </span>
                         </div>
-                      </div>
+                      </Link>
 
                       {/* Reduced Body Content */}
                       <div className="p-3">
@@ -731,9 +734,11 @@ export default function HomePage() {
                         </div>
 
                         {/* Name */}
-                        <h3 className="text-xs sm:text-sm font-bold text-slate-900 leading-snug line-clamp-2 h-9">
-                          {productName}
-                        </h3>
+                        <Link href={`/shop/${item.id || item._id}`} className="block group/title">
+                          <h3 className="text-xs sm:text-sm font-bold text-slate-900 leading-snug line-clamp-2 h-9 transition group-hover/title:text-[#0f6cff]">
+                            {productName}
+                          </h3>
+                        </Link>
                       </div>
                     </div>
 
